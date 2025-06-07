@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeless Chronicles | Art Through Ages</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/art.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <p>Loading Art Through Ages...</p>
+    </div>
+  </div>
+
+  <div class="floating-shapes"></div>
+
+  <!-- Header Component -->
+  <header class="main-header">
+    <div class="header-content">
+      <h1>Timeless Chronicles</h1>
+      <p class="subtitle">Art Through the Ages</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="art-container">
+    <section class="art-intro">
+      <div class="container">
+        <h2 class="section-title">🎨 Art Through the Ages</h2>
+        <div class="art-history-overview">
+          <p><strong>🎨 The Amazing Story of Art: From Caves to Computers</strong></p>
+          <p>Art has always been part of human life — from drawing on cave walls to creating cool digital pictures today. It tells our stories, shows our feelings, and helps us share ideas across time and space!</p>
+          
+          <div class="art-highlights">
+            <div class="highlight-card">
+              <div class="highlight-icon">🖐️</div>
+              <h3>First Drawings</h3>
+              <p>Thousands of years ago, early humans drew animals on cave walls using sticks and natural colors.</p>
+            </div>
+            
+            <div class="highlight-card">
+              <div class="highlight-icon">🏺</div>
+              <h3>Ancient Civilizations</h3>
+              <p>Art became important for kings and gods, with Egyptian hieroglyphs and Greek statues.</p>
+            </div>
+            
+            <div class="highlight-card">
+              <div class="highlight-icon">🖌️</div>
+              <h3>Renaissance</h3>
+              <p>A rebirth of classical art with masters like Leonardo da Vinci and Michelangelo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="art-timeline-section">
+      <div class="container">
+        <h3>Explore Art Periods</h3>
+        <p>Click on each button to see how art has evolved through different eras.</p>
+        
+        <div class="art-timeline-nav">
+          <button data-era="prehistoric">Prehistoric</button>
+          <button data-era="ancient">Ancient</button>
+          <button data-era="renaissance">Renaissance</button>
+          <button data-era="baroque">Baroque</button>
+          <button data-era="impressionism">Impressionism</button>
+          <button data-era="modern">Modern</button>
+          <button data-era="ai-generated">AI-Generated</button>
+        </div>
+        
+        <div id="art-timeline-content" class="art-timeline-content">
+          <!-- Content will be loaded here by JavaScript -->
+        </div>
+        
+        <div class="art-fact-container">
+          <button id="art-fact-btn" class="art-fact-button">💡 Random Art Fact</button>
+          <div id="art-fact" class="art-fact-card">
+            <p>Click the button above to discover a fascinating art fact!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="art-quiz-section">
+      <div class="container">
+        <h3>🧬 Art Quiz Challenge</h3>
+        <p>Test your knowledge of art history with this interactive quiz!</p>
+        
+        <div id="quiz-container" class="quiz-container">
+          <button id="start-quiz-btn" class="quiz-start-button">▶️ Start Quiz</button>
+          
+          <div class="quiz-progress">
+            <p id="score-display">Score: 0</p>
+            <progress id="quiz-progress" value="1" max="10"></progress>
+            <p id="quiz-timer">⏳ Time Left: <span id="time-left">15</span> seconds</p>
+          </div>
+          
+          <div id="art-quiz-question" class="quiz-question"></div>
+          <div id="quiz-options" class="quiz-options"></div>
+          
+          <div class="quiz-controls">
+            <button id="next-btn" class="quiz-next-button">Next Question</button>
+            <button id="retry-btn" class="quiz-retry-button">🔁 Try Again</button>
+          </div>
+          
+          <div id="quiz-result" class="quiz-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ai-art-section">
+      <div class="container">
+        <h3>🎨 Create Your Own AI Art</h3>
+        <p>Use AI to generate images based on your imagination!</p>
+        <a href="https://www.craiyon.com/" target="_blank" class="ai-art-link">🖌️ Try Craiyon AI Art Generator</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Component -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="history.html">History</a>
+        <a href="fashion.html">Fashion</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="copyright">© 2025 Timeless Chronicles. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Controls -->
+  <div class="global-controls">
+    <button id="play-music-btn" class="control-btn">🎵 Play Music</button>
+    <button id="toggle-theme-btn" class="control-btn">🌓 Toggle Theme</button>
+    <div class="volume-control">
+      <label for="volume-slider">Volume:</label>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+    </div>
+  </div>
+  
+  <button id="top-btn" class="back-to-top">↑</button>
+
+  <audio id="bg-music" loop>
+    <source src="audios/Timeless-Memories.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Scripts -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+  <script src="js/main.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
