@@ -1,92 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeless Chronicles | Art Through Ages</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Chronicles | Contact Us</title>
+    <!-- Favicon and basic metadata -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Contact Timeless Chronicles with your questions, feedback, or inquiries.">
+
+    <!-- Stylesheets for modern design -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/contact.css"> <!-- Specific styles for contact page -->
+
+    <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Animate On Scroll (AOS) CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-  <div id="loader" class="loader">
-    <div class="loader-content">
-      <div class="loader-spinner"></div>
-      <p>Loading Art Through Ages...</p>
+    <!-- Page Loader (initial loading animation) -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Timeless Chronicles...</p>
+        </div>
     </div>
-  </div>
 
-  <div class="floating-shapes"></div>
+    <!-- Subtle animated background shapes -->
+    <div class="floating-shapes"></div>
 
-  <!-- Header Component -->
-  <header class="main-header">
-    <div class="header-content">
-      <h1>Timeless Chronicles</h1>
-      <p class="subtitle">Art Through the Ages</p>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="art.html">Art</a></li>
-          <li></li><a href="history.html">History</a></li>
-          <li><a href="fashion.html">Fashion</a></li>
-        </ul>
-      </nav>
+    <!-- Main Header Component (shared across pages) -->
+    <header class="main-header">
+        <div class="header-content container">
+            <h1>Timeless Chronicles</h1>
+            <p class="subtitle">Connect with Us</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="art.html">Art</a></li>
+                    <li><a href="fashion.html">Fashion</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="contact-container container">
+        <section class="contact-hero text-center" data-aos="fade-up" data-aos-once="true">
+            <h2>Reach Out to Timeless Chronicles</h2>
+            <p>We'd love to hear from you! Whether you have feedback, questions, or just want to share your thoughts, feel free to get in touch.</p>
+        </section>
+
+        <section class="contact-form-section" data-aos="fade-up" data-aos-once="true" data-aos-delay="100">
+            <h3>Send Us a Message</h3>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" placeholder="Question about history content">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+
+        <section class="contact-info-section" data-aos="fade-up" data-aos-once="true" data-aos-delay="200">
+            <h3>Other Ways to Connect</h3>
+            <div class="info-grid">
+                <div class="info-card card-item">
+                    <div class="info-icon">📧</div>
+                    <h4>Email Us</h4>
+                    <p>For general inquiries, email us at:</p>
+                    <a href="mailto:info@timelesschronicles.com">info@timelesschronicles.com</a>
+                </div>
+                <div class="info-card card-item">
+                    <div class="info-icon">📍</div>
+                    <h4>Visit Us (by appointment)</h4>
+                    <address>
+                        123 History Lane<br>
+                        Art City, TC 98765<br>
+                        Fashionland
+                    </address>
+                </div>
+                <div class="info-card card-item">
+                    <div class="info-icon">📞</div>
+                    <h4>Call Us</h4>
+                    <p>Reach us during business hours:</p>
+                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                </div>
+                <div class="info-card card-item">
+                    <div class="info-icon">🌐</div>
+                    <h4>Social Media</h4>
+                    <p>Follow our journey on social platforms:</p>
+                    <div class="social-links small">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component (shared across pages) -->
+    <footer class="main-footer">
+        <div class="footer-content container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="history.html">History</a>
+                <a href="art.html">Art</a>
+                <a href="fashion.html">Fashion</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2025 Timeless Chronicles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Global Controls (Music, Theme Toggle, Back to Top) -->
+    <div class="global-controls">
+        <button id="play-music-btn" class="control-btn">🎵 Play Music</button>
+        <button id="toggle-theme-btn" class="control-btn">🌓 Toggle Theme</button>
+        <div class="volume-control">
+            <label for="volume-slider" id="volume-label">Volume: 50%</label>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+        </div>
     </div>
-  </header>
+    
+    <button id="top-btn" class="back-to-top">↑</button>
 
-  <!-- Main Content -->
-   <main class="fashion-container">
-<h3>Contact Us</h3>
-      <p>Have questions or feedback? Reach out to us!</p>
-      <form>
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-   </main>
+    <!-- Background Music Audio -->
+    <audio id="bg-music" loop>
+        <source src="audios/Timeless-Memories.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <!-- No specific game sounds needed for contact page, but included correct/incorrect for consistency -->
+    <audio id="correctSound" src="audios/correct.mp3"></audio>
+    <audio id="incorrectSound" src="audios/incorrect.mp3"></audio>
 
-  <!-- Footer Component -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="art.html">Art</a>
-        <a href="history.html">History</a>
-        <a href="fashion.html">Fashion</a>
-      </div>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-      <p class="copyright">© 2025 Timeless Chronicles. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- External JavaScript Libraries -->
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Animate On Scroll (AOS) JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Your Custom JavaScript Files -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/theme.js"></script>
 
-  <!-- Controls -->
-  <div class="global-controls">
-    <button id="play-music-btn" class="control-btn">🎵 Play Music</button>
-    <button id="toggle-theme-btn" class="control-btn">🌓 Toggle Theme</button>
-    <div class="volume-control">
-      <label for="volume-slider">Volume:</label>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
-    </div>
-  </div>
-  
-  <button id="top-btn" class="back-to-top">↑</button>
-
-  <audio id="bg-music" loop>
-    <source src="audios/Timeless-Memories.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Scripts -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-  <script src="js/main.js"></script>
-  <script>
-    AOS.init();
-  </script>
+    <script>
+        // AOS initialization - keep here for overall page animations
+        AOS.init({
+            duration: 1000, // animation duration
+            once: true,     // whether animation should happen only once - default
+            offset: 50      // offset (in px) from the top of the screen
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,252 @@
+/* History Page Specific Styles */
+
+.history-container {
+    padding: 0; /* Sections handle their own padding */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* General hero section for internal pages */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section h2 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* History Timeline Section */
+.history-timeline-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.history-timeline-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.history-timeline-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.timeline-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.timeline-navigation button {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px; /* Pill shape */
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-navigation button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-navigation button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.timeline-placeholder p {
+    font-size: 1.3em;
+    color: #666;
+    font-style: italic;
+}
+
+/* Interactive Games Section */
+.interactive-games-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color); /* Not a card itself */
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.interactive-games-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.interactive-games-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.game-card {
+    /* Inherits card-item from components.css */
+    padding: 30px; /* Override default card-item padding */
+    text-align: center;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-dark);
+}
+
+.game-card h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.game-card p {
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Specific game styles (placeholders, actual styles handled in components.css or module-specific CSS) */
+.tool-matching-game, .puzzle-game, .medieval-quest-container,
+.cause-effect-quiz, .drag-drop-timeline-container {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    margin-top: 20px;
+    min-height: 250px; /* Give some default height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark Theme Adjustments for History Page */
+.dark-theme .hero-section h2,
+.dark-theme .history-timeline-section h3,
+.dark-theme .interactive-games-section h3,
+.dark-theme .game-card h3 {
+    color: var(--primary-color);
+}
+
+.dark-theme .timeline-navigation button {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.dark-theme .timeline-navigation button:hover,
+.dark-theme .timeline-navigation button.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 10px var(--shadow-dark);
+}
+
+.dark-theme .history-timeline-section,
+.dark-theme .game-card {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.dark-theme .game-card:hover {
+    box-shadow: 0 8px 20px var(--shadow-dark);
+}
+
+.dark-theme .tool-matching-game, .dark-theme .puzzle-game,
+.dark-theme .medieval-quest-container, .dark-theme .cause-effect-quiz,
+.dark-theme .drag-drop-timeline-container {
+    border: 1px dashed var(--border-color);
+}
+
+/* Media Queries for History Page */
+@media (max-width: 992px) {
+    .hero-section h2 {
+        font-size: 3em;
+    }
+    .history-timeline-section, .interactive-games-section {
+        padding: 30px 20px;
+    }
+    .timeline-navigation {
+        gap: 10px;
+    }
+    .timeline-navigation button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .game-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .history-container {
+        gap: 30px;
+    }
+    .hero-section {
+        padding: 30px 15px;
+    }
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    .history-timeline-section, .interactive-games-section {
+        padding: 20px 15px;
+    }
+    .history-timeline-section h3, .interactive-games-section h3 {
+        font-size: 2em;
+    }
+    .game-grid {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+    .game-card {
+        padding: 25px;
+    }
+    .game-card h3 {
+        font-size: 1.5em;
+    }
+}

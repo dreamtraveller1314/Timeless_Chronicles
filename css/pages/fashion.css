@@ -1,0 +1,303 @@
+/* Fashion Page Specific Styles */
+
+.fashion-container {
+    padding: 0; /* Sections handle their own padding */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* General hero section for internal pages (reused from history.css principles) */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section h2 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Fashion Evolution Section */
+.fashion-evolution-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.fashion-evolution-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.fashion-evolution-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+#fashion_timeline {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fashion_timeline .timeline-placeholder {
+    text-align: center;
+    font-size: 1.3em;
+    color: #666;
+    font-style: italic;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for dynamically loaded fashion timeline elements (from fashion-evolution.js, if separate) */
+.fashion_timeline .era {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: var(--background-color); /* Lighter background for individual era blocks */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-theme .fashion_timeline .era {
+    background-color: #383838; /* Slightly lighter than card-bg for contrast */
+    box-shadow: 0 2px 8px var(--shadow-dark);
+}
+
+.fashion_timeline .era-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+    min-width: 120px; /* Fixed width for year */
+    text-align: right;
+}
+
+.fashion_timeline .era-content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.fashion_timeline .era-content h4 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.fashion_timeline .era-content p {
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 1em;
+}
+
+.fashion_timeline .era-image {
+    max-width: 250px; /* Adjust image width */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Fashion Chatbot Section */
+.fashion-chatbot-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.fashion-chatbot-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.fashion-chatbot-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* Chatbot container is styled in components.css, adding minor overrides here */
+#chat-container {
+    height: 550px; /* Slightly taller for fashion */
+    max-width: 600px;
+}
+
+/* Fashion Slider Section */
+.fashion-slider-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.fashion-slider-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.fashion-slider-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.fashion-slider-wrapper {
+    /* Inherits card-item from components.css */
+    padding: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#fashion-image {
+    max-width: 100%;
+    height: 400px; /* Fixed height for consistent display */
+    object-fit: contain; /* Ensure entire image is visible, not cropped */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth image transitions */
+}
+
+#fashion-caption {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    min-height: 2em; /* Prevent layout shift */
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.slider-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Dark Theme Adjustments for Fashion Page */
+.dark-theme .hero-section h2,
+.dark-theme .fashion-evolution-section h3,
+.dark-theme .fashion-chatbot-section h3,
+.dark-theme .fashion-slider-section h3,
+.dark-theme .fashion_timeline .era-content h4 {
+    color: var(--primary-color);
+}
+
+.dark-theme .fashion-evolution-section,
+.dark-theme .fashion-slider-wrapper {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.dark-theme .fashion-slider-wrapper:hover {
+    box-shadow: 0 8px 20px var(--shadow-dark);
+}
+
+.dark-theme .slider-btn {
+    background-color: var(--accent-color);
+}
+
+.dark-theme .slider-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Media Queries for Fashion Page */
+@media (max-width: 992px) {
+    .hero-section h2 {
+        font-size: 3em;
+    }
+    .fashion-evolution-section, .fashion-chatbot-section, .fashion-slider-section {
+        padding: 30px 20px;
+    }
+    .fashion_timeline .era {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .fashion_timeline .era-year {
+        text-align: center;
+        min-width: unset;
+        font-size: 2em;
+    }
+    .fashion_timeline .era-image {
+        max-width: 200px;
+    }
+    #fashion-image {
+        height: 300px;
+    }
+    #chat-container {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fashion-container {
+        gap: 30px;
+    }
+    .hero-section {
+        padding: 30px 15px;
+    }
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    .fashion-evolution-section h3, .fashion-chatbot-section h3, .fashion-slider-section h3 {
+        font-size: 2em;
+    }
+    .fashion-evolution-section, .fashion-chatbot-section, .fashion-slider-section {
+        padding: 20px 15px;
+    }
+    #fashion-image {
+        height: 250px;
+    }
+    .slider-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    #chat-container {
+        height: 400px;
+        max-width: 95%;
+    }
+}

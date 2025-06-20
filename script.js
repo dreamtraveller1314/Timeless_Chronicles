@@ -2,54 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-   // Top Button Visibility
-  window.onscroll = function() {
-  const topBtn = document.getElementById('top-btn');
-  if (topBtn) {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      topBtn.classList.add('show');
-    } else {
-      topBtn.classList.remove('show');
-    }
-  }
-};
-
-  // Scroll to Top
-  document.getElementById('top-btn').addEventListener('click', function() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  });
-
-  // Play/Pause Music
-  const bgMusic = document.getElementById('bg-music');
-  const playBtn = document.getElementById('play-music-btn');
-  const volumeSlider = document.getElementById('volume-slider');
-  const volumeLabel = document.getElementById('volume-label');
-
-  playBtn.addEventListener('click', function() {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      playBtn.textContent = '🔇 Stop Music';
-    } else {
-      bgMusic.pause();
-      playBtn.textContent = '🎵 Play Background Music';
-    }
-  });
-
-  volumeSlider.addEventListener('input', function() {
-    bgMusic.volume = volumeSlider.value;
-    volumeLabel.textContent = Math.round(volumeSlider.value * 100) + '%';
-    volumeLabel.style.color = document.body.classList.contains('dark-theme') ? '#f0f0f0' : '#333';
- });
-
-  // Theme Toggle
-  document.getElementById('toggle-theme-btn').addEventListener('click', function() {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeForDynamicContent();
-  });
-
 // Floating Buttons
   document.getElementById('art-fact-btn').addEventListener('click', showArtInfo);
   document.getElementById('btn-prehistory').addEventListener('click', () => showEvent('prehistory'));
@@ -1745,7 +1697,7 @@ const fashionMoreInfo = {
     "common_questions_online_sizing": "Online sizing can be tricky. Always refer to the specific brand's size chart, as sizes can vary. Measure yourself accurately (bust, waist, hips, inseam) and compare your measurements to the chart. Read customer reviews, as they often mention if items run small, large, or true to size. Pay attention to the fabric composition, as some materials may fit differently. If possible, choose retailers with clear return policies in case the item doesn't fit.",
     "common_questions_why_sustainable_important": "The fashion industry is a major contributor to environmental problems like water pollution, carbon emissions, and textile waste. It also raises ethical concerns about labor practices. Sustainable fashion aims to address these issues by using eco-friendly materials, reducing waste, conserving resources, and ensuring fair treatment of workers. By supporting sustainable fashion, consumers can contribute to a more environmentally and socially responsible industry.",
     "common_questions_make_sustainable_choices": "Making sustainable fashion choices involves a shift in mindset and habits. Prioritize quality over quantity, investing in pieces that will last. Consider the environmental impact of the materials (e.g., choosing organic cotton over conventional). Support brands that are transparent about their production processes and labor practices. Explore secondhand options first. Learn to repair and care for your clothes to extend their lifespan.",
-    "common_questions_ethical_fashion_brands": "Ethical fashion brands prioritize fair wages, safe working conditions, and the well-being of garment workers. They are often transparent about their supply chains and may use certifications like Fair Trade. Researching brands' values and practices is key to identifying ethical options. Look for companies that prioritize people and the planet alongside profit.",
+    ommon_questions_ethical_fashion_brands": "Ethical fashion brands prioritize fair wages, safe working conditions, and the well-being of garment workers. They are often transparent about their supply chains and may use certifications like Fair Trade. Researching brands' values and practices is key to identifying ethical options. Look for companies that prioritize people and the planet alongside profit.",
     "common_questions_organic_cotton_meaning": "Organic cotton is grown using farming practices that replenish soil health without the use of toxic and persistent pesticides and fertilizers. This benefits the environment by reducing pollution and conserving water. It also protects the health of farmers and garment workers who are not exposed to harmful chemicals. Choosing organic cotton is a more sustainable alternative to conventional cotton farming.",
     "common_questions_secondhand_sustainable": "Buying secondhand clothing is one of the most sustainable fashion choices you can make. It reduces the demand for new production, which conserves resources and minimizes environmental impact. It also keeps clothes out of landfills, reducing textile waste. Plus, you can often find unique and high-quality items at affordable prices in thrift stores, consignment shops, and online marketplaces.",
     "common_questions_what_is_slow_fashion": "Slow fashion is a conscious and deliberate approach to fashion that values quality, sustainability, and ethical production over speed and quantity. It encourages consumers to buy fewer, better-made garments that will last longer, and to be more mindful of the social and environmental impact of their clothing choices. Supporting slow fashion brands and adopting slow fashion habits can lead to a more sustainable and meaningful relationship with our clothes.",
@@ -1788,7 +1740,7 @@ function addMessage(message, sender) {
 }
 
 // Function to get the bot's response with fuzzy matching and simple context
-function getBotResponse(userInput) {
+function getBotResponse(userInput) "c{
     const normalizedInput = userInput.toLowerCase().trim();
     console.log("User Input:", normalizedInput);
 

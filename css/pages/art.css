@@ -1,0 +1,377 @@
+/* Art Page Specific Styles */
+
+.art-container {
+    padding: 0; /* Sections handle their own padding */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* General hero section for internal pages (reused from history.css principles) */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section h2 {
+    font-size: 3.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Art Timeline Section */
+.art-timeline-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+}
+
+.art-timeline-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.art-timeline-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.art-timeline-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.art-timeline-navigation button {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px; /* Pill shape */
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.art-timeline-navigation button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.art-timeline-navigation button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.art-timeline-content {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.art-timeline-content .timeline-placeholder p {
+    font-size: 1.3em;
+    color: #666;
+    font-style: italic;
+}
+
+
+/* Interactive Art Section (games & quizzes) */
+.interactive-art-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color); /* Not a card itself */
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.interactive-art-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.interactive-art-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.quiz-card, .memory-game-card { /* Using similar naming for consistency */
+    /* Inherits card-item from components.css */
+    padding: 30px;
+    text-align: center;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-card:hover, .memory-game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-dark);
+}
+
+.quiz-card h3, .memory-game-card h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.quiz-card p, .memory-game-card p {
+    font-size: 1em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Art Quiz specific adjustments (quiz-container is styled in components.css) */
+.quiz-container {
+    min-height: 350px; /* Ensure space for content */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content */
+    align-items: center;
+}
+
+#art-quiz-question {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+#score-display {
+    font-weight: 600;
+    margin-top: 10px;
+    color: var(--text-color);
+}
+
+/* Memory Game specific styles */
+.memory-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Example grid */
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 90px; /* Example card size */
+    height: 90px;
+    background-color: var(--border-color); /* Hidden state */
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: transparent; /* Hide symbol initially */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.card.flipped {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: rotateY(180deg); /* Flip effect */
+}
+
+.card.matched {
+    background-color: #28a745;
+    color: #fff;
+    pointer-events: none; /* Can't click matched cards */
+}
+
+.game-info {
+    font-size: 1em;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#matchCount, #pairtimer {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Art Facts Section */
+.art-facts-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.art-facts-section h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.art-facts-section p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* Fact card styling is mainly in components.css */
+#art-fact {
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+/* Dark Theme Adjustments for Art Page */
+.dark-theme .hero-section h2,
+.dark-theme .art-timeline-section h3,
+.dark-theme .interactive-art-section h3,
+.dark-theme .art-facts-section h3,
+.dark-theme .quiz-card h3,
+.dark-theme .memory-game-card h3 {
+    color: var(--primary-color);
+}
+
+.dark-theme .art-timeline-navigation button {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.dark-theme .art-timeline-navigation button:hover,
+.dark-theme .art-timeline-navigation button.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 10px var(--shadow-dark);
+}
+
+.dark-theme .art-timeline-section,
+.dark-theme .quiz-card,
+.dark-theme .memory-game-card {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+}
+
+.dark-theme .quiz-card:hover, .dark-theme .memory-game-card:hover {
+    box-shadow: 0 8px 20px var(--shadow-dark);
+}
+
+.dark-theme .card {
+    background-color: var(--border-color);
+}
+
+.dark-theme .card.flipped {
+    background-color: var(--accent-color);
+}
+
+.dark-theme .card.matched {
+    background-color: #8aff8a; /* Lighter green for dark theme */
+}
+
+/* Media Queries for Art Page */
+@media (max-width: 992px) {
+    .hero-section h2 {
+        font-size: 3em;
+    }
+    .art-timeline-section, .interactive-art-section, .art-facts-section {
+        padding: 30px 20px;
+    }
+    .art-timeline-navigation {
+        gap: 10px;
+    }
+    .art-timeline-navigation button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .game-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .game-board {
+        grid-template-columns: repeat(3, 1fr); /* Adjust grid for smaller screens */
+        max-width: 300px;
+    }
+    .card {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .art-container {
+        gap: 30px;
+    }
+    .hero-section {
+        padding: 30px 15px;
+    }
+    .hero-section h2 {
+        font-size: 2.5em;
+    }
+    .art-timeline-section, .interactive-art-section, .art-facts-section {
+        padding: 20px 15px;
+    }
+    .art-timeline-section h3, .interactive-art-section h3, .art-facts-section h3 {
+        font-size: 2em;
+    }
+    .game-grid {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+    .quiz-card, .memory-game-card {
+        padding: 25px;
+    }
+    .quiz-card h3, .memory-game-card h3 {
+        font-size: 1.5em;
+    }
+    .game-board {
+        grid-template-columns: repeat(3, 1fr); /* Stay at 3 columns or adjust to 2 if too cramped */
+        max-width: 280px;
+    }
+    .card {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5em;
+    }
+    #art-fact {
+        padding: 20px;
+        font-size: 0.95em;
+        margin: 20px auto;
+    }
+}
