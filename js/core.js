@@ -71,98 +71,257 @@ export const historyEras = [
     }
 ];
 
-// Art Timeline Data
-export const artEras = [
-    {
-        id: 'prehistoric',
-        name: 'Prehistoric Art',
-        period: 'c. 40,000 – 4,000 BCE',
-        description: 'The earliest forms of human expression, including cave paintings, sculptures, and megalithic structures, often reflecting spiritual beliefs and daily life.',
-        image: 'images/art/prehistoric_art.jpg',
-        details: [
-            { title: 'Lascaux Cave Paintings', era: 'Upper Paleolithic', fact: 'Discovered in France, these depict large animals and are over 17,000 years old.' },
-            { title: 'Venus of Willendorf', era: 'Upper Paleolithic', fact: 'A small, fertility figurine found in Austria, dating back around 25,000 years.' }
+// Data for Art Timeline
+const artPeriods = {
+    prehistoric: {
+        title: "Prehistoric Art",
+        description: "Early humans created cave paintings and simple sculptures.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/9_Bisonte_Magdaleniense_pol%C3%ADcromo.jpg/1024px-9_Bisonte_Magdaleniense_pol%C3%ADcromo.jpg", alt: "Cave of Altamira" },
+            { src: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/cave-lions-chauvet-cave.jpg", alt: "Chauvet Cave" }
         ]
     },
-    {
-        id: 'ancient_art',
-        name: 'Ancient Art',
-        period: 'c. 4000 BCE – 400 CE',
-        description: 'From monumental Egyptian pyramids and Greek sculptures to Roman frescoes, ancient art served religious, political, and commemorative purposes.',
-        image: 'images/art/ancient_art.jpg',
-        details: [
-            { title: 'Pyramids of Giza', era: 'Ancient Egypt', fact: 'Massive tombs built for pharaohs, showcasing Egyptian engineering and religious beliefs.' },
-            { title: 'Parthenon', era: 'Ancient Greece', fact: 'A temple dedicated to the goddess Athena, exemplifying classical Greek architecture and sculpture.' }
+    ancient: {
+        title: "Ancient Art",
+        description: "Civilizations like Egypt, Greece, and Rome produced monumental sculptures and architecture.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg/1024px-Great_Pyramid_of_Giza_-_Pyramid_of_Khufu.jpg", alt: "Pyramid of Giza" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/800px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg", alt: "School of Athens" }
         ]
     },
-    {
-        id: 'medieval_art',
-        name: 'Medieval Art',
-        period: 'c. 400 – 1400 CE',
-        description: 'Characterized by religious themes, illuminated manuscripts, mosaics, and Gothic cathedrals, reflecting the spiritual focus of the Middle Ages.',
-        image: 'images/art/medieval_art.jpg',
-        details: [
-            { title: 'Book of Kells', era: 'Insular Art', fact: 'An illuminated manuscript Gospel book, a masterpiece of Western calligraphy.' },
-            { title: 'Notre Dame Cathedral', era: 'Gothic', fact: 'A iconic example of French Gothic architecture with stunning stained glass.' }
+    renaissance: {
+        title: "Renaissance Art",
+        description: "A rebirth of classical art, with masters like Leonardo da Vinci and Michelangelo.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/400px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg", alt: "Mona Lisa" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/%27David%27_by_Michelangelo_Fir_JBU004.jpg/800px-%27David%27_by_Michelangelo_Fir_JBU004.jpg", alt: "David (Michelangelo)" }
         ]
     },
-    {
-        id: 'renaissance_art',
-        name: 'Renaissance Art',
-        period: 'c. 1400 – 1600 CE',
-        description: 'A rebirth of classical ideals, focusing on humanism, perspective, and naturalism, with masters like Leonardo da Vinci and Michelangelo.',
-        image: 'images/art/renaissance_art.jpg',
-        details: [
-            { title: 'Mona Lisa', era: 'High Renaissance', fact: 'Leonardo da Vinci\'s iconic portrait, famous for its enigmatic smile.' },
-            { title: 'Sistine Chapel Ceiling', era: 'High Renaissance', fact: 'Michelangelo\'s monumental fresco cycle in the Vatican City.' }
+    baroque: {
+        title: "Baroque Art",
+        description: "Characterized by drama, emotion, and grandeur.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ecstasy_of_Saint_Teresa_September_2015-2a.jpg/800px-Ecstasy_of_Saint_Teresa_September_2015-2a.jpg", alt: "The Ecstasy of Saint Teresa" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Night_Watch_-_HD.jpg/800px-The_Night_Watch_-_HD.jpg", alt: "The Night Watch" }
         ]
     },
-    {
-        id: 'baroque_rococo',
-        name: 'Baroque & Rococo',
-        period: 'c. 1600 – 1750 CE',
-        description: 'Baroque emphasized drama, grandeur, and emotion, while Rococo moved towards lightheartedness, elaborate ornamentation, and asymmetry.',
-        image: 'images/art/baroque_rococo_art.jpg',
-        details: [
-            { title: 'The Night Watch', era: 'Baroque', fact: 'Rembrandt van Rijn\'s famous group portrait, known for its dramatic use of light and shadow.' },
-            { title: 'The Swing', era: 'Rococo', fact: 'Jean-Honoré Fragonard\'s quintessential Rococo painting, full of playful sensuality.' }
+    impressionism: {
+        title: "Impressionism",
+        description: "Focused on capturing fleeting moments and the effect of light.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/330px-Monet_-_Impression%2C_Sunrise.jpg", alt: "Impression, Sunrise" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Edgar_Degas_-_La_Classe_de_danse.jpg/250px-Edgar_Degas_-_La_Classe_de_danse.jpg", alt: "The Dance Class" }
         ]
     },
-    {
-        id: 'neoclassicism_romanticism',
-        name: 'Neoclassicism & Romanticism',
-        period: 'c. 1750 – 1850 CE',
-        description: 'Neoclassicism revived classical forms and ideals, while Romanticism championed emotion, individualism, and the sublime in nature.',
-        image: 'images/art/neoclassicism_romanticism_art.jpg',
-        details: [
-            { title: 'Oath of the Horatii', era: 'Neoclassicism', fact: 'Jacques-Louis David\'s masterpiece, embodying civic virtue and heroism.' },
-            { title: 'Liberty Leading the People', era: 'Romanticism', fact: 'Eugène Delacroix\'s iconic depiction of the July Revolution of 1830.' }
+    modern: {
+        title: "Modern Art",
+        description: "A wide range of styles, including Cubism, Surrealism, and Abstract Expressionism.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/250px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg", alt: "The Scream" },
+            { src: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/330px-Les_Demoiselles_d%27Avignon.jpg", alt: "Les Demoiselles d'Avignon" }
         ]
     },
-    {
-        id: 'impressionism_postimpressionism',
-        name: 'Impressionism & Post-Impressionism',
-        period: 'c. 1860 – 1910 CE',
-        description: 'Impressionism captured fleeting moments and light, while Post-Impressionism explored personal expression, symbolism, and structured forms.',
-        image: 'images/art/impressionism_postimpressionism_art.jpg',
-        details: [
-            { title: 'Impression, Sunrise', era: 'Impressionism', fact: 'Claude Monet\'s painting that gave the movement its name, focusing on light and atmosphere.' },
-            { title: 'Starry Night', era: 'Post-Impressionism', fact: 'Vincent van Gogh\'s iconic work, known for its swirling sky and emotional intensity.' }
+    "ai-generated": {
+        title: "AI-Generated Art",
+        description: "Visual artwork created or enhanced through the use of artificial intelligence (AI) programs.",
+        artworks: [
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Th%C3%A9%C3%A2tre_D%E2%80%99op%C3%A9ra_Spatial.png/1024px-Th%C3%A9%C3%A2tre_D%E2%80%99op%C3%A9ra_Spatial.png", alt: "Théâtre D'opéra Spatial" },
+            { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Edmond_de_Belamy.png/800px-Edmond_de_Belamy.png", alt: "Edmond de Belamy" }
         ]
+    }
+};
+
+// Data for Art Facts
+const artFacts = [
+    {
+        fact: "The Mona Lisa has no eyebrows!",
+        detail: "Shaving eyebrows was fashionable during the Renaissance.",
+        emoji: "🖼️",
+        category: "Renaissance"
     },
     {
-        id: 'modern_art',
-        name: 'Modern Art',
-        period: 'c. 1900 CE – Present',
-        description: 'A vast and diverse period including Cubism, Surrealism, Abstract Expressionism, Pop Art, and contemporary movements, constantly redefining art.',
-        image: 'images/art/modern_art.jpg',
-        details: [
-            { title: 'Les Demoiselles d\'Avignon', era: 'Cubism', fact: 'Pablo Picasso\'s groundbreaking work, a precursor to Cubism.' },
-            { title: 'Campbell\'s Soup Cans', era: 'Pop Art', fact: 'Andy Warhol\'s series, challenging traditional art notions with everyday objects.' }
-        ]
+        fact: "Van Gogh only sold one painting in his lifetime.",
+        detail: "Now his works sell for millions.",
+        emoji: "🌻",
+        category: "Modern"
+    },
+    {
+        fact: "Paint was once made from ground-up mummies.",
+        detail: "It was called 'Mummy Brown' and used in the 16th–17th centuries.",
+        emoji: "🧟",
+        category: "Ancient"
+    },
+    {
+        fact: "AI is now creating art.",
+        detail: "Tools like DALL·E and MidJourney turn text into visuals.",
+        emoji: "🤖",
+        category: "AI Era"
+    },
+    {
+        fact: "Cave art may be prehistoric animation.",
+        detail: "Some paintings show multiple limbs to suggest movement.",
+        emoji: "🦣",
+        category: "Prehistoric"
+    },
+    {
+        fact: "Leonardo da Vinci was ambidextrous.",
+        detail: "He could write with one hand while drawing with the other.",
+        emoji: "✍️",
+        category: "Renaissance"
+    },
+    {
+        fact: "Banksy once shredded his artwork after it was sold.",
+        detail: "It self-destructed right after fetching $1.4 million at auction.",
+        emoji: "🧨",
+        category: "Street Art"
+    },
+    {
+        fact: "Some museums dim the lights for Van Gogh's works.",
+        detail: "His yellow pigments are so sensitive they fade under strong light.",
+        emoji: "💡",
+        category: "Modern"
+    },
+    {
+        fact: "Artists used beetle shells for paint.",
+        detail: "Iridescent green pigment came from ground beetles.",
+        emoji: "🐞",
+        category: "Materials"
+    },
+    {
+        fact: "Michelangelo painted himself into the Sistine Chapel.",
+        detail: "As St. Bartholomew’s flayed skin — quite the self-portrait!",
+        emoji: "🖌️",
+        category: "Renaissance"
+    },
+    {
+        fact: "The world’s oldest known drawing is 73,000 years old.",
+        detail: "Found in Blombos Cave, South Africa.",
+        emoji: "📐",
+        category: "Prehistoric"
+    },
+    {
+        fact: "Jackson Pollock used house paint.",
+        detail: "He preferred it for its texture and flow in drip paintings.",
+        emoji: "🎨",
+        category: "Modern"
+    },
+    {
+        fact: "Ancient Greek statues were painted.",
+        detail: "They weren't white — they were originally bright and colorful.",
+        emoji: "🏛️",
+        category: "Ancient"
+    },
+    {
+        fact: "Frida Kahlo created 143 paintings.",
+        detail: "55 of them are self-portraits.",
+        emoji: "🎭",
+        category: "Modern"
+    },
+    {
+        fact: "The Great Wave off Kanagawa isn't just art — it's math.",
+        detail: "Its curves and composition reflect Fibonacci patterns.",
+        emoji: "🌊",
+        category: "Japanese Art"
+    },
+    {
+        fact: "Warhol once made a painting of 100 soup cans.",
+        detail: "It symbolized mass production and pop culture.",
+        emoji: "🥫",
+        category: "Pop Art"
+    },
+    {
+        fact: "Street artist Invader uses mosaic tiles.",
+        detail: "Inspired by 8-bit video games like Space Invaders.",
+        emoji: "👾",
+        category: "Street Art"
+    },
+    {
+        fact: "Salvador Dalí’s mustache is in a museum.",
+        detail: "He was buried with it perfectly intact.",
+        emoji: "🌀",
+        category: "Surrealism"
+    },
+    {
+        fact: "Picasso could draw before he could walk.",
+        detail: "He completed his first painting at age 9.",
+        emoji: "🧒",
+        category: "Modern"
+    },
+    {
+        fact: "Some cave art is located deep underground.",
+        detail: "Early humans crawled miles through tunnels to paint in the dark.",
+        emoji: "🕳️",
+        category: "Prehistoric"
     }
 ];
 
+// Data for Art Quiz
+const artQuestions = [
+    {
+        question: "Who painted the Mona Lisa?",
+        options: ["Van Gogh", "Leonardo da Vinci", "Picasso", "Michelangelo"],
+        correctAnswer: 1,
+        explanation: "Leonardo da Vinci painted the Mona Lisa in the early 1500s during the Italian Renaissance. It’s one of the most recognized paintings in the world."
+    },
+    {
+        question: "Which art movement is Salvador Dalí associated with?",
+        options: ["Impressionism", "Cubism", "Surrealism", "Renaissance"],
+        correctAnswer: 2,
+        explanation: "Dalí was a leading figure in the Surrealist movement, which emphasized dreamlike, irrational imagery."
+    },
+    {
+        question: "What is the main characteristic of Impressionist art?",
+        options: ["Precise lines", "Emotional symbolism", "Use of abstract forms", "Capturing light and movement"],
+        correctAnswer: 3,
+        explanation: "Impressionist artists like Monet aimed to capture fleeting light and everyday scenes with loose, visible brushstrokes."
+    },
+    {
+        question: "Which of these artists is known for 'The Starry Night'?",
+        options: ["Claude Monet", "Pablo Picasso", "Vincent van Gogh", "Georges Seurat"],
+        correctAnswer: 2,
+        explanation: "Van Gogh painted 'The Starry Night' in 1889, depicting a swirling night sky from his asylum room in Saint-Rémy-de-Provence."
+    },
+    {
+        question: "What was Andy Warhol known for?",
+        options: ["Pop art and mass media", "Renaissance frescoes", "Cubist sculpture", "Baroque paintings"],
+        correctAnswer: 0,
+        explanation: "Warhol was a leader in the Pop Art movement, turning everyday consumer items like soup cans into iconic art."
+    },
+    {
+        question: "Which technique did Georges Seurat famously use?",
+        options: ["Drip painting", "Fresco", "Pointillism", "Collage"],
+        correctAnswer: 2,
+        explanation: "Seurat used tiny dots of color in a technique called Pointillism, especially seen in 'A Sunday Afternoon on the Island of La Grande Jatte'."
+    },
+    {
+        question: "Where is the Louvre Museum located?",
+        options: ["London", "New York", "Madrid", "Paris"],
+        correctAnswer: 3,
+        explanation: "The Louvre, home to the Mona Lisa, is located in Paris and is the most visited museum in the world."
+    },
+    {
+        question: "What does 'Renaissance' mean?",
+        options: ["The end", "Rebirth", "New world", "Middle age"],
+        correctAnswer: 1,
+        explanation: "The term Renaissance means 'rebirth' and refers to the revival of classical art, architecture, and learning in Europe."
+    },
+    {
+        question: "What defines Cubism?",
+        options: ["Soft colors and smooth lines", "Use of organic forms", "Breaking subjects into geometric shapes", "Hyperrealistic detail"],
+        correctAnswer: 2,
+        explanation: "Cubism, pioneered by Picasso and Braque, breaks objects into geometric components and presents multiple viewpoints simultaneously."
+    },
+    {
+        question: "Which artist is famous for cutting off part of his ear?",
+        options: ["Michelangelo", "Vincent van Gogh", "Rembrandt", "Raphael"],
+        correctAnswer: 1,
+        explanation: "Van Gogh is known for cutting off part of his own ear during a mental health crisis and later painted several self-portraits with a bandaged ear."
+    }
+];
+
+window.artPeriods = artPeriods;
+window.artFacts = artFacts;
+window.artQuestions = artQuestions;
 
 // Fashion Timeline Data
 export const fashionEras = [
@@ -229,56 +388,6 @@ export const fashionEras = [
         description: 'Globalization, fast fashion, streetwear dominance, and increasing personalization. Blurring of gender lines and technology integration. Key elements: activewear as daily wear, sustainable fashion, digital influence.',
         image: 'images/fashion/21st_century_fashion.jpg'
     }
-];
-
-
-// Quizzes Data (Example structure for Art Quiz)
-export const artQuizQuestions = [
-    {
-        question: "Who painted the Mona Lisa?",
-        options: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
-        answer: "Leonardo da Vinci",
-        fact: "The Mona Lisa is famous for its enigmatic smile and the sfumato technique, where colors and tones are blended to create soft, hazy transitions."
-    },
-    {
-        question: "Which movement is characterized by the use of strong, vibrant colors and distorted forms to evoke emotion?",
-        options: ["Cubism", "Impressionism", "Expressionism", "Surrealism"],
-        answer: "Expressionism",
-        fact: "Expressionism emerged in Germany in the early 20th century, emphasizing the artist's inner experience rather than objective reality."
-    },
-    {
-        question: "What ancient Greek architectural order is characterized by plain, sturdy columns with a simple capital?",
-        options: ["Doric", "Ionic", "Corinthian", "Tuscan"],
-        answer: "Doric",
-        fact: "The Doric order is the oldest and simplest of the three classical Greek architectural orders, known for its robust and austere appearance."
-    },
-    {
-        question: "Which artist is known for painting melting clocks?",
-        options: ["René Magritte", "Frida Kahlo", "Salvador Dalí", "Joan Miró"],
-        answer: "Salvador Dalí",
-        fact: "Salvador Dalí was a prominent Spanish Surrealist artist best known for his striking and bizarre images, such as those in 'The Persistence of Memory'."
-    },
-    {
-        question: "What is the technique of painting on wet plaster called?",
-        options: ["Tempera", "Oil painting", "Fresco", "Gouache"],
-        answer: "Fresco",
-        fact: "Fresco painting, particularly 'buon fresco,' involves painting with water-based pigments on freshly applied wet plaster, allowing the paint to become an integral part of the wall."
-    }
-];
-
-// Art Facts
-export const artFacts = [
-    "The world's most expensive painting ever sold is Leonardo da Vinci's 'Salvator Mundi,' fetching $450.3 million.",
-    "The 'Mona Lisa' has its own mailbox at the Louvre because of all the love letters it receives.",
-    "Van Gogh only sold one painting during his lifetime, 'The Red Vineyard.'",
-    "Picasso was a prolific artist, producing an estimated 50,000 artworks.",
-    "The 'Sistine Chapel Ceiling' by Michelangelo took him four years to complete (1508-1512).",
-    "Pointillism is an art technique in which small, distinct dots of color are applied in patterns to form an image.",
-    "The ancient Greeks painted their marble statues with vibrant colors, a fact often forgotten today.",
-    "The 'Venus de Milo' statue is missing its arms, and their original position remains a mystery.",
-    "The color ultramarine, originally made from lapis lazuli, was once more expensive than gold.",
-    "Street art pioneer Banksy's true identity remains unknown despite global fame.",
-    "Many famous artists, like Georgia O'Keeffe, were inspired by natural forms and landscapes."
 ];
 
 

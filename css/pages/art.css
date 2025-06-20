@@ -31,6 +31,32 @@
     margin: 0 auto;
 }
 
+/* Story of Art */
+.story-of-art {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    border-radius: 0px;
+}
+
+.story-of-art h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.story-of-art h4 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.story-of-art p.mb-20 {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
 /* Art Timeline Section */
 .art-timeline-section {
     padding: 40px 20px;
@@ -176,64 +202,6 @@
     color: var(--text-color);
 }
 
-/* Memory Game specific styles */
-.memory-game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Example grid */
-    gap: 10px;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.card {
-    width: 90px; /* Example card size */
-    height: 90px;
-    background-color: var(--border-color); /* Hidden state */
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    color: transparent; /* Hide symbol initially */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    border: 2px solid transparent;
-}
-
-.card.flipped {
-    background-color: var(--primary-color);
-    color: #fff;
-    transform: rotateY(180deg); /* Flip effect */
-}
-
-.card.matched {
-    background-color: #28a745;
-    color: #fff;
-    pointer-events: none; /* Can't click matched cards */
-}
-
-.game-info {
-    font-size: 1em;
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-#matchCount, #pairtimer {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
 /* Art Facts Section */
 .art-facts-section {
     padding: 40px 20px;
@@ -242,6 +210,31 @@
     background-color: var(--background-color);
     box-shadow: none;
     border-radius: 0;
+}
+
+.art-facts-section button {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px; /* Pill shape */
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.art-facts-section button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.art-facts-section button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .art-facts-section h3 {
@@ -263,6 +256,7 @@
 
 /* Dark Theme Adjustments for Art Page */
 .dark-theme .hero-section h2,
+.dark-theme .story-of-art h3,
 .dark-theme .art-timeline-section h3,
 .dark-theme .interactive-art-section h3,
 .dark-theme .art-facts-section h3,
@@ -311,7 +305,7 @@
     .hero-section h2 {
         font-size: 3em;
     }
-    .art-timeline-section, .interactive-art-section, .art-facts-section {
+    .art-timeline-section, .interactive-art-section, .art-facts-section, .story-of-art {
         padding: 30px 20px;
     }
     .art-timeline-navigation {
@@ -345,12 +339,14 @@
     .hero-section h2 {
         font-size: 2.5em;
     }
-    .art-timeline-section, .interactive-art-section, .art-facts-section {
+
+    .art-timeline-section, .interactive-art-section, .art-facts-section, .story-of-art {
         padding: 20px 15px;
     }
-    .art-timeline-section h3, .interactive-art-section h3, .art-facts-section h3 {
+    .art-timeline-section h3, .interactive-art-section h3, .art-facts-section h3 , .story-of-art h3{
         font-size: 2em;
     }
+
     .game-grid {
         grid-template-columns: 1fr; /* Stack on small screens */
     }

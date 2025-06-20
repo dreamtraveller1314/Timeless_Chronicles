@@ -1,9 +1,3 @@
-/* Theme-specific styles (dark mode overrides) */
-
-/* The root variables for dark theme are defined in base.css,
-   but this file ensures theme-specific elements get proper styling. */
-
-/* Basic element overrides */
 .dark-theme body {
     background-color: var(--background-color);
     color: var(--text-color);

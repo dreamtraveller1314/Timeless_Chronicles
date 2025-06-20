@@ -1,78 +1,73 @@
-/**
- * js/modules/art-timeline.js
- *
- * This module manages the interactive timeline for the Art page,
- * dynamically loading and displaying art eras and their characteristics.
- */
-
-import { artEras, addClass, removeClass } from '../core.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-    const artTimelineNav = document.querySelector('.art-timeline-navigation');
+    const artTimelineButtons = document.querySelectorAll('.art-timeline button');
     const artTimelineContent = document.getElementById('art-timeline-content');
 
-    if (!artTimelineNav || !artTimelineContent) {
-        console.warn("Art timeline elements not found. Skipping module initialization.");
-        return;
+    // Ensure artPeriods is available from core.js
+    const artPeriods = window.artPeriods;
+
+    function updateTextColors(element) {
+        const textColor = document.body.classList.contains('dark-theme') ? '#f0f0f0' : '#333';
+        element.querySelectorAll('h3, p').forEach(el => el.style.color = textColor);
     }
 
-    /**
-     * Renders the navigation buttons for each art era.
-     */
-    function renderArtTimelineNavigation() {
-        artTimelineNav.innerHTML = ''; // Clear existing buttons
-        artEras.forEach(era => {
-            const button = document.createElement('button');
-            button.textContent = era.name;
-            button.dataset.eraId = era.id;
-            artTimelineNav.appendChild(button);
+    function showArtPeriod(era) {
+        const period = artPeriods[era];
+        if (period) {
+            let content = `<h3 class="text-center">${period.title}</h3><p class="text-center">${period.description}</p>`;
+            if (period.artworks && period.artworks.length > 0) {
+                content += '<div class="art-grid">';
+                period.artworks.forEach(artwork => {
+                    content += `
+                        <div class="art-item">
+                            <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(artwork.alt)}" target="_blank" rel="noopener noreferrer">
+                                <img src="${artwork.src}" alt="${artwork.alt}">
+                            </a>
+                            <p>${artwork.alt}</p>
+                        </div>
+                    `;
+                });
+                content += '</div>';
+                content += '<p class="art-tip text-center">📚 Tip: Click on any artwork image to explore more on Wikipedia!</p>';
+            }
+            artTimelineContent.innerHTML = content;
+            // Update text colors for dark theme consistency
+            updateTextColors(artTimelineContent);
 
-            button.addEventListener('click', () => {
-                displayArtEraDetails(era.id);
-                // Update active state
-                Array.from(artTimelineNav.children).forEach(btn => removeClass(btn, 'active'));
-                addClass(button, 'active');
-            });
+            const artGrid = artTimelineContent.querySelector('.art-grid');
+            if (artGrid) {
+                const imageCount = period.artworks.length;
+                if (imageCount === 1) {
+                    artGrid.style.gridTemplateColumns = '1fr'; // Single column for one image
+                } else if (imageCount === 2) {
+                    artGrid.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 columns
+                } else if (imageCount <= 4) {
+                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))'; // Wider columns for fewer images
+                } else {
+                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))'; // Default for more images
+                }
+            }
+
+        } else {
+            artTimelineContent.innerHTML = '<p class="text-center">No information available for this period.</p>';
+            artTimelineContent.style.color = document.body.classList.contains('dark-theme') ? '#f0f0f0' : '#333';
+        }
+    }
+
+    artTimelineButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const era = button.getAttribute('data-era');
+            showArtPeriod(era);
+            // Highlight the active button
+            artTimelineButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
         });
+    });
 
-        // Automatically select the first era if available
-        if (artEras.length > 0) {
-            displayArtEraDetails(artEras[0].id);
-            addClass(artTimelineNav.children[0], 'active');
-        }
-    }
+    // Show the first period on load (Prehistoric by default)
+    showArtPeriod('prehistoric');
+    // Set the initial active button
+    document.querySelector('.art-timeline button[data-era="prehistoric"]').classList.add('active');
 
-    /**
-     * Displays the detailed information for a selected art era.
-     * @param {string} eraId The ID of the era to display.
-     */
-    function displayArtEraDetails(eraId) {
-        const era = artEras.find(e => e.id === eraId);
-        if (!era) {
-            artTimelineContent.innerHTML = '<p>Art era not found.</p>';
-            return;
-        }
-
-        let detailsHtml = era.details ? era.details.map(detail => `
-            <div class="art-detail-item">
-                <h5>${detail.title}</h5>
-                <p><strong>Era:</strong> ${detail.era}</p>
-                <p>${detail.fact}</p>
-            </div>
-        `).join('') : '<p>No specific details available for this era.</p>';
-
-        artTimelineContent.innerHTML = `
-            <div class="art-era-detail-card card-item">
-                <h4 class="era-title">${era.name} (${era.period})</h4>
-                <p class="era-description">${era.description}</p>
-                <img src="${era.image}" alt="${era.name} image" class="era-image">
-                <div class="era-details-list">
-                    <h5>Notable Works/Facts:</h5>
-                    ${detailsHtml}
-                </div>
-            </div>
-        `;
-    }
-
-    renderArtTimelineNavigation();
+    // Initial call to set colors on load
+    updateTextColors(artTimelineContent);
 });
