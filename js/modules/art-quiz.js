@@ -1,191 +1,269 @@
-// js/modules/art-quiz.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Ensure artQuestions and artFacts are available from core.js
     const artQuestions = window.artQuestions;
     const artFacts = window.artFacts;
 
-    let currentQuestion = 0;
+    let currentQuestionIndex = 0; 
     let score = 0;
     let timer;
-    let timeLeft = 15; // seconds per question
+    let timeLeft = 15;
+
+    
+    const quizCard = document.querySelector('.quiz-card.card-item'); 
+    const quizStartScreen = document.getElementById('quiz-start-screen');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizMainContent = document.getElementById('quiz-main-content');
 
     const quizQuestion = document.getElementById('art-quiz-question');
     const quizOptions = document.getElementById('quiz-options');
-    const quizFeedback = document.getElementById('quiz-feedback'); // New element from HTML for feedback
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizExplanation = document.getElementById('quiz-result'); 
     const nextBtn = document.getElementById('next-btn');
-    const quizResult = document.getElementById('quiz-result');
     const quizProgress = document.getElementById('quiz-progress');
     const scoreDisplay = document.getElementById('score-display');
-    const artFactButton = document.getElementById('art-fact'); // The button itself is the fact card
-    const retryButton = document.createElement('button'); // Create retry button
-    retryButton.id = 'retry-btn';
-    retryButton.textContent = 'Retry Quiz';
-    retryButton.style.display = 'none'; // Initially hidden
-    retryButton.classList.add('button', 'mt-20'); // Add some styling classes
-    document.getElementById('quiz-container').appendChild(retryButton); // Append to quiz container
+    const timeLeftDisplay = document.getElementById('time-left-display'); 
+
+    const quizResultsScreen = document.getElementById('quiz-results-screen'); 
+    let quizResultsTitle;  
+    let quizFinalScore;  
+    let quizSummaryMessage;  
+    let restartQuizBtn;  
+    let backToArtBtn; 
 
 
+    const artFactButton = document.getElementById('art-fact');
+
+    
     function updateQuizTextColors() {
-        const textColor = document.body.classList.contains('dark-theme') ? '#f0f0f0' : '#333';
+        const textColor = document.body.classList.contains('dark-theme') ? 'var(--text-color)' : 'var(--text-color)';
+        const primaryColor = document.body.classList.contains('dark-theme') ? 'var(--primary-color)' : 'var(--primary-color)';
+        const accentColor = document.body.classList.contains('dark-theme') ? 'var(--accent-color)' : 'var(--accent-color)';
+
         if (quizQuestion) quizQuestion.style.color = textColor;
         if (scoreDisplay) scoreDisplay.style.color = textColor;
-        if (quizResult) quizResult.style.color = textColor;
-        if (quizFeedback) quizFeedback.style.color = textColor; // Apply to new feedback element
+        if (quizFeedback) quizFeedback.style.color = primaryColor; 
+        if (quizExplanation) quizExplanation.style.color = textColor;
+        if (timeLeftDisplay) timeLeftDisplay.style.color = textColor;
+
+        if (quizResultsScreen && quizResultsScreen.style.display === 'block') {
+            if (quizResultsTitle) quizResultsTitle.style.color = primaryColor;
+            if (quizFinalScore) quizFinalScore.style.color = textColor;
+            if (quizSummaryMessage) quizSummaryMessage.style.color = textColor;
+        }
     }
 
+    
     function startTimer() {
         timeLeft = 15;
-        // Check if the timerDisplay element exists before trying to update its content
-        const timerDisplay = document.querySelector('.quiz-container p[id^="time-left"]'); // Find a p tag with ID starting with time-left (if you add it)
-        if (timerDisplay) {
-            timerDisplay.textContent = `Time left: ${timeLeft}s`;
+        if (timeLeftDisplay) {
+            timeLeftDisplay.textContent = `Time left: ${timeLeft}s`;
         }
-        clearInterval(timer);
+        clearInterval(timer); 
         timer = setInterval(() => {
             timeLeft--;
-            if (timerDisplay) {
-                timerDisplay.textContent = `Time left: ${timeLeft}s`;
+            if (timeLeftDisplay) {
+                timeLeftDisplay.textContent = `Time left: ${timeLeft}s`;
             }
             if (timeLeft <= 0) {
                 clearInterval(timer);
-                selectAnswer(-1); // Triggers timeout logic
+                selectAnswer(-1);
             }
         }, 1000);
     }
 
+    
     function loadQuestion() {
-        if (currentQuestion >= artQuestions.length) {
-            displayFinalQuizResult();
+        if (quizStartScreen) quizStartScreen.style.display = 'none';
+        if (quizResultsScreen) quizResultsScreen.style.display = 'none';
+        if (quizMainContent) quizMainContent.style.display = 'block';
+
+        if (currentQuestionIndex >= artQuestions.length) {
+            displayFinalQuizResult(); 
             return;
         }
 
-        const question = artQuestions[currentQuestion];
+        const question = artQuestions[currentQuestionIndex];
         quizQuestion.textContent = question.question;
-        quizOptions.innerHTML = '';
-        quizFeedback.textContent = ''; // Clear previous feedback
-        quizResult.textContent = ''; // Clear previous quiz result
-        nextBtn.style.display = 'none'; // Hide next button until answer is selected
+        quizOptions.innerHTML = ''; 
+        quizFeedback.innerHTML = ''; 
+        quizExplanation.innerHTML = '';
+        nextBtn.style.display = 'none';
 
+        
         question.options.forEach((opt, idx) => {
             const btn = document.createElement('button');
             btn.textContent = opt;
-            btn.classList.add('quiz-option-btn'); // Add a class for styling
+            btn.classList.add('quiz-option-btn'); 
             btn.onclick = () => selectAnswer(idx);
             quizOptions.appendChild(btn);
         });
 
-        quizProgress.value = currentQuestion + 1;
-        quizProgress.max = artQuestions.length; // Ensure max is set
+        
+        quizProgress.value = currentQuestionIndex + 1;
+        quizProgress.max = artQuestions.length;
         scoreDisplay.textContent = `Score: ${score}`;
-        updateQuizTextColors();
-        startTimer(); // Start timer for the new question
+        updateQuizTextColors(); 
+        startTimer(); 
     }
 
-
+    
     function selectAnswer(index) {
-        clearInterval(timer); // Stop the countdown
-        const question = artQuestions[currentQuestion];
-        const options = quizOptions.querySelectorAll('button');
+        clearInterval(timer); 
+        const question = artQuestions[currentQuestionIndex];
+        const options = quizOptions.querySelectorAll('.quiz-option-btn');
 
-        // Disable all options
         options.forEach(b => b.disabled = true);
 
-        if (index === -1) {
-            // Timeout
-            quizFeedback.innerHTML = `⏰ Time's up! The correct answer was <strong>${question.options[question.correctAnswer]}</strong>.`;
-            quizResult.innerHTML = `<span style="font-size: 0.9em;">🧠 ${question.explanation}</span>`;
-            if (options[question.correctAnswer]) { // Check if element exists before styling
+        if (index === -1) { 
+            quizFeedback.innerHTML = `⏰ Time's up!`;
+            quizExplanation.innerHTML = `The correct answer was <strong>${question.options[question.correctAnswer]}</strong>.<br>🧠 ${question.explanation}`;
+            
+            if (options[question.correctAnswer]) {
                 options[question.correctAnswer].classList.add('correct-answer');
             }
-        } else {
+        } else { 
             if (index === question.correctAnswer) {
-                options[index].classList.add('correct-answer');
+                options[index].classList.add('correct-answer'); 
                 quizFeedback.innerHTML = `✅ Correct!`;
-                quizResult.innerHTML = `<span style="font-size: 0.9em;">🧠 ${question.explanation}</span>`;
-                score++;
-                // Play correct sound (assuming correctSound audio element exists)
+                quizExplanation.innerHTML = `🧠 ${question.explanation}`;
+                score++; 
                 const correctAudio = document.getElementById('correctSound');
                 if (correctAudio) correctAudio.play();
             } else {
-                options[index].classList.add('incorrect-answer');
-                options[question.correctAnswer].classList.add('correct-answer');
+                options[index].classList.add('wrong-answer'); 
+                options[question.correctAnswer].classList.add('correct-answer'); 
                 quizFeedback.innerHTML = `❌ Wrong!`;
-                quizResult.innerHTML = `Correct answer is <strong>${question.options[question.correctAnswer]}</strong>.<br><span style="font-size: 0.9em;">🧠 ${question.explanation}</span>`;
-                // Play incorrect sound (assuming incorrectSound audio element exists)
+                quizExplanation.innerHTML = `Correct answer is <strong>${question.options[question.correctAnswer]}</strong>.<br>🧠 ${question.explanation}`;
                 const incorrectAudio = document.getElementById('incorrectSound');
                 if (incorrectAudio) incorrectAudio.play();
             }
         }
 
         scoreDisplay.textContent = `Score: ${score}`;
-        updateQuizTextColors(); // Re-apply colors for feedback
-
-        nextBtn.style.display = 'inline-block';
+        updateQuizTextColors(); 
+        nextBtn.style.display = 'inline-block'; 
     }
 
+    
     function displayFinalQuizResult() {
-        quizQuestion.textContent = ``;
-        quizOptions.innerHTML = '';
-        quizFeedback.textContent = '';
-        quizResult.innerHTML = `🏁 Quiz Complete! You scored <strong>${score}</strong> out of ${artQuestions.length}.`;
-        scoreDisplay.textContent = `Final Score: ${score}/${artQuestions.length}`;
-        nextBtn.style.display = 'none';
-        retryButton.style.display = 'inline-block'; // Show retry button
-        updateQuizTextColors(); // Update colors for final result
-    }
+        clearInterval(timer); 
+        if (quizMainContent) quizMainContent.style.display = 'none'; 
+        if (quizResultsScreen) quizResultsScreen.style.display = 'block'; 
 
-    nextBtn.addEventListener('click', () => {
-        currentQuestion++;
-        loadQuestion();
-    });
+        
+        quizResultsTitle = quizResultsScreen.querySelector('.quiz-results-title');
+        quizFinalScore = quizResultsScreen.querySelector('.quiz-final-score');
+        quizSummaryMessage = quizResultsScreen.querySelector('.quiz-summary-message');
+        restartQuizBtn = document.getElementById('restart-quiz-btn');
+        backToArtBtn = document.getElementById('back-to-art-btn');
 
-    retryButton.addEventListener('click', () => {
-        currentQuestion = 0;
-        score = 0;
-        retryButton.style.display = 'none'; // Hide retry button
-        loadQuestion(); // Restart the quiz
-    });
+        if (quizResultsTitle) quizResultsTitle.textContent = `Quiz Completed!`;
+        if (quizFinalScore) quizFinalScore.innerHTML = `You scored <span class="highlight-score">${score}</span> out of ${artQuestions.length}.`;
 
-    // Art Facts Logic
-    let currentFactIndex = 0;
+        const finalScorePercentage = (score / artQuestions.length) * 100;
+        let resultSummary = '';
+        if (finalScorePercentage === 100) {
+            resultSummary = "🥳 Absolutely brilliant! You're an art history master!";
+        } else if (finalScorePercentage >= 80) {
+            resultSummary = "👍 Great job! You have a strong grasp of art history.";
+        } else if (finalScorePercentage >= 60) {
+            resultSummary = "👏 Good effort! Keep learning, you're on your way!";
+        } else {
+            resultSummary = "✍️ Don't worry, every artist starts somewhere. Keep practicing!";
+        }
+        if (quizSummaryMessage) quizSummaryMessage.textContent = resultSummary;
 
-    function showArtFact() {
-        const selected = artFacts[currentFactIndex];
-
-        // Ensure the fact-body and fact-detail elements are selected within the artFactButton
-        const factBody = artFactButton.querySelector('.fact-body');
-        const factDetail = artFactButton.querySelector('.fact-detail');
-        const factHeader = artFactButton.querySelector('.fact-header');
-
-        if (factHeader) factHeader.innerHTML = `${selected.emoji} Random Art Fact`; // Keep "Random Art Fact" and update emoji
-        if (factBody) factBody.textContent = selected.fact;
-        if (factDetail) factDetail.textContent = selected.detail;
-
-
-        // Animate
-        if (artFactButton) {
-            artFactButton.style.opacity = 0;
-            artFactButton.style.transform = "scale(0.9)";
-            setTimeout(() => {
-                artFactButton.style.opacity = 1;
-                artFactButton.style.transform = "scale(1)";
-                artFactButton.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out"; // Add transition
-            }, 100);
+        
+        if (restartQuizBtn) {
+            restartQuizBtn.addEventListener('click', () => {
+                currentQuestionIndex = 0;
+                score = 0;
+                loadQuestion(); 
+            });
+        }
+        if (backToArtBtn) {
+            backToArtBtn.addEventListener('click', () => {
+                
+                if (quizResultsScreen) quizResultsScreen.style.display = 'none';
+                if (quizStartScreen) quizStartScreen.style.display = 'block';
+                
+                currentQuestionIndex = 0;
+                score = 0;
+            });
         }
 
-        // Cycle to next fact
-        currentFactIndex = (currentFactIndex + 1) % artFacts.length; // This ensures it loops back to 0
+        updateQuizTextColors(); 
     }
 
-    // Event listener for the art fact button
+    let currentFactIndex = 0;
+
+    
+    function showArtFact() {
+        
+        if (!artFacts || artFacts.length === 0) {
+            console.warn("Art facts data not available or empty.");
+            if (artFactButton) {
+                artFactButton.querySelector('.fact-header').innerHTML = `<span class="emoji">⚠️</span> No facts available`;
+                artFactButton.querySelector('.fact-body').textContent = 'Please check artFacts data source.';
+                artFactButton.querySelector('.fact-detail').textContent = '';
+            }
+            return;
+        }
+
+        const selected = artFacts[currentFactIndex];
+
+        
+        const factHeader = artFactButton.querySelector('.fact-header');
+        const factBody = artFactButton.querySelector('.fact-body');
+        const factDetail = artFactButton.querySelector('.fact-detail');
+
+        
+        if (factHeader) factHeader.innerHTML = `${selected.emoji ? selected.emoji + ' ' : ''}Random Art Fact`; 
+        if (factBody) factBody.textContent = selected.fact;
+        if (factDetail) factDetail.textContent = selected.detail; 
+
+        
+        if (artFactButton) {
+            artFactButton.style.transition = 'none'; 
+            artFactButton.style.opacity = 0;
+            artFactButton.style.transform = "scale(0.9)";
+
+            setTimeout(() => {
+                artFactButton.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out"; 
+                artFactButton.style.opacity = 1;
+                artFactButton.style.transform = "scale(1)";
+            }, 50);
+        }
+
+        currentFactIndex = (currentFactIndex + 1) % artFacts.length;
+    }
+
+    
+
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', loadQuestion);
+    } else {
+        console.error("Start Quiz Button (#start-quiz-btn) not found.");
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentQuestionIndex++;
+            loadQuestion();
+        });
+    } else {
+        console.error("Next Button (#next-btn) not found.");
+    }
+
     if (artFactButton) {
         artFactButton.addEventListener('click', showArtFact);
-        // Show initial fact on load
         showArtFact();
+    } else {
+        console.error("Art Fact Button (#art-fact) not found.");
     }
 
+    if (quizMainContent) quizMainContent.style.display = 'none';
+    if (quizResultsScreen) quizResultsScreen.style.display = 'none';
+    if (quizStartScreen) quizStartScreen.style.display = 'block'; 
 
-    // Initial quiz load
-    loadQuestion();
+    updateQuizTextColors();
 });

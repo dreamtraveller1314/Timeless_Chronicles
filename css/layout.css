@@ -1,22 +1,30 @@
 .main-header {
-    background-color: #222; 
+    background-color: var(--card-bg);
     padding: 30px 0;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px var(--shadow-base);
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
 .dark-theme .main-header {
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px var(--shadow-base);
 }
 
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
 .main-header h1 {
@@ -26,7 +34,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: transparent; 
+    color: transparent;
     animation: gradient-move 5s infinite alternate ease-in-out;
 }
 
@@ -37,20 +45,27 @@
 
 .main-header .subtitle {
     font-size: 1.2em;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    opacity: 0.8;
     margin-bottom: 25px;
 }
 
-/* Main Navigation */
+.main-nav {
+    width: 100%;
+}
+
 .main-nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
 }
 
 .main-nav a {
-    color: #fff;
+    color: var(--text-color);
     font-weight: 600;
     font-size: 1.1em;
     padding: 8px 15px;
@@ -58,6 +73,12 @@
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dark-theme .main-nav a {
+    color: var(--text-color);
 }
 
 .main-nav a::before {
@@ -78,34 +99,43 @@
 
 .main-nav a.active {
     color: var(--accent-color);
-    background-color: rgba(255, 255, 255, 0.1);
+   
+   
+   
 }
+
+.main-nav a.active::before {
+    transform: translateX(0);
+   
+   
+}
+
 
 .main-nav a:hover {
     color: var(--accent-color);
 }
 
-
-/* Main Content Area */
 main {
     flex-grow: 1;
-    padding-top: 30px; 
+    padding-top: 30px;
     padding-bottom: 50px;
 }
 
-/* Footer */
+
 .main-footer {
-    background-color: #222; 
-    color: rgba(255, 255, 255, 0.7);
+   
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    opacity: 0.7;
     padding: 30px 0;
     text-align: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -2px 10px var(--shadow-base);
     margin-top: auto; 
 }
 
 .dark-theme .main-footer {
-    background-color: #1a1a1a;
-    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 -2px 10px var(--shadow-base);
 }
 
 .footer-content {
@@ -119,7 +149,8 @@ main {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    opacity: 0.8;
     margin: 0 15px;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -135,7 +166,8 @@ main {
 }
 
 .social-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    opacity: 0.8;
     margin: 0 10px;
     transition: color 0.3s ease, transform 0.2s ease;
 }
@@ -150,7 +182,7 @@ main {
     opacity: 0.7;
 }
 
-/* Global Controls */
+
 .global-controls {
     position: fixed;
     bottom: 20px;
@@ -165,39 +197,39 @@ main {
     padding: 10px 18px;
     font-size: 0.95em;
     border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    box-shadow: 0 4px 8px var(--shadow-base);
 }
 
 .dark-theme .control-btn {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--accent-color);
+    background-color: var(--button-bg);
+    color: var(--button-text);
 }
 
 .control-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--button-hover-bg);
     transform: translateY(-3px);
 }
 
 .dark-theme .control-btn:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--button-hover-bg);
 }
 
 .volume-control {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--button-bg);
     padding: 8px 15px;
     border-radius: 30px;
-    color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: var(--button-text);
+    box-shadow: 0 4px 8px var(--shadow-base);
 }
 
 .dark-theme .volume-control {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--accent-color);
+    background-color: var(--button-bg);
+    color: var(--button-text);
 }
 
 .volume-control label {
@@ -208,11 +240,10 @@ main {
 #volume-slider {
     width: 100px;
     height: 6px;
-    -webkit-appearance: none;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     outline: none;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
 }
 
 #volume-slider::-webkit-slider-thumb {
@@ -240,7 +271,7 @@ main {
     background: var(--primary-color);
 }
 
-/* Back to Top Button */
+
 #top-btn {
     position: fixed;
     bottom: 20px;
@@ -257,7 +288,7 @@ main {
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.2s ease, background-color 0.3s ease;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-base);
 }
 
 #top-btn.show {
@@ -279,7 +310,7 @@ main {
     background-color: var(--accent-color);
 }
 
-/* Mobile adjustments for controls */
+
 @media (max-width: 768px) {
     .global-controls {
         flex-direction: row;
@@ -290,13 +321,14 @@ main {
         transform: translateX(-50%);
         width: 90%;
         gap: 8px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: var(--card-bg);
         padding: 10px;
         border-radius: 12px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 10px var(--shadow-base);
     }
     .dark-theme .global-controls {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: var(--card-bg);
+    }
 
     .control-btn, .volume-control {
         flex: 1 1 auto;

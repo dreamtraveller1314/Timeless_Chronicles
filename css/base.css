@@ -1,4 +1,3 @@
-/* Base styles */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
 
 :root {
@@ -8,29 +7,45 @@
     --background-color: #f8f8f8;
     --card-bg: #fff;
     --border-color: #e0e0e0;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-dark: rgba(0, 0, 0, 0.2);
+    
+   
+    --shadow-base: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --shadow-strong: rgba(0, 0, 0, 0.25);
+
     --link-color: var(--primary-color);
     --link-hover-color: var(--accent-color);
     --button-bg: var(--primary-color);
     --button-text: #fff;
     --button-hover-bg: #4a6a6a;
+    --button-active-bg: var(--primary-color);
+    --button-active-text: #fff;
+    --button-active-border: var(--primary-color);
 }
 
-/* --- Dark Theme Variables  --- */
+
 .dark-theme {
     --text-color: #e0e0e0;
     --background-color: #222;
     --card-bg: #2c2c2c;
     --border-color: #444;
-    --shadow-light: rgba(255, 255, 255, 0.08);
-    --shadow-dark: rgba(255, 255, 255, 0.15);
+    
+   
+    --shadow-base: rgba(255, 255, 255, 0.08);
+    --shadow-hover: rgba(255, 255, 255, 0.15);
+    --shadow-strong: rgba(255, 255, 255, 0.25);
+
     --link-color: var(--accent-color);
     --link-hover-color: var(--primary-color);
     --button-bg: var(--accent-color);
     --button-text: #fff;
     --button-hover-bg: #cf6d52;
+    --button-active-bg: var(--accent-color);
+    --button-active-text: #fff;
+    --button-active-border: var(--accent-color);
 }
+
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -53,7 +68,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Typography */
+
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     color: var(--text-color);
@@ -84,7 +99,7 @@ ul {
     list-style: none;
 }
 
-/* Buttons */
+
 button {
     padding: 12px 25px;
     font-size: 1em;
@@ -105,7 +120,7 @@ button {
 button:hover {
     background-color: var(--button-hover-bg);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px var(--shadow-hover);
 }
 
 button:active {
@@ -120,7 +135,7 @@ button:disabled {
     box-shadow: none;
 }
 
-/* Forms */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -144,10 +159,11 @@ textarea:focus,
 select:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+   
+    box-shadow: 0 0 0 2px rgba(90, 125, 124, 0.2);
 }
 
-/* Utility Classes */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -161,7 +177,7 @@ select:focus {
 .mt-20 { margin-top: 20px; }
 .p-20 { padding: 20px; }
 
-/* Loader */
+
 .loader {
     position: fixed;
     z-index: 9999;
@@ -203,7 +219,7 @@ select:focus {
     100% { transform: rotate(360deg); }
 }
 
-/* Floating Shapes Background */
+
 .floating-shapes {
     position: fixed;
     top: 0;
@@ -225,7 +241,7 @@ select:focus {
     to { background-position: 100px 100px, 120px 120px; }
 }
 
-/* Video Container */
+
 .video-container {
     display: flex;
     justify-content: center;
@@ -239,20 +255,20 @@ select:focus {
     max-width: 800px;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: 0 5px 15px var(--shadow-base);
 }
 
-/* General Section Styling */
+
 section {
     padding: 40px 0;
     margin-bottom: 30px;
     background-color: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: 0 5px 15px var(--shadow-base);
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 768px) {
     h1 { font-size: 2.5em; }
     h2 { font-size: 2em; }

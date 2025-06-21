@@ -22,10 +22,10 @@
 
 .dark-theme button:hover {
     background-color: var(--button-hover-bg);
-    box-shadow: 0 4px 10px var(--shadow-dark);
+    box-shadow: 0 4px 10px var(--shadow-hover);
 }
 
-/* Loader in dark mode */
+
 .dark-theme .loader {
     background: var(--background-color);
 }
@@ -39,20 +39,20 @@
     color: var(--text-color);
 }
 
-/* Floating Shapes Background in dark mode */
+
 .dark-theme .floating-shapes {
     background-image: radial-gradient(circle, var(--accent-color) 1px, transparent 1px),
                       radial-gradient(circle, var(--primary-color) 1px, transparent 1px);
-    opacity: 0.15; /* Slightly more visible in dark mode */
+    opacity: 0.15;
 }
 
-/* Section in dark mode */
+
 .dark-theme section {
     background-color: var(--card-bg);
-    box-shadow: 0 5px 15px var(--shadow-dark);
+    box-shadow: 0 5px 15px var(--shadow-base);
 }
 
-/* Forms in dark mode */
+
 .dark-theme input[type="text"],
 .dark-theme input[type="email"],
 .dark-theme textarea,
@@ -67,5 +67,6 @@
 .dark-theme textarea:focus,
 .dark-theme select:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.2); /* Assuming you define rgb vars for primary/accent */
+   
+    box-shadow: 0 0 0 2px rgba(224, 122, 95, 0.2); 
 }

@@ -1,8 +1,8 @@
-/* General Card Style (for features, history events, art items, etc.) */
+
 .card-item {
     background-color: var(--card-bg);
     border-radius: 10px;
-    box-shadow: 0 4px 12px var(--shadow-light);
+    box-shadow: 0 4px 12px var(--shadow-base);
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -13,7 +13,7 @@
 
 .card-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px var(--shadow-dark);
+    box-shadow: 0 8px 20px var(--shadow-hover);
 }
 
 .card-item img {
@@ -35,24 +35,30 @@
     color: var(--text-color);
 }
 
-/* Fact Card specific styling (e.g., for Art Facts) */
-.fact-card button {
+
+
+.fact-card { 
+   
     background: linear-gradient(135deg, var(--card-bg), var(--background-color));
     border-left: 5px solid var(--accent-color);
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 6px 15px var(--shadow-light);
+    box-shadow: 0 6px 15px var(--shadow-base);
     text-align: left;
     max-width: 700px;
     margin: 30px auto;
     font-size: 1.1em;
     transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+   
+    display: block; 
+    cursor: pointer;
 }
 
 .fact-card:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 25px var(--shadow-dark);
-    background: linear-gradient(135deg, var(--background-color), var(--card-bg));
+    box-shadow: 0 10px 25px var(--shadow-hover);
+   
+    background: linear-gradient(135deg, var(--background-color), var(--card-bg)); 
 }
 
 .fact-header {
@@ -73,15 +79,17 @@
     color: #666;
 }
 
-/* Dark Theme Fact Card */
+
 .dark-theme .fact-card {
-    background: linear-gradient(135deg, #333, #2c2c2c);
+   
+    background: linear-gradient(135deg, var(--card-bg), var(--background-color)); 
     border-left-color: var(--primary-color);
-    box-shadow: 0 6px 15px var(--shadow-dark);
+    box-shadow: 0 6px 15px var(--shadow-base);
 }
 
 .dark-theme .fact-card:hover {
-    background: linear-gradient(135deg, #2c2c2c, #333);
+   
+    background: linear-gradient(135deg, var(--background-color), var(--card-bg));
 }
 
 .dark-theme .fact-header {
@@ -96,14 +104,14 @@
     color: #b0b0b0;
 }
 
-/* Quiz Container (General) */
+
 .quiz-container {
     background-color: var(--card-bg);
     padding: 30px;
     border-radius: 12px;
     max-width: 650px;
     margin: 40px auto;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: 0 5px 15px var(--shadow-base);
     text-align: center;
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
@@ -146,11 +154,11 @@
     color: var(--text-color);
 }
 
-/* For feedback */
+
 .quiz-feedback.correct { color: #28a745; }
 .quiz-feedback.incorrect { color: #dc3545; }
 
-/* Progress Bar */
+
 progress {
     width: 80%;
     height: 10px;
@@ -179,10 +187,10 @@ progress::-moz-progress-bar {
     border-radius: 5px;
 }
 
-/* Dark Theme Quiz Components */
+
 .dark-theme .quiz-container {
     background-color: var(--card-bg);
-    box-shadow: 0 5px 15px var(--shadow-dark);
+    box-shadow: 0 5px 15px var(--shadow-base);
 }
 
 .dark-theme .quiz-container h3 {
@@ -217,11 +225,11 @@ progress::-moz-progress-bar {
 }
 
 
-/* Chatbot Container */
+
 #chat-container {
     background-color: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: 0 5px 15px var(--shadow-base);
     max-width: 550px;
     margin: 40px auto;
     display: flex;
@@ -239,7 +247,7 @@ progress::-moz-progress-bar {
     -ms-overflow-style: none; 
     scrollbar-width: none; 
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
+
 #chat-log::-webkit-scrollbar {
     display: none;
 }
@@ -253,7 +261,7 @@ progress::-moz-progress-bar {
     word-wrap: break-word;
     font-size: 0.95em;
     line-height: 1.4;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px var(--shadow-base);
 }
 
 .user-message {
@@ -291,7 +299,7 @@ progress::-moz-progress-bar {
 
 #chat-input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+    box-shadow: 0 0 0 2px rgba(90, 125, 124, 0.2);
 }
 
 #chat-send {
@@ -303,13 +311,13 @@ progress::-moz-progress-bar {
 }
 
 #chat-send:hover {
-    background-color: #cf6d52;
+    background-color: var(--button-hover-bg);
 }
 
-/* Dark Theme Chatbot */
+
 .dark-theme #chat-container {
     background-color: var(--card-bg);
-    box-shadow: 0 5px 15px var(--shadow-dark);
+    box-shadow: 0 5px 15px var(--shadow-base);
 }
 
 .dark-theme .user-message {
@@ -335,7 +343,7 @@ progress::-moz-progress-bar {
 
 .dark-theme #chat-input:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.2);
+    box-shadow: 0 0 0 2px rgba(224, 122, 95, 0.2);
 }
 
 .dark-theme #chat-send {
@@ -343,11 +351,11 @@ progress::-moz-progress-bar {
 }
 
 .dark-theme #chat-send:hover {
-    background-color: #4a6a6a;
+    background-color: var(--button-hover-bg);
 }
 
 
-/* Media Queries for Components */
+
 @media (max-width: 768px) {
     .card-item {
         padding: 15px;

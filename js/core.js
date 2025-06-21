@@ -1,15 +1,8 @@
-/**
- * js/core.js
- *
- * This file contains core utilities, global data, and fundamental functionalities
- * that are shared across different modules and pages of the Timeless Chronicles website.
- */
 
-// --- Global Data Structures ---
-// These could eventually be loaded from JSON or a backend for larger applications.
 
-// History Timeline Data
-export const historyEras = [
+
+
+  const historyEras = [
     {
         id: 'ancient',
         name: 'Ancient Civilizations',
@@ -71,7 +64,7 @@ export const historyEras = [
     }
 ];
 
-// Data for Art Timeline
+
 const artPeriods = {
     prehistoric: {
         title: "Prehistoric Art",
@@ -131,7 +124,7 @@ const artPeriods = {
     }
 };
 
-// Data for Art Facts
+
 const artFacts = [
     {
         fact: "The Mona Lisa has no eyebrows!",
@@ -255,7 +248,7 @@ const artFacts = [
     }
 ];
 
-// Data for Art Quiz
+
 const artQuestions = [
     {
         question: "Who painted the Mona Lisa?",
@@ -319,12 +312,8 @@ const artQuestions = [
     }
 ];
 
-window.artPeriods = artPeriods;
-window.artFacts = artFacts;
-window.artQuestions = artQuestions;
 
-// Fashion Timeline Data
-export const fashionEras = [
+  const fashionEras = [
     {
         id: 'ancient',
         era: 'Ancient Civilizations',
@@ -391,8 +380,8 @@ export const fashionEras = [
 ];
 
 
-// Medieval Quest Data
-export const medievalQuestData = {
+
+  const medievalQuestData = {
     start: {
         text: "You stand at the edge of a whispering forest. A path leads deeper, and a faint glow emanates from within. Do you dare to enter, or seek another way?",
         options: [
@@ -474,8 +463,8 @@ export const medievalQuestData = {
 };
 
 
-// Tool Matching Game Data
-export const toolData = {
+
+  const toolData = {
     'hammer': 'For striking nails and breaking objects.',
     'chisel': 'Used for carving wood or stone.',
     'sickle': 'A curved blade used for harvesting crops.',
@@ -486,16 +475,16 @@ export const toolData = {
     'abacus': 'An ancient counting device.'
 };
 
-// Monument Puzzle Data
-export const monumentPuzzleImages = [
+
+  const monumentPuzzleImages = [
     { id: 'colosseum', src: 'images/puzzles/colosseum_full.jpg', name: 'Colosseum' },
     { id: 'pyramid', src: 'images/puzzles/pyramid_full.jpg', name: 'Pyramid of Giza' },
     { id: 'parthenon', src: 'images/puzzles/parthenon_full.jpg', name: 'Parthenon' },
     { id: 'taj_mahal', src: 'images/puzzles/taj_mahal_full.jpg', name: 'Taj Mahal' }
 ];
 
-// Cause & Effect Quiz Data
-export const causeEffectQuestions = [
+
+  const causeEffectQuestions = [
     {
         question: "Cause: The invention of the printing press by Gutenberg in the 15th century. Effect?",
         options: [
@@ -538,8 +527,8 @@ export const causeEffectQuestions = [
     }
 ];
 
-// Renaissance Memory Game Data
-export const memoryGameCards = [
+
+  const memoryGameCards = [
     { id: 'mona_lisa', image: 'images/memory_game/mona_lisa.jpg', fact: 'Leonardo da Vinci\'s iconic portrait, famous for its enigmatic smile.' },
     { id: 'david', image: 'images/memory_game/david.jpg', fact: 'Michelangelo\'s masterpiece, depicting the Biblical hero David.' },
     { id: 'birth_of_venus', image: 'images/memory_game/birth_of_venus.jpg', fact: 'Sandro Botticelli\'s painting depicting the goddess Venus arriving at the shore.' },
@@ -548,8 +537,8 @@ export const memoryGameCards = [
     { id: 'arnolfini_portrait', image: 'images/memory_game/arnolfini_portrait.jpg', fact: 'Jan van Eyck\'s oil painting, notable for its complex iconography and optical effects.' }
 ];
 
-// Fashion Chatbot Responses
-export const fashionChatbotResponses = [
+
+  const fashionChatbotResponses = [
     {
         keywords: ['ancient egypt', 'egyptian fashion'],
         response: 'Ancient Egyptian fashion was primarily made of linen, light and breathable for the hot climate. Both men and women wore simple tunics or schenti, often adorned with elaborate collars and jewelry. Wigs were common for hygiene and status.'
@@ -620,8 +609,8 @@ export const fashionChatbotResponses = [
     }
 ];
 
-// Tool Matching Game Images (ensure these paths are correct in your project)
-export const toolImages = {
+
+  const toolImages = {
     hammer: 'images/tools/hammer.png',
     chisel: 'images/tools/chisel.png',
     sickle: 'images/tools/sickle.png',
@@ -632,19 +621,19 @@ export const toolImages = {
     abacus: 'images/tools/abacus.png'
 };
 
-// Common audio elements
-export const correctSound = document.getElementById('correctSound');
-export const incorrectSound = document.getElementById('incorrectSound');
 
-export function playSound(audioElement) {
+  const correctSound = document.getElementById('correctSound');
+  const incorrectSound = document.getElementById('incorrectSound');
+
+  function playSound(audioElement) {
     if (audioElement) {
-        audioElement.currentTime = 0; // Rewind to start
+        audioElement.currentTime = 0; 
         audioElement.play().catch(e => console.error("Error playing sound:", e));
     }
 }
 
-// Global utility for shuffling arrays
-export function shuffleArray(array) {
+
+  function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -652,29 +641,52 @@ export function shuffleArray(array) {
     return array;
 }
 
-// Global utility for showing/hiding elements with display: none
-export function showElement(element) {
+
+  function showElement(element) {
     if (element) element.style.display = 'block';
 }
 
-export function hideElement(element) {
+  function hideElement(element) {
     if (element) element.style.display = 'none';
 }
 
-// Global utility for adding/removing CSS classes
-export function addClass(element, className) {
+
+  function addClass(element, className) {
     if (element) element.classList.add(className);
 }
 
-export function removeClass(element, className) {
+  function removeClass(element, className) {
     if (element) element.classList.remove(className);
 }
 
-// Global event listener utility
-export function on(element, event, handler) {
+
+  function on(element, event, handler) {
     if (element) element.addEventListener(event, handler);
 }
 
-export function off(element, event, handler) {
+  function off(element, event, handler) {
     if (element) element.removeEventListener(event, handler);
 }
+
+window.historyEras = historyEras;
+window.artPeriods = artPeriods;
+window.artFacts = artFacts;
+window.artQuestions = artQuestions;
+window.fashionEras = fashionEras;
+window.medievalQuestData = medievalQuestData;
+window.toolData = toolData;
+window.monumentPuzzleImages = monumentPuzzleImages;
+window.causeEffectQuestions = causeEffectQuestions;
+window.memoryGameCards = memoryGameCards;
+window.fashionChatbotResponses = fashionChatbotResponses;
+window.toolImages = toolImages;
+window.correctSound = correctSound;
+window.incorrectSound = incorrectSound;
+window.playSound = playSound;
+window.shuffleArray = shuffleArray;
+window.showElement = showElement;
+window.hideElement = hideElement;
+window.addClass = addClass;
+window.removeClass = removeClass;
+window.on = on;
+window.off = off;

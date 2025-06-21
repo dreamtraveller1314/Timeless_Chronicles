@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const artTimelineButtons = document.querySelectorAll('.art-timeline button');
+    const artTimelineButtons = document.querySelectorAll('.art-timeline-navigation button'); 
     const artTimelineContent = document.getElementById('art-timeline-content');
 
-    // Ensure artPeriods is available from core.js
     const artPeriods = window.artPeriods;
 
     function updateTextColors(element) {
@@ -30,20 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 content += '<p class="art-tip text-center">📚 Tip: Click on any artwork image to explore more on Wikipedia!</p>';
             }
             artTimelineContent.innerHTML = content;
-            // Update text colors for dark theme consistency
             updateTextColors(artTimelineContent);
 
             const artGrid = artTimelineContent.querySelector('.art-grid');
             if (artGrid) {
                 const imageCount = period.artworks.length;
                 if (imageCount === 1) {
-                    artGrid.style.gridTemplateColumns = '1fr'; // Single column for one image
+                    artGrid.style.gridTemplateColumns = '1fr'; 
                 } else if (imageCount === 2) {
-                    artGrid.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 columns
+                    artGrid.style.gridTemplateColumns = 'repeat(2, 1fr)'; 
                 } else if (imageCount <= 4) {
-                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))'; // Wider columns for fewer images
+                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
                 } else {
-                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))'; // Default for more images
+                    artGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
                 }
             }
 
@@ -57,17 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const era = button.getAttribute('data-era');
             showArtPeriod(era);
-            // Highlight the active button
             artTimelineButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
         });
     });
 
-    // Show the first period on load (Prehistoric by default)
-    showArtPeriod('prehistoric');
-    // Set the initial active button
-    document.querySelector('.art-timeline button[data-era="prehistoric"]').classList.add('active');
 
-    // Initial call to set colors on load
+    document.querySelector('.art-timeline-navigation button[data-era=""]').classList.add('active');
     updateTextColors(artTimelineContent);
 });

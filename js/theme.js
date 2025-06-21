@@ -1,10 +1,3 @@
-/**
- * js/theme.js
- *
- * This file handles theme switching (light/dark mode) and background music playback
- * controls, applying global settings to the website.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     const toggleThemeBtn = document.getElementById('toggle-theme-btn');
     const playMusicBtn = document.getElementById('play-music-btn');
@@ -12,15 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const volumeSlider = document.getElementById('volume-slider');
     const volumeLabel = document.getElementById('volume-label');
 
-    // --- Theme Toggling ---
+    
     const currentTheme = localStorage.getItem('theme') || 'light-theme';
     document.body.classList.add(currentTheme);
 
     if (toggleThemeBtn) {
         if (currentTheme === 'dark-theme') {
-            toggleThemeBtn.innerHTML = '☀️ Light Theme'; // Unicode sun icon
+            toggleThemeBtn.innerHTML = '☀️ Light Theme'; 
         } else {
-            toggleThemeBtn.innerHTML = '🌙 Dark Theme'; // Unicode crescent moon icon
+            toggleThemeBtn.innerHTML = '🌙 Dark Theme'; 
         }
 
         toggleThemeBtn.addEventListener('click', () => {
@@ -36,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Background Music Control ---
-    let isPlaying = localStorage.getItem('musicPlaying') === 'true'; // Remember last state
+    
+    let isPlaying = localStorage.getItem('musicPlaying') === 'true'; 
 
-    // Initialize volume from local storage or default
+    
     const savedVolume = localStorage.getItem('musicVolume');
     if (volumeSlider) {
         volumeSlider.value = savedVolume !== null ? savedVolume : 0.5;
@@ -61,15 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auto-play / Resume playback if it was playing previously
+    
     if (bgMusic && isPlaying) {
         bgMusic.play().then(() => {
             if (playMusicBtn) {
-                playMusicBtn.textContent = '⏸️ Pause Music'; // Unicode pause icon
+                playMusicBtn.textContent = '⏸️ Pause Music'; 
             }
         }).catch(e => {
             console.warn("Autoplay was prevented:", e);
-            // Autoplay might be blocked by browser policies. Update UI accordingly.
+            
             isPlaying = false;
             if (playMusicBtn) {
                 playMusicBtn.textContent = '🎵 Play Music';
@@ -88,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('musicPlaying', 'true');
                 }).catch(e => {
                     console.error("Failed to play music:", e);
-                    // Inform user if necessary, or log for debugging
+                    
                 });
             } else {
                 bgMusic.pause();
