@@ -133,8 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 options[question.correctAnswer].classList.add('correct-answer'); 
                 quizFeedback.innerHTML = `❌ Wrong!`;
                 quizExplanation.innerHTML = `Correct answer is <strong>${question.options[question.correctAnswer]}</strong>.<br>🧠 ${question.explanation}`;
-                const incorrectAudio = document.getElementById('incorrectSound');
-                if (incorrectAudio) incorrectAudio.play();
             }
         }
 

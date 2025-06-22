@@ -59,8 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('active');
         });
     });
-
-
-    document.querySelector('.art-timeline-navigation button[data-era=""]').classList.add('active');
     updateTextColors(artTimelineContent);
 });

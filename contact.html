@@ -4,25 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeless Chronicles | Contact Us</title>
-    <!-- Favicon and basic metadata -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <meta name="description" content="Contact Timeless Chronicles with your questions, feedback, or inquiries.">
 
-    <!-- Stylesheets for modern design -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/pages/contact.css"> <!-- Specific styles for contact page -->
+    <link rel="stylesheet" href="css/pages/contact.css">
 
-    <!-- Google Fonts: Playfair Display for headings, Raleway for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Animate On Scroll (AOS) CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Page Loader (initial loading animation) -->
     <div id="loader" class="loader">
         <div class="loader-content">
             <div class="loader-spinner"></div>
@@ -30,10 +24,8 @@
         </div>
     </div>
 
-    <!-- Subtle animated background shapes -->
     <div class="floating-shapes"></div>
 
-    <!-- Main Header Component (shared across pages) -->
     <header class="main-header">
         <div class="header-content container">
             <h1>Timeless Chronicles</h1>
@@ -50,7 +42,6 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="contact-container container">
         <section class="contact-hero text-center" data-aos="fade-up" data-aos-once="true">
             <h2>Reach Out to Timeless Chronicles</h2>
@@ -62,7 +53,7 @@
             <form class="contact-form">
                 <div class="form-group">
                     <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    <input type="text" id="name" name="name" placeholder="your name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email:</label>
@@ -87,38 +78,39 @@
                     <div class="info-icon">📧</div>
                     <h4>Email Us</h4>
                     <p>For general inquiries, email us at:</p>
-                    <a href="mailto:info@timelesschronicles.com">info@timelesschronicles.com</a>
+                    <a href="mailto:xinru2509@gmail.com">absolutehack10@gmail.com</a>
                 </div>
                 <div class="info-card card-item">
                     <div class="info-icon">📍</div>
-                    <h4>Visit Us (by appointment)</h4>
+                    <h4>Visit Us</h4>
                     <address>
-                        123 History Lane<br>
-                        Art City, TC 98765<br>
-                        Fashionland
+                        1, Jalan Sungai Tiram 1, <br>
+                        Kampung Sungai Tiram,<br>
+                        11900 Bayan Lepas, Penang,<br>
+                        Malaysia.
                     </address>
                 </div>
                 <div class="info-card card-item">
                     <div class="info-icon">📞</div>
                     <h4>Call Us</h4>
                     <p>Reach us during business hours:</p>
-                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    <a href="tel:+6046371552">04-637 1552</a>
                 </div>
                 <div class="info-card card-item">
-                    <div class="info-icon">🌐</div>
-                    <h4>Social Media</h4>
-                    <p>Follow our journey on social platforms:</p>
-                    <div class="social-links small">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <a href="https://linktr.ee/absolutehack28028" target="_blank" rel="noopener noreferrer" class="social-link-card">
+                        <div class="info-icon">🌐</div>
+                        <h4>Social Media</h4>
+                        <p>Follow our journey on social platforms:</p>
+                        <social>Facebook: Absolute Hack<br>
+                        Instagram: @ftc.absolutehack.28028<br>
+                        Youtube: @AbsoluteHack28028<br>
+                        Website: https://linktr.ee/absolutehack28028</social>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer Component (shared across pages) -->
     <footer class="main-footer">
         <div class="footer-content container">
             <div class="footer-links">
@@ -127,16 +119,10 @@
                 <a href="history.html">History</a>
                 <a href="fashion.html">Fashion</a>
             </div>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
             <p class="copyright">© 2025 Timeless Chronicles. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Global Controls (Music, Theme Toggle, Back to Top) -->
     <div class="global-controls">
         <button id="play-music-btn" class="control-btn">🎵 Play Music</button>
         <button id="toggle-theme-btn" class="control-btn">🌓 Toggle Theme</button>
@@ -148,32 +134,24 @@
     
     <button id="top-btn" class="back-to-top">↑</button>
 
-    <!-- Background Music Audio -->
     <audio id="bg-music" loop>
         <source src="audios/Timeless-Memories.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <!-- No specific game sounds needed for contact page, but included correct/incorrect for consistency -->
     <audio id="correctSound" src="audios/correct.mp3"></audio>
     <audio id="incorrectSound" src="audios/incorrect.mp3"></audio>
 
-    <!-- External JavaScript Libraries -->
-    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Animate On Scroll (AOS) JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
-    <!-- Your Custom JavaScript Files -->
     <script src="js/core.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/theme.js"></script>
 
     <script>
-        // AOS initialization - keep here for overall page animations
         AOS.init({
-            duration: 1000, // animation duration
-            once: true,     // whether animation should happen only once - default
-            offset: 50      // offset (in px) from the top of the screen
+            duration: 1000, 
+            once: true,   
+            offset: 50     
         });
     </script>
 </body>

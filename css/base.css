@@ -187,7 +187,6 @@ select:focus {
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s ease;
@@ -197,6 +196,14 @@ select:focus {
 .loader.hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .loader-spinner {
@@ -218,7 +225,6 @@ select:focus {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
 
 .floating-shapes {
     position: fixed;

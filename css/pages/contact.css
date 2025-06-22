@@ -106,15 +106,17 @@
     margin-bottom: 5px;
 }
 
+.info-card social {
+    font-size: 0.85em;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
 .info-card a {
     font-weight: 600;
     display: block; /* Make links block for better spacing */
     margin-top: 10px;
-}
-
-.info-card .social-links.small a {
-    font-size: 1.2em; /* Smaller icons for this specific grid */
-    margin: 0 5px;
 }
 
 /* Dark Theme Adjustments for Contact Page */

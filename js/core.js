@@ -1,8 +1,4 @@
-
-
-
-
-  const historyEras = [
+const historyEras = [
     {
         id: 'ancient',
         name: 'Ancient Civilizations',
@@ -623,7 +619,6 @@ const artQuestions = [
 
 
   const correctSound = document.getElementById('correctSound');
-  const incorrectSound = document.getElementById('incorrectSound');
 
   function playSound(audioElement) {
     if (audioElement) {
@@ -681,7 +676,6 @@ window.memoryGameCards = memoryGameCards;
 window.fashionChatbotResponses = fashionChatbotResponses;
 window.toolImages = toolImages;
 window.correctSound = correctSound;
-window.incorrectSound = incorrectSound;
 window.playSound = playSound;
 window.shuffleArray = shuffleArray;
 window.showElement = showElement;
