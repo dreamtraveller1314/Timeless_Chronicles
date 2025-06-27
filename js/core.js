@@ -246,71 +246,48 @@ const artQuestions = [
 ];
 
 
-  const fashionEras = [
-    {
-        id: 'ancient',
-        era: 'Ancient Civilizations',
-        period: 'c. 3000 BCE - 500 CE',
-        description: 'From Egyptian linen to Roman togas, clothing emphasized drapery, status, and practical needs. Key materials: linen, wool.',
-        image: 'images/fashion/ancient_fashion.jpg'
-    },
-    {
-        id: 'medieval',
-        era: 'Medieval Era',
-        period: 'c. 500 CE - 1500 CE',
-        description: 'Modesty and social hierarchy dominated. Tunics, gowns, and practical wear, evolving into more fitted styles by the late period. Key materials: wool, linen, silk (for wealthy).',
-        image: 'images/fashion/medieval_fashion.jpg'
-    },
-    {
-        id: 'renaissance',
-        era: 'Renaissance',
-        period: 'c. 1400 CE - 1600 CE',
-        description: 'A period of rich fabrics, elaborate sleeves, and structured silhouettes. Influence from Italian and Spanish courts. Key elements: puffed sleeves, corsets, ruffs.',
-        image: 'images/fashion/renaissance_fashion.jpg'
-    },
-    {
-        id: 'baroque_rococo',
-        era: 'Baroque & Rococo',
-        period: 'c. 1600 CE - 1770 CE',
-        description: 'Baroque: grandeur, heavy fabrics, elaborate embroidery. Rococo: lightness, pastel colors, intricate ornamentation, widespread panniers. Key elements: elaborate wigs, silk, lace.',
-        image: 'images/fashion/baroque_rococo_fashion.jpg'
-    },
-    {
-        id: 'regency_victorian',
-        era: 'Regency & Victorian',
-        period: 'c. 1790 CE - 1900 CE',
-        description: 'Regency brought simpler, high-waisted dresses. Victorian: crinolines, bustles, structured tailoring, reflecting modesty and industrialization. Key elements: corsets, elaborate bonnets, dark colors.',
-        image: 'images/fashion/regency_victorian_fashion.jpg'
-    },
-    {
-        id: 'early_20th_century',
-        era: 'Early 20th Century',
-        period: 'c. 1900 CE - 1940 CE',
-        description: 'From Edwardian S-bend to flapper dresses of the 1920s, and the tailored suits of the 1930s. Liberation and changing roles for women. Key elements: hobble skirts, cloche hats, simpler lines.',
-        image: 'images/fashion/early_20th_century_fashion.jpg'
-    },
-    {
-        id: 'mid_20th_century',
-        era: 'Mid 20th Century',
-        period: 'c. 1940 CE - 1970 CE',
-        description: 'Wartime utility gave way to the New Look, then to youthful rebellion (mini-skirts, mod), and hippie counter-culture. Key elements: A-line skirts, denim, vibrant patterns.',
-        image: 'images/fashion/mid_20th_century_fashion.jpg'
-    },
-    {
-        id: 'late_20th_century',
-        era: 'Late 20th Century',
-        period: 'c. 1970 CE - 2000 CE',
-        description: 'Punk, disco, power dressing, grunge, and hip-hop influences. Eclecticism and rapid trend cycles. Key elements: platform shoes, shoulder pads, tracksuits.',
-        image: 'images/fashion/late_20th_century_fashion.jpg'
-    },
-    {
-        id: '21st_century',
-        era: '21st Century',
-        period: 'c. 2000 CE - Present',
-        description: 'Globalization, fast fashion, streetwear dominance, and increasing personalization. Blurring of gender lines and technology integration. Key elements: activewear as daily wear, sustainable fashion, digital influence.',
-        image: 'images/fashion/21st_century_fashion.jpg'
-    }
-];
+  const fashionEras = {
+    prehistoric: {
+            era: 'Prehistoric Era – Function Over Form',
+            description: 'Animal skins and natural fibers offered protection from the environment. Fashion was born out of necessity, adapting to climate and available resources. Early adornments often served as spiritual or tribal markers.',
+            image: { src: 'images/prehistoric.jpg', caption: 'Early human wearing animal hides for warmth and basic adornment.' } // Single image object
+        },
+        ancient: {
+            era: 'Ancient Civilizations – Identity and Status',
+            description: 'Draped linen garments, ornate jewelry, and rich symbolism marked Egyptian, Greek, and Roman attire. Clothing communicated social status, religious beliefs, and regional identity, often with intricate pleating and elaborate headdresses.',
+            image: { src: 'images/ancient.jpg', caption: 'Elaborate draped garments and ornate jewelry from Ancient Civilizations.' } // Single image object
+        },
+        renaissance: {
+            era: 'The Renaissance – Art Meets Attire',
+            description: 'Fashion exploded with color, luxurious fabrics, and meticulous detail. Garments featured rich velvets, silks, slashed sleeves, and intricate embroidery, reflecting humanist ideals, artistic innovation, and a display of wealth. As Desiderius Erasmus famously said, "Clothes make the man."',
+            image: { src: 'images/renaissance.jpg', caption: 'Opulent and detailed Renaissance attire, showcasing rich fabrics and intricate designs.' } // Single image object
+        },
+        ninetwozero: {
+            era: '1920s – Flapper Glamour & Liberation',
+            description: 'Short, straight-cut dresses, dropped waists, bob cuts, and fringe defined women’s liberation and a rebellious new silhouette. The jazz age brought about a dramatic shift from restrictive Victorian corsetry to a freer, more active style. As Coco Chanel noted, "Fashion is architecture: it is a matter of proportions."',
+            image: { src: 'images/1920s.jpg', caption: 'The iconic flapper style, symbolizing freedom and rebellion in the 1920s.' } // Single image object
+        },
+        ninefivezero: {
+            era: '1950s – Postwar Elegance & Youth Rebellion',
+            description: 'Characterized by the "New Look" with full skirts, cinched waists, and polished elegance for women, the 1950s revived glamour after the war. Simultaneously, youth culture introduced casual styles like leather jackets, denim, and rock-and-roll-inspired rebellion. Marilyn Monroe\'s famous quote, "Give a girl the right shoes, and she can conquer the world," perfectly encapsulates the era\'s focus on sophisticated details.',
+            image: { src: 'images/1950s.jpg', caption: 'Classic 1950s elegance with cinched waists and full skirts.' } // Single image object
+        },
+        nineeightzero: {
+            era: '1980s – Power Dressing & Pop Culture Fusion',
+            description: 'The 1980s were bold and expressive, celebrating individualism and excess. From sharp shoulder pads and power suits embodying corporate ambition to vibrant streetwear, athletic wear, and punk influences, fashion was a reflection of pop culture and a desire to stand out. As street style photographer Bill Cunningham famously said, "Fashion is the armor to survive the reality of everyday life."',
+            image: { src: 'images/1980s.jpg', caption: 'Bold and expressive 1980s fashion, featuring power suits and vibrant colors.' } // Single image object
+        },
+        zero: {
+            era: '2000s – Y2K Revival & Experimental Edge',
+            description: 'The 2000s marked a shift toward experimental style, tech-inspired aesthetics, and a resurgence of early 2000s pop culture icons. From low-rise jeans and bedazzled logos to edgy high fashion, the era was defined by contradiction: maximalist excess and minimalist techwear, luxury branding and DIY rebellion. As Alexander McQueen stated, "It’s a new era in fashion—there are no rules."',
+            image: { src: 'images/2000s.jpg', caption: 'Y2K fashion trends, characterized by low-rise jeans and bold accessories.' } // Single image object
+        },
+        twozero: {
+            era: '2020s – Sustainable Expression & Digital Identity',
+            description: 'Fashion in the 2020s blends sustainability, inclusivity, and digital transformation. Styles range from minimalist loungewear to maximalist streetwear, all while championing ethics, individuality, and tech integration. Virtual fashion and the rise of the metaverse are reshaping how people express identity. Vivienne Westwood\'s timeless advice, "Buy less, choose well, make it last," resonates strongly in this era.',
+            image: { src: 'images/2020s.jpg', caption: 'Contemporary 2020s fashion, emphasizing sustainability and diverse expression.' } // Single image object
+        }
+    };
 
 
 
@@ -512,77 +489,6 @@ const historyEvents = {
     ];
 
 
-  const fashionChatbotResponses = [
-    {
-        keywords: ['ancient egypt', 'egyptian fashion'],
-        response: 'Ancient Egyptian fashion was primarily made of linen, light and breathable for the hot climate. Both men and women wore simple tunics or schenti, often adorned with elaborate collars and jewelry. Wigs were common for hygiene and status.'
-    },
-    {
-        keywords: ['roman fashion', 'ancient rome'],
-        response: 'Roman citizens, particularly men, were known for the toga, a large piece of wool fabric draped around the body. Women wore stolae (a long dress) and palla (a cloak). Practicality and social status dictated clothing choices.'
-    },
-    {
-        keywords: ['medieval fashion', 'middle ages clothing'],
-        response: 'Medieval fashion was heavily influenced by social class and modesty. Peasants wore simple tunics and leggings made of wool or linen. Nobles wore richer fabrics like silk and velvet, with more elaborate designs like fitted bodices and long flowing sleeves. Layering was common for warmth.'
-    },
-    {
-        keywords: ['renaissance fashion'],
-        response: 'Renaissance fashion, especially in Italy and Spain, saw a rise in structured garments. Women wore elaborate gowns with tight bodices and wide skirts. Men wore doublets, hose, and later, padded shoulders. Rich colors, luxurious fabrics like velvet and brocade, and intricate embroidery were popular.'
-    },
-    {
-        keywords: ['baroque fashion', '17th century fashion'],
-        response: 'Baroque fashion (17th century) emphasized grandeur and drama. Men adopted the "cavalier" style with wide-brimmed hats, elaborate lace collars, and full breeches. Women wore voluminous gowns with wide skirts and low necklines. Wigs became enormous and highly stylized.'
-    },
-    {
-        keywords: ['rococo fashion', '18th century fashion'],
-        response: 'Rococo fashion (mid-18th century) was characterized by lightness, asymmetry, and intricate ornamentation. Pastel colors, floral motifs, and delicate lace were common. Women wore wide panniers to create broad silhouettes, while men adopted simpler, but still elegant, coats and waistcoats.'
-    },
-    {
-        keywords: ['victorian fashion', '19th century fashion'],
-        response: 'Victorian fashion (mid-19th century) was defined by modesty, elaborate layers, and changing silhouettes. Women moved from crinolines to bustles, with tight corsets shaping the waist. Men wore tailored suits, often with top hats. Darker colors and heavy fabrics were common.'
-    },
-    {
-        keywords: ['1920s fashion', 'flapper'],
-        response: 'The 1920s, or the Roaring Twenties, brought the iconic flapper style. Women embraced looser, shorter dresses, dropped waists, and bobbed hair, reflecting a new sense of freedom. Men wore wider suits and fedoras.'
-    },
-    {
-        keywords: ['1950s fashion', 'new look'],
-        response: 'The 1950s saw Christian Dior\'s "New Look" define women\'s fashion: cinched waists, full skirts, and rounded shoulders, a return to femininity after wartime austerity. Men\'s fashion remained classic, with suits and casual wear becoming more common.'
-    },
-    {
-        keywords: ['1960s fashion', 'mod fashion'],
-        response: 'The 1960s was a decade of youth rebellion and diverse styles. Mini-skirts, go-go boots, and geometric patterns defined Mod fashion. Hippie culture introduced tie-dye, bell-bottoms, and ethnic prints. Unisex clothing also began to emerge.'
-    },
-    {
-        keywords: ['1980s fashion', '80s fashion'],
-        response: 'The 1980s were all about bold statements: power dressing with strong shoulders for women, bright neon colors, oversized clothing, and athletic wear as everyday fashion. Think big hair, shoulder pads, and tracksuits.'
-    },
-    {
-        keywords: ['sustainable fashion'],
-        response: 'Sustainable fashion focuses on environmentally friendly and ethically produced clothing. It emphasizes reducing waste, using eco-friendly materials, fair labor practices, and promoting longevity and recycling of garments.'
-    },
-    {
-        keywords: ['fashion today', 'current fashion', '21st century fashion'],
-        response: '21st-century fashion is highly globalized and diverse. Key trends include athleisure, gender-neutral clothing, fast fashion (though with growing criticism), vintage revival, and increasing integration of technology into fabrics and design.'
-    },
-    {
-        keywords: ['what is fashion', 'define fashion'],
-        response: 'Fashion is a popular style, especially in clothing, footwear, lifestyle, accessories, makeup, hairstyle, and body. It is a reflection of cultural, social, and economic shifts throughout history.'
-    },
-    {
-        keywords: ['hello', 'hi', 'hey'],
-        response: 'Hello! I am your fashion historian chatbot. What would you like to know about fashion through the ages?'
-    },
-    {
-        keywords: ['thank you', 'thanks'],
-        response: 'You\'re welcome! Is there anything else I can assist you with regarding historical fashion?'
-    },
-    {
-        keywords: ['bye', 'goodbye'],
-        response: 'Goodbye! Feel free to ask me anything about fashion whenever you return.'
-    }
-];
-
   const correctSound = document.getElementById('correctSound');
 
   function playSound(audioElement) {
@@ -658,7 +564,6 @@ window.medievalQuestData = medievalQuestData;
 window.monumentPuzzleImages = monumentPuzzleImages;
 window.causeEffectQuestions = causeEffectQuestions;
 window.memoryGameCards = memoryGameCards;
-window.fashionChatbotResponses = fashionChatbotResponses;
 window.correctSound = correctSound;
 window.playSound = playSound;
 window.shuffleArray = shuffleArray;

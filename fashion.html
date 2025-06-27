@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages/fashion.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
     <div id="loader" class="loader">
@@ -37,49 +38,82 @@
         </div>
     </header>
 
-    <main class="fashion-container container">
+    <main class="fashion-container container" data-aos="fade-up">
         <section class="hero-section text-center">
             <h2 data-aos="fade-up">The Fabric of Time</h2>
-            <p data-aos="fade-up" data-aos-delay="200">Witness how clothing and style have evolved, reflecting culture, technology, and identity.</p>
+            <p data-aos="fade-up" data-aos-delay="200">Witness how clothing and style have evolved, reflecting culture, technology, and identity, from ancient drapery to modern avant-garde.</p>
         </section>
 
         <section class="fashion-evolution-section" data-aos="fade-up">
-            <h3 class="text-center">Fashion Through the Ages</h3>
-            <p class="text-center mb-20">Explore iconic styles from different historical eras.</p>
-            <div id="fashion_timeline" class="fashion_timeline">
+            <h3 class="text-center">Eras of Elegance: A Visual Journey</h3>
+            <p class="text-center mb-20">Click on each button to explore iconic styles, key trends, and cultural influences from different historical eras. Discover the stories woven into the very fabric of time.</p>
+            <div class="fashion-timeline-navigation fashion-timeline">
+                <button data-era="prehistoric">Prehistoric Era</button>
+                <button data-era="ancient">Ancient Civilizations</button>
+                <button data-era="renaissance">Renaissance</button>
+                <button data-era="ninetwozero">1920s</button>
+                <button data-era="ninefivezero">1950s</button>
+                <button data-era="nineeightzero">1980s</button>
+                <button data-era="zero">2000s</button>
+                <button data-era="twozero">2020s</button>
+            </div>
+
+            <div id="fashion-timeline-content" class="fashion-timeline-content" data-aos="fade-up">
                 <div class="timeline-placeholder">
-                    <p>Discover historical fashion trends and their cultural significance.</p>
-                    <button id="load-fashion-eras" class="mt-20">Load Fashion Eras</button>
+                    <p>Select an era above to unveil its unique fashion evolution. Each click will reveal insights into the styles, materials, and societal impacts of clothing from that period.</p>
                 </div>
+                </div>
+        </section>
+
+        <section class = "footprint-section" data-aos="fade-up">
+            <div class="footprint" data-aos="fade-up">
+                <h3 class="text-center card-title">Understanding Our Fashion Footprint</h3>
+                <p class="text-center card-description">The fashion industry has a significant impact on our planet. From the resources used to make our clothes to the waste created when we dispose of them, it's essential to be aware of our "fashion footprint."</p>
+                <p class = "point"> Resource Consumption: Fashion relies heavily on water, energy, and raw materials like cotton (which requires extensive water and pesticides) and petroleum-based synthetic fibers.</p>
+                <p class = "point"> Pollution: Textile production and dyeing processes can lead to water and air pollution. Fast fashion contributes to chemical runoff and greenhouse gas emissions.</p>
+                <p class = "point"> Waste: A significant amount of clothing ends up in landfills each year. Synthetic fabrics can take decades to decompose, contributing to environmental degradation.</p>
+            </div>
+            <div class="rise" data-aos="fade-up">
+                <h3 class="text-center card-title">The Rise of Sustainable Fashion</h3>
+                <p class="text-center card-description">Sustainable fashion is a movement that seeks to address these negative impacts. It involves designing, manufacturing, and using clothes in ways that minimize environmental harm and maximize positive social impact.</p>
+                <p class = "card-description"><strong>Key Principles of Sustainable Fashion</strong></p>
+                <p class = "point">Eco-friendly Materials: Using organic cotton, recycled fibers, and innovative textiles like those made from pineapple leaves or mushrooms.</p>
+                <p class = "point">Ethical Production: Ensuring fair wages and safe working conditions for garment workers.</p>
+                <p class = "point">Reducing Waste: Implementing zero-waste design techniques, upcycling, and recycling textiles.</p>
+                <p class = "point">Transparency: Brands being open about their supply chains and environmental practices.</p>
+                <p class = "point">Circular Economy: Creating a system where clothes can be reused, remade, or recycled, rather than ending up in landfills.</p>
+                <p class = "card-description"><strong>How You Can Be a More Sustainable Fashion Consumer</strong></p>
+                <p class = "point">Buy Less, Choose Well: Invest in quality pieces that will last, rather than buying into fast fashion trends.</p>
+                <p class = "point">Support Sustainable Brands: Look for companies that prioritize ethical and environmental practices.</p>
+                <p class = "point">Shop Secondhand: Give clothes a second life by buying from thrift stores or consignment shops.</p>
+                <p class = "point">Care for Your Clothes: Wash them properly and mend them to extend their lifespan.</p>
+                <p class = "point">Recycle or Donate: Don't throw clothes away! Donate them or find textile recycling programs.</p>
             </div>
         </section>
 
-        <section class="fashion-chatbot-section">
-            <h3 class="text-center" data-aos="fade-up">Your Fashion Historian Chatbot</h3>
-            <p class="text-center mb-20" data-aos="fade-up" data-aos-delay="100">Ask me anything about historical fashion!</p>
-            <div id="chat-container" class="chat-container" data-aos="zoom-in" data-aos-delay="200">
-                <div id="chat-log" class="chat-log">
-                    <div class="bot-message chat-message">Hi there! I'm your fashion historian chatbot. What would you like to know about fashion through the ages?</div>
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Type your question...">
-                    <button id="chat-send">Send</button>
-                </div>
-            </div>
+        <section class="fashion-chatbot-section" data-aos="fade-up">
+            <h3>AI Fashion Chatbot</h3>
+      <div id="chat-container" data-aos="fade-up">
+        <div id="chat-log">
+          <div class="chat-message bot-message">
+            <p>Hello! Ask me anything about fashion history or style advice.</p>
+          </div>
+        </div>
+        <input type="text" id="chat-input" placeholder="Type your question...">
+        <button id="chat-send">Send</button>
+      </div>
         </section>
 
-        <section class="fashion-slider-section">
-            <h3 class="text-center" data-aos="fade-up">Fashion Highlight Reel</h3>
-            <p class="text-center mb-20" data-aos="fade-up" data-aos-delay="100">Browse through key fashion styles quickly.</p>
-            <div class="fashion-slider-wrapper card-item" data-aos="zoom-in" data-aos-delay="200">
-                <img id="fashion-image" src="images/fashion_placeholder.jpg" alt="Fashion Through Time">
-                <p id="fashion-caption">Click the buttons to explore different fashion styles.</p>
-                <div class="slider-controls">
-                    <button id="prev-fashion-btn" class="slider-btn">← Previous</button>
-                    <button id="next-fashion-btn" class="slider-btn">Next →</button>
-                </div>
-            </div>
-        </section>
+        <section class="video-section" data-aos="fade-up">
+    <h3>🎥 Experience Fashion in Motion</h3>
+    <p>Watch our exclusive documentary on the evolution of fashion. See how garments, silhouettes, and trends came alive across the centuries, reflecting societal changes and artistic innovation.</p>
+    <div class="video-container">
+        <video muted playsinline controls preload="none">
+            <source src="videos/fashion_history.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        </div>
+</section>
 
     </main>
 
@@ -91,42 +125,41 @@
                 <a href="history.html">History</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
             <p class="copyright">© 2025 Timeless Chronicles. All rights reserved.</p>
         </div>
     </footer>
 
     <div class="global-controls">
-        <button id="play-music-btn" class="control-btn">🎵 Play Music</button>
-        <button id="toggle-theme-btn" class="control-btn">🌓 Toggle Theme</button>
+        <button id="play-music-btn" class="control-btn" aria-label="Play background music">🎵 Play Music</button>
+        <button id="toggle-theme-btn" class="control-btn" aria-label="Toggle light and dark theme">🌓 Toggle Theme</button>
         <div class="volume-control">
             <label for="volume-slider" id="volume-label">Volume:</label>
-            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5" aria-labelledby="volume-label">
         </div>
     </div>
 
-    <button id="top-btn" class="back-to-top">↑</button>
+    <button id="top-btn" class="back-to-top" aria-label="Back to top">↑</button>
 
     <audio id="bg-music" loop>
         <source src="audios/Timeless-Memories.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-    <audio id="correctSound" src="audios/correct.mp3"></audio>
-    <audio id="incorrectSound" src="audios/incorrect.mp3"></audio>
+    <audio id="correctSound" src="audios/correct.mp3" preload="auto"></audio>
+    <audio id="incorrectSound" src="audios/incorrect.mp3" preload="auto"></audio>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>
     <script src="js/core.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/modules/fashion-timeline.js"></script> 
     <script src="js/modules/fashion-chatbot.js"></script>
-    <script src="js/modules/fashion-slider.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50
+        });
     </script>
 </body>
 </html>

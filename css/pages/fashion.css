@@ -2,15 +2,13 @@
 
 .fashion-container {
     padding: 0; /* Sections handle their own padding */
-    display: flex;
-    flex-direction: column;
     gap: 50px;
 }
 
-/* General hero section for internal pages (reused from history.css principles) */
+/* General hero section for internal pages (reused from fashion.css principles) */
 .hero-section {
     text-align: center;
-    padding: 60px 20px;
+    padding: 40px 20px;
     background-color: var(--background-color);
     box-shadow: none;
     border-radius: 0;
@@ -33,93 +31,313 @@
 
 /* Fashion Evolution Section */
 .fashion-evolution-section {
-    padding: 40px 20px;
+    padding: 30px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: var(--card-bg);
+    background-color: var(--card-bg); /* Uses theme card background */
     border-radius: 12px;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    box-shadow: var(--shadow-medium); /* Consistent shadow variable */
+    text-align: center; /* Center text within this section */
+    display: flex; /* Use flexbox for better internal layout control */
+    flex-direction: column;
+    gap: 20px; /* Space between elements */
 }
 
 .fashion-evolution-section h3 {
     font-size: 2.5em;
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Adjust margin as gap is now on parent */
+    font-family: 'Playfair Display', serif;
 }
 
 .fashion-evolution-section p.mb-20 {
     font-size: 1.1em;
     color: var(--text-color);
+    margin-bottom: 20px; /* Keep this if you want extra space before buttons */
 }
 
-#fashion_timeline {
-    padding: 20px 0;
+.fashion-timeline-navigation {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#fashion_timeline .timeline-placeholder {
-    text-align: center;
-    font-size: 1.3em;
-    color: #666;
-    font-style: italic;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
-/* Styling for dynamically loaded fashion timeline elements (from fashion-evolution.js, if separate) */
-.fashion_timeline .era {
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-    margin-bottom: 50px;
-    padding: 20px;
-    background-color: var(--background-color); /* Lighter background for individual era blocks */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px var(--shadow-light);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dark-theme .fashion_timeline .era {
-    background-color: #383838; /* Slightly lighter than card-bg for contrast */
-    box-shadow: 0 2px 8px var(--shadow-dark);
-}
-
-.fashion_timeline .era-year {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--accent-color);
-    min-width: 120px; /* Fixed width for year */
-    text-align: right;
-}
-
-.fashion_timeline .era-content {
-    flex-grow: 1;
-    text-align: left;
-}
-
-.fashion_timeline .era-content h4 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-}
-
-.fashion_timeline .era-content p {
+.fashion-timeline-navigation button {
+    padding: 12px 25px;
     font-size: 1em;
-    color: var(--text-color);
-    margin-bottom: 1em;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px;
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.fashion_timeline .era-image {
-    max-width: 250px; /* Adjust image width */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.fashion-timeline-navigation button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px var(--shadow-hover);
+}
+
+.fashion-timeline-navigation button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 10px var(--shadow-hover);
+}
+
+.fashion-timeline-content {
+    min-height: 400px; /* Ensure a consistent height to prevent layout shifts */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--background-color-light);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05); /* Subtle inner shadow */
+}
+
+.timeline-placeholder p {
+    font-size: 1.3em;
+    color: var(--text-color-light);
+    font-style: italic;
+    padding: 20px; /* Padding for the placeholder text */
+}
+
+/* --- Styles for dynamically loaded era details --- */
+.era-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between elements within era details */
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto; /* Center the content */
+}
+
+.era-details h4 {
+    font-size: 2em; /* Slightly larger heading for the era */
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.era-description {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    line-height: 1.6; /* Improved line spacing for readability */
+    margin-bottom: 15px; /* Space before the image */
+    max-width: 700px; /* Keep description concise */
+    text-align: center; /* Center align description */
+}
+
+/* --- SINGLE IMAGE STYLING (NEW!) --- */
+.fashion-single-image {
+    width: 100%; /* Take full width of its parent (.era-details) */
+    max-width: 450px; /* Max width for the image container */
+    margin: 15px auto 20px auto; /* Center with vertical spacing */
+    box-shadow: var(--shadow-medium); /* Add a shadow to the image */
+    border-radius: 8px; /* Slightly rounded corners for the image container */
+    overflow: hidden; /* Ensure image corners respect border-radius */
+    background-color: var(--background-color-light); /* Background behind image if it doesn't fill completely */
+    padding: 10px; /* Padding inside the image box */
+    border: 1px solid var(--border-color);
+}
+
+.fashion-single-image img {
+    width: 100%; /* Make image fill its container */
+    height: 300px; /* Fixed height for all images */
+    object-fit: contain; /* Ensures the entire image is visible, scales down if needed */
+                          /* Use 'cover' if you want images to fill the space and crop if necessary */
+    border-radius: 6px; /* Slightly less than parent for inner border effect */
+    display: block; /* Remove extra space below image */
+}
+
+.fashion-caption {
+    font-size: 0.95em;
+    color: var(--text-color-light); /* Lighter color for captions */
+    margin-top: 10px; /* Space between image and caption */
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.footprint-section {
+    padding: 60px 20px; /* More padding for a substantial section */
+    max-width: 1200px;
+    margin: 40px auto; /* Add margin to separate from other sections */
+    display: flex; /* Use flexbox to arrange the two columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    gap: 30px; /* Space between the two main divs (footprint and rise) */
+    justify-content: center; /* Center the columns when wrapped */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.footprint,
+.rise {
+    flex: 1; /* Allows them to grow and shrink */
+    min-width: 300px; /* Minimum width before wrapping */
+    max-width: 550px; /* Max width for each column */
+    background-color: var(--card-bg); /* Use theme card background */
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium); /* Consistent shadow */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between paragraphs and titles inside each card */
+    height: 100%; /* Ensure both columns have same height if content allows (flex property) */
+}
+
+.footprint h3,
+.rise h3 {
+    font-size: 2em; /* Smaller heading than main section titles but prominent */
+    color: var(--primary-color);
+    margin-bottom: 10px; /* Space from description */
+    font-family: 'Playfair Display', serif;
+    text-align: center; /* Ensure titles are centered within their cards */
+}
+
+.footprint .card-description,
+.rise .card-description {
+    font-size: 1.05em;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 15px; /* Add extra space after initial description */
+    text-align: center; /* Center these descriptions */
+}
+
+.rise .card-description strong {
+    font-size: 1.1em; /* Make the "Key Principles" and "How You Can Be" titles stand out */
+    color: var(--accent-color); /* Highlight these sub-headings */
+    display: block; /* Make them block-level to ensure spacing */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.point {
+    font-size: 1em;
+    color: var(--text-color-dark);
+    line-height: 1.5;
+    margin-bottom: 10px; /* Space between points */
+    padding-left: 25px; /* Indent for bullet-like appearance */
+    position: relative; /* For custom bullet point */
+    text-align: left; /* Ensure points align left within their card */
+}
+
+.point::before {
+    content: "•"; /* Custom bullet point */
+    color: var(--primary-color); /* Bullet color */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em; /* Space for the bullet */
+    margin-left: -1em; /* Pull the bullet out */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* --- Dark Theme Overrides for Sustainable Fashion Section --- */
+.dark-theme .footprint,
+.dark-theme .rise {
+    background-color: var(--card-bg-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+.dark-theme .footprint h3,
+.dark-theme .rise h3 {
+    color: var(--primary-color-dark);
+}
+
+.dark-theme .footprint .card-description,
+.dark-theme .rise .card-description {
+    color: var(--light-text-color);
+}
+
+.dark-theme .rise .card-description strong {
+    color: var(--accent-color-dark);
+}
+
+.dark-theme .point {
+    color: var(--light-text-color);
+}
+
+.dark-theme .point::before {
+    color: var(--primary-color-dark);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .footprint-section {
+        padding: 40px 15px;
+        gap: 25px;
+    }
+
+    .footprint,
+    .rise {
+        padding: 25px;
+        gap: 12px;
+    }
+
+    .footprint h3,
+    .rise h3 {
+        font-size: 1.8em;
+    }
+
+    .footprint .card-description,
+    .rise .card-description {
+        font-size: 1em;
+    }
+
+    .point {
+        font-size: 0.95em;
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footprint-section {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center stacked columns */
+        gap: 30px; /* Maintain space between stacked cards */
+    }
+
+    .footprint,
+    .rise {
+        min-width: unset; /* Remove min-width to allow full width */
+        max-width: 100%; /* Take full width minus padding */
+    }
+
+    .footprint h3,
+    .rise h3 {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 480px) {
+    .footprint,
+    .rise {
+        padding: 20px;
+    }
+    .footprint h3,
+    .rise h3 {
+        font-size: 1.4em;
+    }
+    .footprint .card-description,
+    .rise .card-description,
+    .point {
+        font-size: 0.9em;
+    }
+    .point {
+        padding-left: 18px;
+    }
 }
 
 /* Fashion Chatbot Section */
@@ -149,155 +367,111 @@
     max-width: 600px;
 }
 
-/* Fashion Slider Section */
-.fashion-slider-section {
+/* In css/pages/fashion.css */
+
+.video-section {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: var(--background-color);
-    box-shadow: none;
-    border-radius: 0;
-}
-
-.fashion-slider-section h3 {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.fashion-slider-section p.mb-20 {
-    font-size: 1.1em;
-    color: var(--text-color);
-}
-
-.fashion-slider-wrapper {
-    /* Inherits card-item from components.css */
-    padding: 30px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-#fashion-image {
-    max-width: 100%;
-    height: 400px; /* Fixed height for consistent display */
-    object-fit: contain; /* Ensure entire image is visible, not cropped */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth image transitions */
-}
-
-#fashion-caption {
-    font-size: 1.1em;
-    color: var(--text-color);
-    margin-bottom: 30px;
-    min-height: 2em; /* Prevent layout shift */
-}
-
-.slider-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.slider-btn {
-    padding: 12px 25px;
-    font-size: 1em;
-    font-weight: 600;
-    border-radius: 8px;
-    background-color: var(--primary-color);
-    color: #fff;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.slider-btn:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-/* Dark Theme Adjustments for Fashion Page */
-.dark-theme .hero-section h2,
-.dark-theme .fashion-evolution-section h3,
-.dark-theme .fashion-chatbot-section h3,
-.dark-theme .fashion-slider-section h3,
-.dark-theme .fashion_timeline .era-content h4 {
-    color: var(--primary-color);
-}
-
-.dark-theme .fashion-evolution-section,
-.dark-theme .fashion-slider-wrapper {
     background-color: var(--card-bg);
-    box-shadow: 0 5px 15px var(--shadow-dark);
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* THIS IS KEY for centering the video container */
 }
 
-.dark-theme .fashion-slider-wrapper:hover {
-    box-shadow: 0 8px 20px var(--shadow-dark);
+.video-section h3,
+.video-section p {
+    max-width: 800px; /* Constrain text width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Center the text within its max-width */
 }
 
-.dark-theme .slider-btn {
-    background-color: var(--accent-color);
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* THIS IS KEY for controlling the video player's size */
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background-color: var(--background-color-dark);
+    border-radius: 16px;
+    box-shadow: var(--shadow-large);
+    margin-top: 10px; /* Space from description */
+    border: 1px solid var(--border-color-dark);
 }
 
-.dark-theme .slider-btn:hover {
-    background-color: var(--primary-color);
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    object-fit: cover; /* Ensures video fills the space */
+    border: none;
+    background-color: #000;
 }
 
-/* Media Queries for Fashion Page */
+/* Add dark theme overrides if they are not already there */
+.dark-theme .video-section {
+    background-color: var(--card-bg-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+.dark-theme .video-section h3 {
+    color: var(--primary-color-dark);
+}
+
+.dark-theme .video-section p {
+    color: var(--light-text-color);
+}
+
+.dark-theme .video-container {
+    background-color: var(--background-color-darker);
+    border-color: var(--border-color-dark);
+}
+
+/* Responsive adjustments for video section */
 @media (max-width: 992px) {
-    .hero-section h2 {
-        font-size: 3em;
+    .video-section {
+        padding: 30px 15px;
     }
-    .fashion-evolution-section, .fashion-chatbot-section, .fashion-slider-section {
-        padding: 30px 20px;
+    .video-section h3 {
+        font-size: 2.2em;
     }
-    .fashion_timeline .era {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
+    .video-section p {
+        font-size: 1em;
     }
-    .fashion_timeline .era-year {
-        text-align: center;
-        min-width: unset;
-        font-size: 2em;
-    }
-    .fashion_timeline .era-image {
-        max-width: 200px;
-    }
-    #fashion-image {
-        height: 300px;
-    }
-    #chat-container {
-        height: 450px;
+    .video-container {
+        max-width: 600px; /* Adjust max width for medium screens */
     }
 }
 
 @media (max-width: 768px) {
-    .fashion-container {
-        gap: 30px;
-    }
-    .hero-section {
-        padding: 30px 15px;
-    }
-    .hero-section h2 {
-        font-size: 2.5em;
-    }
-    .fashion-evolution-section h3, .fashion-chatbot-section h3, .fashion-slider-section h3 {
+    .video-section h3 {
         font-size: 2em;
     }
-    .fashion-evolution-section, .fashion-chatbot-section, .fashion-slider-section {
-        padding: 20px 15px;
+    .video-section p {
+        font-size: 0.95em;
     }
-    #fashion-image {
-        height: 250px;
+    .video-container {
+        max-width: 500px; /* Further adjust max width for small screens */
     }
-    .slider-btn {
-        padding: 10px 20px;
+}
+
+@media (max-width: 480px) {
+    .video-section h3 {
+        font-size: 1.8em;
+    }
+    .video-section p {
         font-size: 0.9em;
     }
-    #chat-container {
-        height: 400px;
-        max-width: 95%;
+    .video-container {
+        max-width: 90%; /* Allow video to take more width on very small screens */
     }
 }
