@@ -1,78 +1,57 @@
-/**
- * js/modules/medieval-quest.js
- *
- * This module implements the interactive Medieval Quest game for the History page.
- */
 
-import { medievalQuestData, addClass, removeClass } from '../core.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const questGameContainer = document.getElementById('medieval-quest-game');
-    if (!questGameContainer) {
-        console.warn("Medieval Quest game container not found. Skipping module initialization.");
-        return;
-    }
-
     const questDisplay = document.getElementById('quest-display');
-    const questOptionsDiv = document.getElementById('quest-options');
-    const questStartBtn = document.getElementById('quest-start');
+    const questOptionsContainer = document.getElementById('quest-options');
+    const questStartButton = document.getElementById('quest-start');
 
-    let currentSceneId = 'start';
+    const questSteps = window.medievalQuestData
 
-    /**
-     * Initializes or restarts the quest.
-     */
-    function startQuest() {
-        currentSceneId = 'start';
-        displayScene(currentSceneId);
-        questStartBtn.style.display = 'none'; // Hide start button once started
-    }
-
-    /**
-     * Displays a specific scene in the quest.
-     * @param {string} sceneId The ID of the scene to display.
-     */
-    function displayScene(sceneId) {
-        const scene = medievalQuestData[sceneId];
-        if (!scene) {
-            console.error("Scene not found:", sceneId);
-            questDisplay.textContent = "An error occurred. Please restart the quest.";
-            questOptionsDiv.innerHTML = '';
-            questStartBtn.style.display = 'block';
+    function showQuestStep(step) {
+        if (!questDisplay || !questOptionsContainer) {
+            console.warn("Medieval Quest elements not found.");
             return;
         }
 
-        questDisplay.textContent = scene.text;
-        questOptionsDiv.innerHTML = ''; // Clear previous options
+        const stepData = questSteps[step];
+        if (!stepData) {
+            console.error(`Quest step "${step}" not found.`);
+            return;
+        }
 
-        if (scene.options && scene.options.length > 0) {
-            scene.options.forEach(option => {
-                const button = document.createElement('button');
-                addClass(button, 'quest-option-btn');
-                button.textContent = option.text;
-                button.addEventListener('click', () => {
-                    handleChoice(option.next);
-                });
-                questOptionsDiv.appendChild(button);
+        questDisplay.textContent = stepData.text;
+        questOptionsContainer.innerHTML = ''; 
+
+        if (stepData.options && stepData.options.length > 0) {
+            stepData.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.classList.add('cta-button'); 
+                btn.textContent = option.text;
+                btn.onclick = () => showQuestStep(option.next);
+                questOptionsContainer.appendChild(btn);
             });
+            questStartButton.style.display = 'none'; 
         } else {
-            // If no options, it's an end scene
-            questStartBtn.textContent = "Restart Quest";
-            questStartBtn.style.display = 'block';
+            
+            const restartBtn = document.createElement('button');
+            restartBtn.classList.add('cta-button', 'mt-20'); 
+            restartBtn.textContent = "🛡 Play Again";
+            restartBtn.onclick = () => showQuestStep("start"); 
+            questOptionsContainer.appendChild(restartBtn);
+            questStartButton.style.display = 'none'; 
         }
     }
 
-    /**
-     * Handles the user's choice and advances to the next scene.
-     * @param {string} nextSceneId The ID of the next scene.
-     */
-    function handleChoice(nextSceneId) {
-        currentSceneId = nextSceneId;
-        displayScene(currentSceneId);
+    
+    if (questStartButton) {
+        questStartButton.addEventListener('click', () => {
+            showQuestStep("start");
+        });
+        
+        questDisplay.textContent = questSteps.start.text; 
+        questOptionsContainer.innerHTML = ''; 
+        questStartButton.style.display = 'block'; 
+    } else {
+        console.warn("Medieval Quest start button not found.");
     }
-
-    questStartBtn.addEventListener('click', startQuest);
-
-    // Initial display on load
-    displayScene(currentSceneId); // Show initial "Start Quest" button
 });

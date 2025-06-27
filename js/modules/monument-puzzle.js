@@ -1,160 +1,153 @@
-/**
- * js/modules/monument-puzzle.js
- *
- * This module implements the interactive Monument Puzzle Game for the History page.
- */
 
-import { monumentPuzzleImages, playSound, correctSound, incorrectSound, shuffleArray, addClass, removeClass } from '../core.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const puzzleContainer = document.getElementById('puzzle-container');
-    if (!puzzleContainer) {
-        console.warn("Monument Puzzle container not found. Skipping module initialization.");
-        return;
-    }
-
+    const monumentSelect = document.getElementById('monument-select');
+    const startButton = document.getElementById('start-puzzle');
     const puzzleBoard = document.getElementById('puzzle-board');
     const puzzleMessage = document.getElementById('puzzle-message');
-    const puzzleResetBtn = document.getElementById('puzzle-reset');
+    const puzzleResetButton = document.getElementById('puzzle-reset');
 
-    let currentPuzzleImage = null;
-    const numPieces = 9; // 3x3 grid
+    let tiles = [];
+    const gridSize = 4; 
+    const tileSize = 80; 
 
-    /**
-     * Selects a random puzzle image and initializes the game.
-     */
-    function initializePuzzle() {
+    const monumentFacts = {
+        pyramids: "The Great Pyramid of Giza was the tallest man-made structure in the world for over 3,800 years.",
+        ziggurat: "Ziggurats were massive terraced pyramids built in ancient Mesopotamia, primarily as temples to the gods.",
+        parthenon: "The Parthenon in Athens, Greece, was built to honor the goddess Athena, patroness of the city."
+    };
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        console.log(`i: ${i}, j: ${j}`); 
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+    function setupPuzzle(monument) {
+        tiles = [];
+        for (let i = 0; i < gridSize * gridSize; i++) {
+            tiles.push(i);
+        }
+        shuffleArray(tiles); 
+        const imageSrc = `images/${monument}.jpg`;
+        createPuzzleVisuals(imageSrc); 
+        puzzleResetButton.style.display = 'block'; 
+    }
+
+    function createPuzzleVisuals(imageSrc) {
+        if (!puzzleBoard) return;
         puzzleBoard.innerHTML = '';
         puzzleMessage.textContent = '';
-        puzzleResetBtn.style.display = 'none';
+        puzzleMessage.classList.remove('show', 'correct', 'incorrect'); 
+        puzzleBoard.classList.remove('solved'); 
 
-        currentPuzzleImage = shuffleArray(monumentPuzzleImages)[0];
-        createPuzzlePieces(currentPuzzleImage.src);
-    }
+        
+        puzzleBoard.style.gridTemplateColumns = `repeat(${gridSize}, ${tileSize}px)`;
+        puzzleBoard.style.width = `${gridSize * tileSize}px`; 
+        puzzleBoard.style.height = `${gridSize * tileSize}px`; 
 
-    /**
-     * Creates and shuffles the puzzle pieces for the given image.
-     * @param {string} imageUrl The URL of the full image.
-     */
-    function createPuzzlePieces(imageUrl) {
-        const img = new Image();
-        img.onload = () => {
-            const pieceWidth = img.width / 3;
-            const pieceHeight = img.height / 3;
-            let pieces = [];
-
-            for (let i = 0; i < numPieces; i++) {
-                const piece = document.createElement('div');
-                addClass(piece, 'puzzle-piece');
-                piece.dataset.id = i;
-
-                const row = Math.floor(i / 3);
-                const col = i % 3;
-
-                piece.style.width = `${pieceWidth}px`;
-                piece.style.height = `${pieceHeight}px`;
-                piece.style.backgroundImage = `url(${imageUrl})`;
-                piece.style.backgroundSize = `${img.width}px ${img.height}px`;
-                piece.style.backgroundPosition = `-${col * pieceWidth}px -${row * pieceHeight}px`;
-                piece.draggable = true;
-
-                pieces.push(piece);
-            }
-
-            pieces = shuffleArray(pieces); // Shuffle pieces for the game
-
-            pieces.forEach(piece => {
-                puzzleBoard.appendChild(piece);
-            });
-
-            addDragDropListeners();
-        };
-        img.src = imageUrl;
-    }
-
-    let draggedItem = null;
-
-    /**
-     * Adds drag and drop listeners to puzzle pieces.
-     */
-    function addDragDropListeners() {
-        const pieces = puzzleBoard.querySelectorAll('.puzzle-piece');
-
-        pieces.forEach(piece => {
-            piece.addEventListener('dragstart', (e) => {
-                draggedItem = e.target;
-                e.dataTransfer.setData('text/plain', e.target.dataset.id); // Set data for Firefox compatibility
-                addClass(draggedItem, 'dragging');
-            });
-
-            piece.addEventListener('dragover', (e) => {
-                e.preventDefault(); // Allows drop
-                if (e.target !== draggedItem && e.target.classList.contains('puzzle-piece')) {
-                    addClass(e.target, 'drag-over');
-                }
-            });
-
-            piece.addEventListener('dragleave', (e) => {
-                removeClass(e.target, 'drag-over');
-            });
-
-            piece.addEventListener('drop', (e) => {
-                e.preventDefault();
-                removeClass(e.target, 'drag-over');
-
-                if (e.target !== draggedItem && e.target.classList.contains('puzzle-piece')) {
-                    const droppedOnItem = e.target;
-                    const container = puzzleBoard;
-
-                    // Swap positions in the DOM
-                    const draggedIndex = Array.from(container.children).indexOf(draggedItem);
-                    const droppedIndex = Array.from(container.children).indexOf(droppedOnItem);
-
-                    if (draggedIndex < droppedIndex) {
-                        container.insertBefore(droppedOnItem, draggedItem);
-                        container.insertBefore(draggedItem, container.children[droppedIndex]);
-                    } else {
-                        container.insertBefore(draggedItem, droppedOnItem);
-                        container.insertBefore(droppedOnItem, container.children[draggedIndex]);
-                    }
-
-                    checkPuzzleCompletion();
-                }
-            });
-
-            piece.addEventListener('dragend', () => {
-                removeClass(draggedItem, 'dragging');
-                draggedItem = null;
-            });
+        tiles.forEach((originalIndex, currentIndex) => {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.style.backgroundImage = `url(${imageSrc})`;
+            tile.style.backgroundSize = `${gridSize * tileSize}px ${gridSize * tileSize}px`;
+            
+            tile.style.backgroundPosition = `-${(originalIndex % gridSize) * tileSize}px -${Math.floor(originalIndex / gridSize) * tileSize}px`;
+            tile.dataset.currentIndex = currentIndex; 
+            tile.dataset.originalIndex = originalIndex; 
+            tile.onclick = () => selectTile(currentIndex);
+            puzzleBoard.appendChild(tile);
         });
     }
 
-    /**
-     * Checks if the puzzle is completed (pieces are in correct order).
-     */
-    function checkPuzzleCompletion() {
-        const pieces = puzzleBoard.querySelectorAll('.puzzle-piece');
-        let isSolved = true;
-        for (let i = 0; i < pieces.length; i++) {
-            if (parseInt(pieces[i].dataset.id) !== i) {
-                isSolved = false;
-                break;
-            }
+    let selectedTileIndex = null; 
+
+    function selectTile(index) {
+        const tilesElements = document.querySelectorAll('#puzzle-board .tile');
+        
+        
+        if (selectedTileIndex !== null && tilesElements[selectedTileIndex]) {
+            tilesElements[selectedTileIndex].classList.remove('selected');
         }
 
-        if (isSolved) {
-            puzzleMessage.textContent = `Puzzle Solved! It's the ${currentPuzzleImage.name}!`;
-            addClass(puzzleMessage, 'success');
-            playSound(correctSound);
-            puzzleBoard.querySelectorAll('.puzzle-piece').forEach(piece => piece.draggable = false); // Disable dragging
-            puzzleResetBtn.style.display = 'block';
+        if (selectedTileIndex === null) {
+            
+            selectedTileIndex = index;
+            if (tilesElements[index]) {
+                tilesElements[index].classList.add('selected');
+            }
         } else {
-            removeClass(puzzleMessage, 'success');
-            puzzleMessage.textContent = ''; // Clear message if not solved
+            
+            swapTiles(selectedTileIndex, index);
+            selectedTileIndex = null; 
+            checkPuzzle();
         }
     }
 
-    puzzleResetBtn.addEventListener('click', initializePuzzle);
+    function swapTiles(i, j) {
+        
+        [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+        
+        
+        const monument = monumentSelect.value;
+        const imageSrc = `images/${monument}.jpg`;
+        createPuzzleVisuals(imageSrc);
+    }
 
-    initializePuzzle(); // Start the puzzle on page load
+    function checkPuzzle() {
+        
+        const isSolved = tiles.every((val, idx) => val === idx);
+        
+        if (isSolved) {
+            document.getElementById('correctSound').play();
+            const monument = monumentSelect.value;
+            const fact = monumentFacts[monument] || "No fun fact available for this monument.";
+            puzzleMessage.textContent = `🎉 You rebuilt the monument! Fun fact: ${fact}`;
+            puzzleMessage.classList.add('show', 'correct');
+            puzzleBoard.classList.add('solved'); 
+            
+            document.querySelectorAll('#puzzle-board .tile').forEach(tile => {
+                tile.onclick = null;
+            });
+        } else {
+            puzzleMessage.classList.remove('correct'); 
+            puzzleBoard.classList.remove('solved');
+        }
+    }
+
+    function resetPuzzle() {
+        if (!monumentSelect) return;
+        const monument = monumentSelect.value;
+        setupPuzzle(monument); 
+        puzzleMessage.classList.remove('show', 'correct', 'incorrect'); 
+        puzzleMessage.textContent = '';
+        puzzleBoard.classList.remove('solved');
+        selectedTileIndex = null; 
+    }
+
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            if (monumentSelect.value) {
+                setupPuzzle(monumentSelect.value);
+            } else {
+                puzzleMessage.textContent = "Please select a monument to start!";
+                puzzleMessage.classList.add('show', 'incorrect'); 
+            }
+        });
+    }
+
+    if (puzzleResetButton) {
+        puzzleResetButton.addEventListener('click', resetPuzzle);
+    }
+
+    
+    
+    if (puzzleBoard && monumentSelect) {
+        
+        puzzleResetButton.style.display = 'none';
+        
+        
+    }
 });

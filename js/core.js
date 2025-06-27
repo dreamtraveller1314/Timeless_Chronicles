@@ -1,66 +1,3 @@
-const historyEras = [
-    {
-        id: 'ancient',
-        name: 'Ancient Civilizations',
-        period: 'c. 3000 BCE - 500 CE',
-        description: 'Explore the birth of civilization, the rise of empires like Egypt, Greece, and Rome, and the foundational discoveries that shaped early human societies.',
-        events: [
-            { year: 'c. 3000 BCE', title: 'Unification of Egypt', detail: 'Formation of the first unified Egyptian state.' },
-            { year: 'c. 2560 BCE', title: 'Construction of Great Pyramid of Giza', detail: 'The iconic monumental tomb for Pharaoh Khufu.' },
-            { year: '776 BCE', title: 'First Olympic Games', detail: 'Recorded beginning of the ancient Olympic Games in Greece.' },
-            { year: '509 BCE', title: 'Roman Republic Established', detail: 'Overthrow of the Roman monarchy and establishment of the Republic.' },
-            { year: '27 BCE', title: 'Roman Empire Founded', detail: 'Octavian becomes Augustus, marking the start of the Roman Empire.' },
-            { year: '330 CE', title: 'Constantinople Founded', detail: 'Emperor Constantine dedicates Constantinople as the new capital of the Roman Empire.' }
-        ],
-        image: 'images/history/ancient_civilizations.jpg'
-    },
-    {
-        id: 'medieval',
-        name: 'Medieval Period',
-        period: 'c. 500 CE - 1500 CE',
-        description: 'Journey through the Middle Ages, from the fall of Rome to the Renaissance, covering feudalism, the Crusades, and the emergence of nation-states.',
-        events: [
-            { year: '476 CE', title: 'Fall of Western Roman Empire', detail: 'Odoacer deposes Romulus Augustulus, marking the end of the Western Roman Empire.' },
-            { year: '800 CE', title: 'Charlemagne Crowned Emperor', detail: 'Pope Leo III crowns Charlemagne Emperor of the Romans, founding the Carolingian Empire.' },
-            { year: '1066 CE', title: 'Norman Conquest of England', detail: 'William the Conqueror invades England, profoundly changing English history.' },
-            { year: '1096 CE', title: 'First Crusade Begins', detail: 'European Christian armies set out to reclaim the Holy Land.' },
-            { year: '1347 CE', title: 'Black Death Arrives in Europe', detail: 'The devastating bubonic plague begins to spread across Europe.' },
-            { year: '1453 CE', title: 'Fall of Constantinople', detail: 'The Ottoman Empire conquers Constantinople, ending the Byzantine Empire.' }
-        ],
-        image: 'images/history/medieval_period.jpg'
-    },
-    {
-        id: 'renaissance',
-        name: 'Renaissance & Exploration',
-        period: 'c. 1400 CE - 1700 CE',
-        description: 'Witness a period of profound cultural, artistic, political, and scientific rebirth across Europe, alongside monumental voyages of discovery.',
-        events: [
-            { year: '1492 CE', title: 'Columbus Arrives in Americas', detail: 'Christopher Columbus\'s first voyage to the Americas.' },
-            { year: '1517 CE', 'title': 'Protestant Reformation Begins', detail: 'Martin Luther publishes his 95 Theses, sparking the Reformation.' },
-            { year: '1543 CE', title: 'Copernicus Publishes Heliocentric Model', detail: 'On the Revolutions of the Heavenly Spheres marks a turning point in science.' },
-            { year: '1607 CE', title: 'Jamestown Founded', detail: 'Establishment of the first permanent English settlement in North America.' },
-            { year: '1687 CE', title: 'Newton Publishes Principia Mathematica', detail: 'Isaac Newton lays the foundations for classical mechanics.' }
-        ],
-        image: 'images/history/renaissance_exploration.jpg'
-    },
-    {
-        id: 'modern',
-        name: 'Modern & Contemporary',
-        period: 'c. 1700 CE - Present',
-        description: 'From the Enlightenment and revolutions to world wars and the digital age, explore the rapid transformations of recent centuries.',
-        events: [
-            { year: '1789 CE', title: 'French Revolution Begins', detail: 'Storming of the Bastille and the start of a transformative period in France.' },
-            { year: '1804 CE', title: 'Napoleonic Empire Proclaimed', detail: 'Napoleon Bonaparte crowns himself Emperor of the French.' },
-            { year: '1914 CE', title: 'World War I Begins', detail: 'Assassination of Archduke Franz Ferdinand triggers the Great War.' },
-            { year: '1945 CE', title: 'End of World War II', detail: 'Surrender of Germany and Japan, conclusion of the deadliest conflict in history.' },
-            { year: '1969 CE', title: 'Moon Landing', detail: 'Apollo 11 lands the first humans on the Moon.' },
-            { year: '1991 CE', title: 'Dissolution of the USSR', detail: 'The end of the Soviet Union marks the end of the Cold War.' }
-        ],
-        image: 'images/history/modern_era.jpg'
-    }
-];
-
-
 const artPeriods = {
     prehistoric: {
         title: "Prehistoric Art",
@@ -377,98 +314,141 @@ const artQuestions = [
 
 
 
-  const medievalQuestData = {
-    start: {
-        text: "You stand at the edge of a whispering forest. A path leads deeper, and a faint glow emanates from within. Do you dare to enter, or seek another way?",
-        options: [
-            { text: "Enter the forest.", next: "forest_entrance" },
-            { text: "Search for a hidden path.", next: "search_path" }
-        ]
-    },
-    forest_entrance: {
-        text: "The trees close in, their branches forming a dark canopy. You hear a rustling. A grumpy gnome blocks your path. 'Answer my riddle, or pay the toll!' he grumbles. 'What has an eye, but cannot see?'",
-        options: [
-            { text: "A needle.", next: "riddle_correct" },
-            { text: "A storm.", next: "riddle_incorrect" },
-            { text: "A potato.", next: "riddle_incorrect" }
-        ]
-    },
-    riddle_correct: {
-        text: "The gnome's eyes widen. 'Correct!' he says, stepping aside. 'Pass, adventurer!' You continue deeper and find a hidden glade with a sparkling stream. You feel refreshed and gain wisdom.",
-        options: [
-            { text: "Continue the journey.", next: "glade" }
-        ]
-    },
-    riddle_incorrect: {
-        text: "The gnome shakes his head. 'Wrong, foolish traveler! Now you must pay the toll!' He snatches your last coin. You proceed, feeling a bit poorer and disheartened.",
-        options: [
-            { text: "Continue the journey.", next: "glade" }
-        ]
-    },
-    search_path: {
-        text: "You search diligently along the forest edge. After a while, you stumble upon a worn cobblestone path, overgrown with moss. It seems less foreboding than the forest. As you follow it, you find a small, abandoned hut. Inside, you discover an old map!",
-        options: [
-            { text: "Enter the hut.", next: "hut_discovery" },
-            { text: "Ignore the hut and follow the path.", next: "glade" }
-        ]
-    },
-    hut_discovery: {
-        text: "The hut is dusty and quiet. You find a tattered map detailing ancient ruins nearby. It looks like a long but potentially rewarding detour. Do you follow the map or continue on the main path?",
-        options: [
-            { text: "Follow the map to the ruins.", next: "ruins_adventure" },
-            { text: "Stick to the main path.", next: "glade" }
-        ]
-    },
-    glade: {
-        text: "You arrive at a crossroads. To your left, a bustling market town; to your right, a winding mountain trail. Which way do you go?",
-        options: [
-            { text: "Head to the market town.", next: "market_town" },
-            { text: "Take the mountain trail.", next: "mountain_trail" }
-        ]
-    },
-    ruins_adventure: {
-        text: "You spend days navigating treacherous terrain following the map. You discover ancient ruins, but they are guarded by spectral knights! You narrowly escape with your life, but manage to grab a rusty, ancient sword. You are tired but ready to continue.",
-        options: [
-            { text: "Proceed, sword in hand.", next: "glade" }
-        ]
-    },
-    market_town: {
-        text: "The market town is vibrant and full of life. You trade stories and learn of a local festival. You spend the night feasting and celebrating, gaining much-needed rest and cheer. Your quest feels renewed.",
-        options: [
-            { text: "Leave the town, refreshed.", next: "end_good" }
-        ]
-    },
-    mountain_trail: {
-        text: "The mountain trail is arduous, but the views are breathtaking. You encounter a lone hermit who shares ancient wisdom with you, teaching you a forgotten skill. You feel more capable, but weary.",
-        options: [
-            { text: "Descend the mountain.", next: "end_good" }
-        ]
-    },
-    end_good: {
-        text: "Your journey has been long and filled with challenges, but you emerge wiser and stronger. You have completed this leg of your medieval quest!",
-        options: [
-            { text: "Restart Quest", next: "start" }
-        ]
-    },
-    end_bad: {
-        text: "Alas, your journey has met an untimely end. Perhaps next time, make different choices...",
-        options: [
-            { text: "Restart Quest", next: "start" }
-        ]
-    }
-};
+const medievalQuestData = {
+        start: {
+            text: "You are living in medieval Europe. Choose your path:",
+            options: [
+                { text: "Become a Knight", next: "knightStart" },
+                { text: "Join the Crusades", next: "crusadesStart" },
+                { text: "Become a Traveling Merchant", next: "merchantStart" }
+            ]
+        },
 
+        
+        knightStart: {
+            text: "As a knight, you swear fealty to your lord and prepare for battle. What is your first mission?",
+            options: [
+                { text: "Protect the village from raiders", next: "protectVillage" },
+                { text: "Enter a grand tournament", next: "tournament" }
+            ]
+        },
+        protectVillage: {
+            text: "You defend the village from bandits! 🏰 Fun fact: Knights were often called upon to protect local lands, not just fight in wars. Now, what will you do?",
+            options: [
+                { text: "Train new squires", next: "trainSquires" },
+                { text: "Travel to court for political matters", next: "courtPolitics" }
+            ]
+        },
+        tournament: {
+            text: "You compete in jousts and melee fights, gaining fame. ⚔ Fun fact: Tournaments were both entertainment and a way to sharpen combat skills. What next?",
+            options: [
+                { text: "Spend winnings on better armor", next: "betterArmor" },
+                { text: "Donate earnings to the church", next: "donateChurch" }
+            ]
+        },
+        trainSquires: {
+            text: "You mentor young squires, passing on chivalry and skills. 📜 Fun fact: Training took years, and squires learned weaponry, horsemanship, and etiquette.",
+            options: [] 
+        },
+        courtPolitics: {
+            text: "You navigate court intrigue, building alliances. 🏛 Fun fact: Many knights were involved in political plots, not just battlefield duties.",
+            options: [] 
+        },
+        betterArmor: {
+            text: "You upgrade to full plate armor, becoming nearly invincible. 🛡 Fun fact: By the late Middle Ages, plate armor provided top-tier protection.",
+            options: [] 
+        },
+        donateChurch: {
+            text: "You donate to the local monastery, ensuring prayers for your soul. ⛪ Fun fact: The medieval church wielded massive influence over society and politics.",
+            options: [] 
+        },
 
+        
+        crusadesStart: {
+            text: "You embark on the Crusades to the Holy Land. The journey is perilous. How will you approach it?",
+            options: [
+                { text: "Lead a charge into battle", next: "leadCharge" },
+                { text: "Negotiate with local leaders", next: "negotiate" }
+            ]
+        },
+        leadCharge: {
+            text: "You bravely lead a charge, but many are lost. ⚔ Fun fact: The Crusades saw both heroic feats and terrible losses. What do you do next?",
+            options: [
+                { text: "Retreat and regroup", next: "retreatRegroup" },
+                { text: "Press on for victory", next: "pressOn" }
+            ]
+        },
+        negotiate: {
+            text: "You broker a temporary peace, avoiding bloodshed. 🤝 Fun fact: Despite their reputation, some Crusader leaders sought diplomacy.",
+            options: [
+                { text: "Establish trade routes", next: "crusadeTrade" },
+                { text: "Return home as a respected envoy", next: "crusadeReturnHome" }
+            ]
+        },
+        retreatRegroup: {
+            text: "You save your men but lose ground. ⚔ Fun fact: Not all Crusades were successful — many ended in failure or retreat.",
+            options: []
+        },
+        pressOn: {
+            text: "You seize a key stronghold, but at a cost. 🏰 Fun fact: Crusader castles were key to holding territory in foreign lands.",
+            options: []
+        },
+        crusadeTrade: {
+            text: "You help set up trade between East and West, bringing new goods home. 🌍 Fun fact: The Crusades opened Europe to spices, silk, and ideas.",
+            options: []
+        },
+        crusadeReturnHome: {
+            text: "You return home as a hero, sharing tales of distant lands. 🏡 Fun fact: Crusaders brought back exotic knowledge, art, and culture.",
+            options: []
+        },
 
-  const toolData = {
-    'hammer': 'For striking nails and breaking objects.',
-    'chisel': 'Used for carving wood or stone.',
-    'sickle': 'A curved blade used for harvesting crops.',
-    'plow': 'Used to turn over soil for planting.',
-    'pottery_wheel': 'For shaping clay into pots and vessels.',
-    'loom': 'Used for weaving fabric.',
-    'quill_pen': 'For writing with ink, typically made from a bird feather.',
-    'abacus': 'An ancient counting device.'
+        
+        merchantStart: {
+            text: "As a merchant, you navigate trade routes across Europe and beyond. What goods will you focus on?",
+            options: [
+                { text: "Spices and exotic goods", next: "merchantSpices" },
+                { text: "Textiles and fine fabrics", next: "merchantFabrics" }
+            ]
+        },
+        merchantSpices: {
+            text: "You import valuable spices, making huge profits. 🌶 Fun fact: Pepper, cloves, and cinnamon were luxury items in medieval Europe. What challenge arises?",
+            options: [
+                { text: "Face pirate attacks", next: "merchantPirates" },
+                { text: "Deal with corrupt officials", next: "merchantOfficials" }
+            ]
+        },
+        merchantFabrics: {
+            text: "You bring silk and wool across Europe, impressing nobles. 🧵 Fun fact: Fine fabrics symbolized wealth and status. What's next?",
+            options: [
+                { text: "Expand into jewelry trade", next: "merchantJewelry" },
+                { text: "Invest in shipbuilding", next: "merchantShips" }
+            ]
+        },
+        merchantPirates: {
+            text: "You fend off pirates and secure your cargo. 🏴‍☠️ Fun fact: Medieval maritime trade was risky, with pirates and storms common.",
+            options: []
+        },
+        merchantOfficials: {
+            text: "You bribe officials to smooth your operations. 💰 Fun fact: Corruption was rampant, and merchants often paid for protection.",
+            options: []
+        },
+        merchantJewelry: {
+            text: "You trade precious gems, winning powerful clients. 💎 Fun fact: Medieval jewelry blended local craftsmanship with imported gems.",
+            options: []
+        },
+        merchantShips: {
+            text: "You invest in bigger ships, expanding your reach. 🚢 Fun fact: Merchant fleets were vital to medieval economies and exploration.",
+            options: []
+        }
+    };
+
+const historyEvents = {
+    prehistory: { title: "Prehistory (3.3M–3000 BCE)", content: "Stone tools, fire, farming, and early villages before writing." },
+    ancient: { title: "Ancient Times (3000 BCE - 500 CE)", content: "The rise of early civilizations like Egypt, Greece, and Rome." },
+    middle_age: { title: "Middle Ages (500 - 1500 CE)", content: "The era of feudalism, castles, and the rise of empires." },
+    renaissance: { title: "Renaissance & Enlightenment (1500 - 1800)", content: "A rebirth of art, science, and philosophy." },
+    modern: { title: "Modern Era (1800s-1945)", content: "Industrial revolution to digital technology." },
+    contemporary: { title: "Contemporary Era (1945 – Present)", content: "Globalization, digital revolution, and shifting global powers." }
 };
 
 
@@ -525,13 +505,11 @@ const artQuestions = [
 
 
   const memoryGameCards = [
-    { id: 'mona_lisa', image: 'images/memory_game/mona_lisa.jpg', fact: 'Leonardo da Vinci\'s iconic portrait, famous for its enigmatic smile.' },
-    { id: 'david', image: 'images/memory_game/david.jpg', fact: 'Michelangelo\'s masterpiece, depicting the Biblical hero David.' },
-    { id: 'birth_of_venus', image: 'images/memory_game/birth_of_venus.jpg', fact: 'Sandro Botticelli\'s painting depicting the goddess Venus arriving at the shore.' },
-    { id: 'last_supper', image: 'images/memory_game/last_supper.jpg', fact: 'Leonardo da Vinci\'s mural depicting the final meal of Jesus with his apostles.' },
-    { id: 'creation_of_adam', image: 'images/memory_game/creation_of_adam.jpg', fact: 'A famous fresco painting by Michelangelo, forming part of the Sistine Chapel ceiling.' },
-    { id: 'arnolfini_portrait', image: 'images/memory_game/arnolfini_portrait.jpg', fact: 'Jan van Eyck\'s oil painting, notable for its complex iconography and optical effects.' }
-];
+        { name: "Mona Lisa", img: "images/mona_lisa.jpg", fact: "The Mona Lisa, painted by Leonardo da Vinci, is famous for her enigmatic smile and is one of the world's most recognizable artworks." },
+        { name: "The Birth of Venus", img: "images/venus.jpg", fact: "Sandro Botticelli's 'The Birth of Venus' depicts the goddess Venus arriving on shore after her birth, celebrating classical beauty and mythological themes." },
+        { name: "The School of Athens", img: "images/athens.jpg", fact: "Raphael's 'The School of Athens' is a fresco showcasing ancient Greek philosophers and scientists, including Plato, Aristotle, and Socrates." },
+        { name: "Primavera", img: "images/primavera.jpg", fact: "Botticelli's 'Primavera' is an allegorical painting depicting a group of mythological figures in a lush garden, representing the arrival of spring." }
+    ];
 
 
   const fashionChatbotResponses = [
@@ -605,19 +583,6 @@ const artQuestions = [
     }
 ];
 
-
-  const toolImages = {
-    hammer: 'images/tools/hammer.png',
-    chisel: 'images/tools/chisel.png',
-    sickle: 'images/tools/sickle.png',
-    plow: 'images/tools/plow.png',
-    pottery_wheel: 'images/tools/pottery_wheel.png',
-    loom: 'images/tools/loom.png',
-    quill_pen: 'images/tools/quill_pen.png',
-    abacus: 'images/tools/abacus.png'
-};
-
-
   const correctSound = document.getElementById('correctSound');
 
   function playSound(audioElement) {
@@ -663,18 +628,37 @@ const artQuestions = [
     if (element) element.removeEventListener(event, handler);
 }
 
-window.historyEras = historyEras;
+document.addEventListener('DOMContentLoaded', () => {
+    
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.display = 'none';
+        }
+    }, 1500);
+
+    
+    window.shuffleArray = function(arr) {
+        
+        const array = arr.slice();
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+});
+
 window.artPeriods = artPeriods;
 window.artFacts = artFacts;
 window.artQuestions = artQuestions;
 window.fashionEras = fashionEras;
+window.historyEvents = historyEvents;
 window.medievalQuestData = medievalQuestData;
-window.toolData = toolData;
 window.monumentPuzzleImages = monumentPuzzleImages;
 window.causeEffectQuestions = causeEffectQuestions;
 window.memoryGameCards = memoryGameCards;
 window.fashionChatbotResponses = fashionChatbotResponses;
-window.toolImages = toolImages;
 window.correctSound = correctSound;
 window.playSound = playSound;
 window.shuffleArray = shuffleArray;

@@ -43,20 +43,20 @@
   <main class="home-container">
     <section class="hero-section">
       <div class="hero-content">
-        <h2>Journey Through Time</h2>
-        <p>Discover how human creativity has evolved from ancient civilizations to the digital age.</p>
+        <h2 data-aos="fade-up">Journey Through Time</h2>
+        <p data-aos="fade-up">Discover how human creativity has evolved from ancient civilizations to the digital age.</p>
         <div class="cta-buttons">
-          <a href="art.html" class="cta-button">Explore Art</a>
-          <a href="history.html" class="cta-button">Discover History</a>
-          <a href="fashion.html" class="cta-button">View Fashion</a>
+          <a href="art.html" class="cta-button" data-aos="fade-up">Explore Art</a>
+          <a href="history.html" class="cta-button" data-aos="fade-up">Discover History</a>
+          <a href="fashion.html" class="cta-button" data-aos="fade-up">View Fashion</a>
         </div>
       </div>
-      <div class="hero-image">
+      <div class="hero-image" data-aos="fade-up">
         <img src="images/hero-image.jpg" alt="Timeline collage showing art, history and fashion">
       </div>
     </section>
 
-    <section class="features-section">
+    <section class="features-section" data-aos="fade-up" data-aos-delay="200">
       <div class="feature-card">
         <div class="feature-icon">🎨</div>
         <h3>Art Through Ages</h3>
@@ -108,14 +108,17 @@
   </audio>
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
   <script src="js/core.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/theme.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+            duration: 1000, 
+            once: true,   
+            offset: 50     
+        });
   </script>
 </body>
 </html>

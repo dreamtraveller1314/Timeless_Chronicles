@@ -1,106 +1,135 @@
-/**
- * js/modules/tool-matching.js
- *
- * This module implements the interactive Tool Matching Game for the History page.
- */
 
-import { toolData, toolImages, playSound, correctSound, incorrectSound, shuffleArray, addClass, removeClass } from '../core.js';
 
-document.addEventListener('DOMContentLoaded' , () => {
-    const matchToolsContainer = document.getElementById('match-tools-container');
-    if (!matchToolsContainer) {
-        console.warn("Tool Matching Game container not found. Skipping module initialization.");
-        return;
-    }
-
-    const toolOptionsDiv = document.getElementById('tool-options');
-    const toolTargetsDiv = document.getElementById('tool-targets');
-    const feedbackMessage = document.getElementById('tool-match-feedback');
+document.addEventListener('DOMContentLoaded', () => {
+    const toolOptionsContainer = document.getElementById('tool-options');
+    const toolTargets = document.querySelectorAll('#tool-targets .target');
+    const feedbackElement = document.getElementById('tool-match-feedback');
     const replayButton = document.getElementById('tool-match-replay');
 
     let draggedTool = null;
-    let correctMatches = 0;
-    const totalTools = Object.keys(toolData).length;
+    let matches = 0;
+    const totalTools = toolTargets.length;
 
-    /**
-     * Initializes the tool matching game.
-     */
-    function initializeGame() {
-        toolOptionsDiv.innerHTML = '';
-        toolTargetsDiv.innerHTML = '';
-        feedbackMessage.textContent = '';
-        replayButton.style.display = 'none';
-        correctMatches = 0;
+    
+    const initialToolsHTML = `
+        <div class="tool" draggable="true" data-match="fire" data-name="Fire">🔥 Fire</div>
+        <div class="tool" draggable="true" data-match="axe" data-name="Stone Axe">🪓 Stone Axe</div>
+        <div class="tool" draggable="true" data-match="spear" data-name="Spear">🏹 Spear</div>
+        <div class="tool" draggable="true" data-match="hammer" data-name="Hammerstone">🪨 Hammerstone</div>
+        <div class="tool" draggable="true" data-match="shell" data-name="Shell">🐚 Shell</div>
+        <div class="tool" draggable="true" data-match="needle" data-name="Bone Needle">🧵 Bone Needle</div>
+    `;
 
-        const toolNames = shuffleArray(Object.keys(toolData));
-        const toolDescriptions = shuffleArray(Object.values(toolData));
+    function shuffleTools() {
+        if (!toolOptionsContainer) return;
+        const tools = Array.from(toolOptionsContainer.children);
+        window.shuffleArray(tools).forEach(tool => toolOptionsContainer.appendChild(tool)); 
+    }
 
-        // Create draggable tool images
-        toolNames.forEach(toolName => {
-            const img = document.createElement('img');
-            img.src = toolImages[toolName];
-            img.alt = toolName.replace('_', ' ');
-            img.dataset.tool = toolName;
-            img.classList.add('draggable-tool');
-            img.draggable = true;
-            toolOptionsDiv.appendChild(img);
+    function setupDragAndDrop() {
+        
+        const tools = document.querySelectorAll('#tool-options .tool');
 
-            img.addEventListener('dragstart', (e) => {
-                draggedTool = e.target;
-                addClass(draggedTool, 'dragging');
-                e.dataTransfer.setData('text/plain', toolName); // Set data for Firefox compatibility
+        tools.forEach(tool => {
+            tool.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', tool.getAttribute('data-match'));
+                e.dataTransfer.setData('text/name', tool.getAttribute('data-name')); 
+                draggedTool = tool;
+                tool.classList.add('dragging');
             });
 
-            img.addEventListener('dragend', () => {
-                removeClass(draggedTool, 'dragging');
+            tool.addEventListener('dragend', () => {
                 draggedTool = null;
+                
+                
+                
+                
+                if (tool.parentElement) tool.classList.remove('dragging');
             });
         });
 
-        // Create droppable target areas
-        toolDescriptions.forEach(description => {
-            const targetDiv = document.createElement('div');
-            targetDiv.classList.add('droppable-target');
-            targetDiv.dataset.description = description;
-            targetDiv.innerHTML = `<p>${description}</p>`;
-            toolTargetsDiv.appendChild(targetDiv);
+        toolTargets.forEach(target => {
+            const originalUsage = target.getAttribute('data-usage');
+            
+            
+            target.innerHTML = originalUsage; 
+            target.classList.remove('correct', 'incorrect', 'filled'); 
+            target.style.backgroundColor = ''; 
 
-            targetDiv.addEventListener('dragover', (e) => {
-                e.preventDefault(); // Necessary to allow dropping
-                addClass(targetDiv, 'drag-over');
-            });
-
-            targetDiv.addEventListener('dragleave', () => {
-                removeClass(targetDiv, 'drag-over');
-            });
-
-            targetDiv.addEventListener('drop', (e) => {
+            target.addEventListener('dragover', e => {
                 e.preventDefault();
-                removeClass(targetDiv, 'drag-over');
+                
+                if (!target.classList.contains('filled')) {
+                    target.style.backgroundColor = 'var(--secondary-color-light)'; 
+                }
+            });
 
-                const droppedToolName = draggedTool ? draggedTool.dataset.tool : e.dataTransfer.getData('text/plain');
-                if (droppedToolName && toolData[droppedToolName] === targetDiv.dataset.description) {
-                    targetDiv.appendChild(draggedTool);
-                    draggedTool.draggable = false;
-                    addClass(targetDiv, 'correct');
-                    addClass(draggedTool, 'matched');
-                    playSound(correctSound);
-                    feedbackMessage.textContent = 'Correct match!';
-                    correctMatches++;
+            target.addEventListener('dragleave', () => {
+                target.style.backgroundColor = '';
+            });
+            
+            target.addEventListener('drop', e => {
+                e.preventDefault();
+                target.style.backgroundColor = '';
 
-                    if (correctMatches === totalTools) {
-                        feedbackMessage.textContent = 'Congratulations! You matched all the tools correctly!';
-                        replayButton.style.display = 'block';
+                if (!draggedTool || target.classList.contains('filled')) return; 
+
+                const droppedToolId = e.dataTransfer.getData('text/plain');
+                const droppedToolName = e.dataTransfer.getData('text/name');
+                const targetToolId = target.getAttribute('data-target');
+
+                if (droppedToolId === targetToolId) {
+                    target.innerHTML = `
+                        <div class="tool-label"><strong>${droppedToolName}</strong></div>
+                        <div class="tool-usage">${originalUsage}</div>
+                    `;
+                    feedbackElement.textContent = "✅ Correct match!";
+                    feedbackElement.style.color = 'green';
+                    target.classList.add('correct', 'filled'); 
+                    draggedTool.remove(); 
+                    matches++;
+                    document.getElementById('correctSound').play(); 
+
+                    if (matches === totalTools) {
+                        feedbackElement.textContent = `🎉 You matched all tools correctly! You're a history expert!`;
+                        replayButton.style.display = "block"; 
                     }
                 } else {
-                    playSound(incorrectSound);
-                    feedbackMessage.textContent = 'Incorrect match. Try again!';
+                    feedbackElement.textContent = "❌ That's not right. Try again.";
+                    feedbackElement.style.color = 'red';
+                    target.classList.add('incorrect');
+                    setTimeout(() => target.classList.remove('incorrect'), 1000); 
                 }
             });
         });
     }
 
-    replayButton.addEventListener('click', initializeGame);
+    function resetToolGame() {
+        if (!toolOptionsContainer || !feedbackElement || !replayButton) return;
 
-    initializeGame(); // Start the game on page load
+        matches = 0;
+        feedbackElement.textContent = "";
+        replayButton.style.display = 'none';
+
+        
+        toolOptionsContainer.innerHTML = initialToolsHTML;
+
+        
+        toolTargets.forEach(target => {
+            target.innerHTML = target.getAttribute('data-usage'); 
+            target.classList.remove('correct', 'incorrect', 'filled');
+            target.style.backgroundColor = '';
+        });
+
+        shuffleTools();
+        setupDragAndDrop();
+    }
+
+    if (toolOptionsContainer && toolTargets.length > 0) {
+        replayButton.addEventListener('click', resetToolGame);
+        
+        resetToolGame(); 
+    } else {
+        console.warn("Tool matching game elements not found.");
+    }
 });

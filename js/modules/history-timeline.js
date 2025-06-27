@@ -1,80 +1,85 @@
-/**
- * js/modules/history-timeline.js
- *
- * This module manages the interactive timeline for the History page,
- * dynamically loading and displaying historical eras and their events.
- */
 
-import { historyEras, addClass, removeClass } from '../core.js';
+(function() {
+    
+    const historyEvents = window.historyEvents
 
-document.addEventListener('DOMContentLoaded', () => {
-    const timelineNav = document.querySelector('.timeline-navigation');
-    const timelineContent = document.getElementById('history-timeline-content');
+    const historyErasArray = Object.keys(historyEvents); 
 
-    if (!timelineNav || !timelineContent) {
-        console.warn("History timeline elements not found. Skipping module initialization.");
-        return;
-    }
-
-    /**
-     * Renders the navigation buttons for each historical era.
-     */
-    function renderTimelineNavigation() {
-        timelineNav.innerHTML = ''; // Clear existing buttons
-        historyEras.forEach(era => {
-            const button = document.createElement('button');
-            button.textContent = era.name;
-            button.dataset.eraId = era.id;
-            timelineNav.appendChild(button);
-
-            button.addEventListener('click', () => {
-                displayEraDetails(era.id);
-                // Update active state
-                Array.from(timelineNav.children).forEach(btn => removeClass(btn, 'active'));
-                addClass(button, 'active');
-            });
-        });
-
-        // Automatically select the first era if available
-        if (historyEras.length > 0) {
-            displayEraDetails(historyEras[0].id);
-            addClass(timelineNav.children[0], 'active');
-        }
-    }
-
-    /**
-     * Displays the detailed information for a selected historical era.
-     * @param {string} eraId The ID of the era to display.
-     */
-    function displayEraDetails(eraId) {
-        const era = historyEras.find(e => e.id === eraId);
-        if (!era) {
-            timelineContent.innerHTML = '<p>Era not found.</p>';
+    
+    function updateHistoryDisplay(eraKey) {
+        const eventContent = document.getElementById('event-content');
+        if (!eventContent) {
+            console.warn("Element with ID 'event-content' not found for history timeline.");
             return;
         }
 
-        let eventsHtml = era.events.map(event => `
-            <div class="timeline-event">
-                <span class="event-year">${event.year}</span>
-                <div class="event-details">
-                    <h4>${event.title}</h4>
-                    <p>${event.detail}</p>
-                </div>
-            </div>
-        `).join('');
+        const event = historyEvents[eraKey];
 
-        timelineContent.innerHTML = `
-            <div class="era-detail-card card-item">
-                <h4 class="era-title">${era.name} (${era.period})</h4>
-                <p class="era-description">${era.description}</p>
-                <img src="${era.image}" alt="${era.name} image" class="era-image">
-                <div class="era-events">
-                    <h5>Key Events:</h5>
-                    ${eventsHtml}
-                </div>
-            </div>
-        `;
+        if (event) {
+            eventContent.innerHTML = `<h4>${event.title}</h4><p>${event.content}</p>`;
+            
+            eventContent.querySelectorAll('h4, p').forEach(el => {
+                el.style.color = document.body.classList.contains('dark-theme') ? 'var(--light-text-color)' : 'var(--dark-text-color)';
+            });
+        } else {
+            
+            eventContent.innerHTML = `<h4>Select an era to learn more!</h4><p>Use the slider to navigate through different historical periods.</p>`;
+            eventContent.querySelectorAll('h4, p').forEach(el => {
+                el.style.color = document.body.classList.contains('dark-theme') ? 'var(--light-text-color)' : 'var(--dark-text-color)';
+            });
+        }
     }
 
-    renderTimelineNavigation();
-});
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const historySlider = document.getElementById('history-slider');
+        const historyOutput = document.getElementById('history-output');
+
+        if (historySlider) {
+            
+            historySlider.max = historyErasArray.length - 1; 
+
+            
+            historySlider.addEventListener('input', () => {
+                const selectedIndex = parseInt(historySlider.value);
+                const eraKey = historyErasArray[selectedIndex];
+                updateHistoryDisplay(eraKey);
+
+                
+                if (historyOutput) {
+                    historyOutput.textContent = `Current Era: ${historyEvents[eraKey].title.split(' ')[0]}`; 
+                }
+            });
+
+            
+            
+            historySlider.value = 0; 
+            updateHistoryDisplay(historyErasArray[0]); 
+            if (historyOutput) {
+                historyOutput.textContent = `Current Era: ${historyEvents[historyErasArray[0]].title.split(' ')[0]}`;
+            }
+
+        } else {
+            console.warn("Element with ID 'history-slider' not found for history timeline.");
+        }
+    });
+
+    
+    window.updateHistoryDisplayForTheme = function() {
+        const historySlider = document.getElementById('history-slider');
+        if (historySlider) {
+            const selectedIndex = parseInt(historySlider.value);
+            const eraKey = historyErasArray[selectedIndex];
+            updateHistoryDisplay(eraKey);
+        }
+        
+        else {
+            const eventContent = document.getElementById('event-content');
+            if (eventContent) {
+                eventContent.querySelectorAll('h4, p').forEach(el => {
+                    el.style.color = document.body.classList.contains('dark-theme') ? 'var(--light-text-color)' : 'var(--dark-text-color)';
+                });
+            }
+        }
+    };
+})(); 
