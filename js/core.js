@@ -250,42 +250,42 @@ const artQuestions = [
     prehistoric: {
             era: 'Prehistoric Era – Function Over Form',
             description: 'Animal skins and natural fibers offered protection from the environment. Fashion was born out of necessity, adapting to climate and available resources. Early adornments often served as spiritual or tribal markers.',
-            image: { src: 'images/prehistoric.jpg', caption: 'Early human wearing animal hides for warmth and basic adornment.' } // Single image object
+            image: { src: 'images/prehistoric.jpg', caption: 'Early human wearing animal hides for warmth and basic adornment.' } 
         },
         ancient: {
             era: 'Ancient Civilizations – Identity and Status',
             description: 'Draped linen garments, ornate jewelry, and rich symbolism marked Egyptian, Greek, and Roman attire. Clothing communicated social status, religious beliefs, and regional identity, often with intricate pleating and elaborate headdresses.',
-            image: { src: 'images/ancient.jpg', caption: 'Elaborate draped garments and ornate jewelry from Ancient Civilizations.' } // Single image object
+            image: { src: 'images/ancient.jpg', caption: 'Elaborate draped garments and ornate jewelry from Ancient Civilizations.' } 
         },
         renaissance: {
             era: 'The Renaissance – Art Meets Attire',
             description: 'Fashion exploded with color, luxurious fabrics, and meticulous detail. Garments featured rich velvets, silks, slashed sleeves, and intricate embroidery, reflecting humanist ideals, artistic innovation, and a display of wealth. As Desiderius Erasmus famously said, "Clothes make the man."',
-            image: { src: 'images/renaissance.jpg', caption: 'Opulent and detailed Renaissance attire, showcasing rich fabrics and intricate designs.' } // Single image object
+            image: { src: 'images/renaissance.jpg', caption: 'Opulent and detailed Renaissance attire, showcasing rich fabrics and intricate designs.' } 
         },
         ninetwozero: {
             era: '1920s – Flapper Glamour & Liberation',
             description: 'Short, straight-cut dresses, dropped waists, bob cuts, and fringe defined women’s liberation and a rebellious new silhouette. The jazz age brought about a dramatic shift from restrictive Victorian corsetry to a freer, more active style. As Coco Chanel noted, "Fashion is architecture: it is a matter of proportions."',
-            image: { src: 'images/1920s.jpg', caption: 'The iconic flapper style, symbolizing freedom and rebellion in the 1920s.' } // Single image object
+            image: { src: 'images/1920s.jpg', caption: 'The iconic flapper style, symbolizing freedom and rebellion in the 1920s.' } 
         },
         ninefivezero: {
             era: '1950s – Postwar Elegance & Youth Rebellion',
             description: 'Characterized by the "New Look" with full skirts, cinched waists, and polished elegance for women, the 1950s revived glamour after the war. Simultaneously, youth culture introduced casual styles like leather jackets, denim, and rock-and-roll-inspired rebellion. Marilyn Monroe\'s famous quote, "Give a girl the right shoes, and she can conquer the world," perfectly encapsulates the era\'s focus on sophisticated details.',
-            image: { src: 'images/1950s.jpg', caption: 'Classic 1950s elegance with cinched waists and full skirts.' } // Single image object
+            image: { src: 'images/1950s.jpg', caption: 'Classic 1950s elegance with cinched waists and full skirts.' } 
         },
         nineeightzero: {
             era: '1980s – Power Dressing & Pop Culture Fusion',
             description: 'The 1980s were bold and expressive, celebrating individualism and excess. From sharp shoulder pads and power suits embodying corporate ambition to vibrant streetwear, athletic wear, and punk influences, fashion was a reflection of pop culture and a desire to stand out. As street style photographer Bill Cunningham famously said, "Fashion is the armor to survive the reality of everyday life."',
-            image: { src: 'images/1980s.jpg', caption: 'Bold and expressive 1980s fashion, featuring power suits and vibrant colors.' } // Single image object
+            image: { src: 'images/1980s.jpg', caption: 'Bold and expressive 1980s fashion, featuring power suits and vibrant colors.' } 
         },
         zero: {
             era: '2000s – Y2K Revival & Experimental Edge',
             description: 'The 2000s marked a shift toward experimental style, tech-inspired aesthetics, and a resurgence of early 2000s pop culture icons. From low-rise jeans and bedazzled logos to edgy high fashion, the era was defined by contradiction: maximalist excess and minimalist techwear, luxury branding and DIY rebellion. As Alexander McQueen stated, "It’s a new era in fashion—there are no rules."',
-            image: { src: 'images/2000s.jpg', caption: 'Y2K fashion trends, characterized by low-rise jeans and bold accessories.' } // Single image object
+            image: { src: 'images/2000s.jpg', caption: 'Y2K fashion trends, characterized by low-rise jeans and bold accessories.' } 
         },
         twozero: {
             era: '2020s – Sustainable Expression & Digital Identity',
             description: 'Fashion in the 2020s blends sustainability, inclusivity, and digital transformation. Styles range from minimalist loungewear to maximalist streetwear, all while championing ethics, individuality, and tech integration. Virtual fashion and the rise of the metaverse are reshaping how people express identity. Vivienne Westwood\'s timeless advice, "Buy less, choose well, make it last," resonates strongly in this era.',
-            image: { src: 'images/2020s.jpg', caption: 'Contemporary 2020s fashion, emphasizing sustainability and diverse expression.' } // Single image object
+            image: { src: 'images/2020s.jpg', caption: 'Contemporary 2020s fashion, emphasizing sustainability and diverse expression.' } 
         }
     };
 

@@ -1,11 +1,11 @@
-/* Fashion Page Specific Styles */
+
 
 .fashion-container {
-    padding: 0; /* Sections handle their own padding */
+    padding: 0; 
     gap: 50px;
 }
 
-/* General hero section for internal pages (reused from fashion.css principles) */
+
 .hero-section {
     text-align: center;
     padding: 40px 20px;
@@ -29,31 +29,31 @@
     margin: 0 auto;
 }
 
-/* Fashion Evolution Section */
+
 .fashion-evolution-section {
     padding: 30px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: var(--card-bg); /* Uses theme card background */
+    background-color: var(--card-bg); 
     border-radius: 12px;
-    box-shadow: var(--shadow-medium); /* Consistent shadow variable */
-    text-align: center; /* Center text within this section */
-    display: flex; /* Use flexbox for better internal layout control */
+    box-shadow: var(--shadow-medium); 
+    text-align: center; 
+    display: flex; 
     flex-direction: column;
-    gap: 20px; /* Space between elements */
+    gap: 20px; 
 }
 
 .fashion-evolution-section h3 {
     font-size: 2.5em;
     color: var(--primary-color);
-    margin-bottom: 10px; /* Adjust margin as gap is now on parent */
+    margin-bottom: 10px; 
     font-family: 'Playfair Display', serif;
 }
 
 .fashion-evolution-section p.mb-20 {
     font-size: 1.1em;
     color: var(--text-color);
-    margin-bottom: 20px; /* Keep this if you want extra space before buttons */
+    margin-bottom: 20px; 
 }
 
 .fashion-timeline-navigation {
@@ -90,7 +90,7 @@
 }
 
 .fashion-timeline-content {
-    min-height: 400px; /* Ensure a consistent height to prevent layout shifts */
+    min-height: 400px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,28 +100,28 @@
     border: 1px solid var(--border-color);
     border-radius: 10px;
     background-color: var(--background-color-light);
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.05); /* Subtle inner shadow */
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05); 
 }
 
 .timeline-placeholder p {
     font-size: 1.3em;
     color: var(--text-color-light);
     font-style: italic;
-    padding: 20px; /* Padding for the placeholder text */
+    padding: 20px; 
 }
 
-/* --- Styles for dynamically loaded era details --- */
+
 .era-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Space between elements within era details */
-    max-width: 800px; /* Limit width for readability */
-    margin: 0 auto; /* Center the content */
+    gap: 20px; 
+    max-width: 800px; 
+    margin: 0 auto; 
 }
 
 .era-details h4 {
-    font-size: 2em; /* Slightly larger heading for the era */
+    font-size: 2em; 
     color: var(--heading-color);
     margin-bottom: 10px;
     font-family: 'Playfair Display', serif;
@@ -130,75 +130,75 @@
 .era-description {
     font-size: 1.1em;
     color: var(--text-color-dark);
-    line-height: 1.6; /* Improved line spacing for readability */
-    margin-bottom: 15px; /* Space before the image */
-    max-width: 700px; /* Keep description concise */
-    text-align: center; /* Center align description */
+    line-height: 1.6; 
+    margin-bottom: 15px; 
+    max-width: 700px; 
+    text-align: center; 
 }
 
-/* --- SINGLE IMAGE STYLING (NEW!) --- */
+
 .fashion-single-image {
-    width: 100%; /* Take full width of its parent (.era-details) */
-    max-width: 450px; /* Max width for the image container */
-    margin: 15px auto 20px auto; /* Center with vertical spacing */
-    box-shadow: var(--shadow-medium); /* Add a shadow to the image */
-    border-radius: 8px; /* Slightly rounded corners for the image container */
-    overflow: hidden; /* Ensure image corners respect border-radius */
-    background-color: var(--background-color-light); /* Background behind image if it doesn't fill completely */
-    padding: 10px; /* Padding inside the image box */
+    width: 100%; 
+    max-width: 450px; 
+    margin: 15px auto 20px auto; 
+    box-shadow: var(--shadow-medium); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background-color: var(--background-color-light); 
+    padding: 10px; 
     border: 1px solid var(--border-color);
 }
 
 .fashion-single-image img {
-    width: 100%; /* Make image fill its container */
-    height: 300px; /* Fixed height for all images */
-    object-fit: contain; /* Ensures the entire image is visible, scales down if needed */
-                          /* Use 'cover' if you want images to fill the space and crop if necessary */
-    border-radius: 6px; /* Slightly less than parent for inner border effect */
-    display: block; /* Remove extra space below image */
+    width: 100%; 
+    height: 300px; 
+    object-fit: contain; 
+                          
+    border-radius: 6px; 
+    display: block; 
 }
 
 .fashion-caption {
     font-size: 0.95em;
-    color: var(--text-color-light); /* Lighter color for captions */
-    margin-top: 10px; /* Space between image and caption */
+    color: var(--text-color-light); 
+    margin-top: 10px; 
     font-style: italic;
     line-height: 1.4;
 }
 
 .footprint-section {
-    padding: 60px 20px; /* More padding for a substantial section */
+    padding: 60px 20px; 
     max-width: 1200px;
-    margin: 40px auto; /* Add margin to separate from other sections */
-    display: flex; /* Use flexbox to arrange the two columns */
-    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-    gap: 30px; /* Space between the two main divs (footprint and rise) */
-    justify-content: center; /* Center the columns when wrapped */
-    align-items: flex-start; /* Align items to the top */
+    margin: 40px auto; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px; 
+    justify-content: center; 
+    align-items: flex-start; 
 }
 
 .footprint,
 .rise {
-    flex: 1; /* Allows them to grow and shrink */
-    min-width: 300px; /* Minimum width before wrapping */
-    max-width: 550px; /* Max width for each column */
-    background-color: var(--card-bg); /* Use theme card background */
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 550px; 
+    background-color: var(--card-bg); 
     border-radius: 12px;
-    box-shadow: var(--shadow-medium); /* Consistent shadow */
+    box-shadow: var(--shadow-medium); 
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Space between paragraphs and titles inside each card */
-    height: 100%; /* Ensure both columns have same height if content allows (flex property) */
+    gap: 15px; 
+    height: 100%; 
 }
 
 .footprint h3,
 .rise h3 {
-    font-size: 2em; /* Smaller heading than main section titles but prominent */
+    font-size: 2em; 
     color: var(--primary-color);
-    margin-bottom: 10px; /* Space from description */
+    margin-bottom: 10px; 
     font-family: 'Playfair Display', serif;
-    text-align: center; /* Ensure titles are centered within their cards */
+    text-align: center; 
 }
 
 .footprint .card-description,
@@ -206,14 +206,14 @@
     font-size: 1.05em;
     color: var(--text-color);
     line-height: 1.6;
-    margin-bottom: 15px; /* Add extra space after initial description */
-    text-align: center; /* Center these descriptions */
+    margin-bottom: 15px; 
+    text-align: center; 
 }
 
 .rise .card-description strong {
-    font-size: 1.1em; /* Make the "Key Principles" and "How You Can Be" titles stand out */
-    color: var(--accent-color); /* Highlight these sub-headings */
-    display: block; /* Make them block-level to ensure spacing */
+    font-size: 1.1em; 
+    color: var(--accent-color); 
+    display: block; 
     margin-top: 20px;
     margin-bottom: 10px;
     text-align: center;
@@ -224,26 +224,26 @@
     font-size: 1em;
     color: var(--text-color-dark);
     line-height: 1.5;
-    margin-bottom: 10px; /* Space between points */
-    padding-left: 25px; /* Indent for bullet-like appearance */
-    position: relative; /* For custom bullet point */
-    text-align: left; /* Ensure points align left within their card */
+    margin-bottom: 10px; 
+    padding-left: 25px; 
+    position: relative; 
+    text-align: left; 
 }
 
 .point::before {
-    content: "•"; /* Custom bullet point */
-    color: var(--primary-color); /* Bullet color */
+    content: "•"; 
+    color: var(--primary-color); 
     font-weight: bold;
     display: inline-block;
-    width: 1em; /* Space for the bullet */
-    margin-left: -1em; /* Pull the bullet out */
+    width: 1em; 
+    margin-left: -1em; 
     position: absolute;
     left: 0;
     top: 0;
 }
 
 
-/* --- Dark Theme Overrides for Sustainable Fashion Section --- */
+
 .dark-theme .footprint,
 .dark-theme .rise {
     background-color: var(--card-bg-dark);
@@ -273,7 +273,7 @@
 }
 
 
-/* --- Responsive Adjustments --- */
+
 @media (max-width: 992px) {
     .footprint-section {
         padding: 40px 15px;
@@ -304,15 +304,15 @@
 
 @media (max-width: 768px) {
     .footprint-section {
-        flex-direction: column; /* Stack columns vertically */
-        align-items: center; /* Center stacked columns */
-        gap: 30px; /* Maintain space between stacked cards */
+        flex-direction: column; 
+        align-items: center; 
+        gap: 30px; 
     }
 
     .footprint,
     .rise {
-        min-width: unset; /* Remove min-width to allow full width */
-        max-width: 100%; /* Take full width minus padding */
+        min-width: unset; 
+        max-width: 100%; 
     }
 
     .footprint h3,
@@ -340,7 +340,7 @@
     }
 }
 
-/* Fashion Chatbot Section */
+
 .fashion-chatbot-section {
     padding: 40px 20px;
     max-width: 1200px;
@@ -361,13 +361,12 @@
     color: var(--text-color);
 }
 
-/* Chatbot container is styled in components.css, adding minor overrides here */
+
 #chat-container {
-    height: 550px; /* Slightly taller for fashion */
+    height: 550px; 
     max-width: 600px;
 }
 
-/* In css/pages/fashion.css */
 
 .video-section {
     padding: 40px 20px;
@@ -379,28 +378,28 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* THIS IS KEY for centering the video container */
+    align-items: center; 
 }
 
 .video-section h3,
 .video-section p {
-    max-width: 800px; /* Constrain text width for readability */
+    max-width: 800px; 
     margin-left: auto;
     margin-right: auto;
-    text-align: center; /* Center the text within its max-width */
+    text-align: center; 
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* THIS IS KEY for controlling the video player's size */
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    max-width: 800px; 
+    padding-bottom: 56.25%; 
     height: 0;
     overflow: hidden;
     background-color: var(--background-color-dark);
     border-radius: 16px;
     box-shadow: var(--shadow-large);
-    margin-top: 10px; /* Space from description */
+    margin-top: 10px; 
     border: 1px solid var(--border-color-dark);
 }
 
@@ -412,12 +411,12 @@
     width: 100%;
     height: 100%;
     border-radius: 16px;
-    object-fit: cover; /* Ensures video fills the space */
+    object-fit: cover; 
     border: none;
     background-color: #000;
 }
 
-/* Add dark theme overrides if they are not already there */
+
 .dark-theme .video-section {
     background-color: var(--card-bg-dark);
     box-shadow: var(--shadow-dark);
@@ -436,7 +435,7 @@
     border-color: var(--border-color-dark);
 }
 
-/* Responsive adjustments for video section */
+
 @media (max-width: 992px) {
     .video-section {
         padding: 30px 15px;
@@ -448,7 +447,7 @@
         font-size: 1em;
     }
     .video-container {
-        max-width: 600px; /* Adjust max width for medium screens */
+        max-width: 600px; 
     }
 }
 
@@ -460,7 +459,7 @@
         font-size: 0.95em;
     }
     .video-container {
-        max-width: 500px; /* Further adjust max width for small screens */
+        max-width: 500px; 
     }
 }
 
@@ -472,6 +471,6 @@
         font-size: 0.9em;
     }
     .video-container {
-        max-width: 90%; /* Allow video to take more width on very small screens */
+        max-width: 90%; 
     }
 }

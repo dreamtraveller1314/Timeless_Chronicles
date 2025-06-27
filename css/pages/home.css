@@ -1,23 +1,23 @@
-/* Home Page Specific Styles */
+
 
 .home-container {
-    padding: 0; /* Sections handle their own padding */
+    padding: 0; 
     display: flex;
     flex-direction: column;
-    gap: 50px; /* Spacing between main sections */
+    gap: 50px; 
 }
 
-/* Hero Section */
+
 .hero-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    padding: 60px 20px; /* Consistent padding */
-    background-color: var(--background-color); /* Matches body or base section bg */
-    box-shadow: none; /* No shadow for the main hero section */
-    border-radius: 0; /* No border radius */
+    padding: 60px 20px; 
+    background-color: var(--background-color); 
+    box-shadow: none; 
+    border-radius: 0; 
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -30,7 +30,7 @@
     flex: 1;
     text-align: center;
     max-width: 600px;
-    padding-right: 20px; /* Little more space before image */
+    padding-right: 20px; 
 }
 
 .hero-content h2 {
@@ -83,25 +83,25 @@
     max-width: 100%;
     height: auto;
     border-radius: 15px;
-    box-shadow: 0 8px 25px var(--shadow-dark); /* Using dark shadow for more depth */
+    box-shadow: 0 8px 25px var(--shadow-dark); 
 }
 
-/* Features Section (reusing .container from base.css for width) */
+
 .features-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 60px 20px;
     max-width: 1200px;
-    margin: 0 auto 30px auto; /* Center and provide bottom margin */
-    background-color: var(--background-color); /* Matches body or base section bg */
-    box-shadow: none; /* This section is a layout for cards, not a card itself */
+    margin: 0 auto 30px auto; 
+    background-color: var(--background-color); 
+    box-shadow: none; 
     border-radius: 0;
 }
 
 .feature-card {
-    /* Inherits card-item styling from components.css for basic look */
-    padding: 30px; /* Override default card-item padding for features */
+    
+    padding: 30px; 
     background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 5px 15px var(--shadow-light);
@@ -142,10 +142,10 @@
     color: var(--primary-color);
 }
 
-/* Dark Theme specific for Home Page */
+
 .dark-theme .hero-content h2,
 .dark-theme .feature-card h3 {
-    color: var(--primary-color); /* Light primary for dark theme */
+    color: var(--primary-color); 
 }
 
 .dark-theme .hero-content p,
@@ -162,7 +162,7 @@
 }
 
 .dark-theme .feature-icon {
-    color: var(--primary-color); /* Light primary for dark theme icon */
+    color: var(--primary-color); 
 }
 
 .dark-theme .feature-card {
@@ -182,7 +182,7 @@
     color: var(--accent-color);
 }
 
-/* Media Queries for Home Page */
+
 @media (max-width: 992px) {
     .hero-section {
         flex-direction: column;
@@ -223,7 +223,7 @@
         font-size: 1em;
     }
     .features-section {
-        grid-template-columns: 1fr; /* Stack on small screens */
+        grid-template-columns: 1fr; 
         padding: 30px 15px;
     }
     .feature-card h3 {

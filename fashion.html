@@ -38,7 +38,7 @@
         </div>
     </header>
 
-    <main class="fashion-container container" data-aos="fade-up">
+    <main class="fashion-container container">
         <section class="hero-section text-center">
             <h2 data-aos="fade-up">The Fabric of Time</h2>
             <p data-aos="fade-up" data-aos-delay="200">Witness how clothing and style have evolved, reflecting culture, technology, and identity, from ancient drapery to modern avant-garde.</p>
@@ -93,7 +93,7 @@
 
         <section class="fashion-chatbot-section" data-aos="fade-up">
             <h3>AI Fashion Chatbot</h3>
-      <div id="chat-container" data-aos="fade-up">
+      <div id="chat-container">
         <div id="chat-log">
           <div class="chat-message bot-message">
             <p>Hello! Ask me anything about fashion history or style advice.</p>
@@ -104,7 +104,7 @@
       </div>
         </section>
 
-        <section class="video-section" data-aos="fade-up">
+        <section class="video-section" data-aos="zoom-in">
     <h3>🎥 Experience Fashion in Motion</h3>
     <p>Watch our exclusive documentary on the evolution of fashion. See how garments, silhouettes, and trends came alive across the centuries, reflecting societal changes and artistic innovation.</p>
     <div class="video-container">
@@ -149,6 +149,7 @@
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>
     <script src="js/core.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/theme.js"></script>
@@ -156,9 +157,9 @@
     <script src="js/modules/fashion-chatbot.js"></script>
     <script>
         AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 50
+            duration: 1000, 
+            once: true,   
+            offset: 50     
         });
     </script>
 </body>
