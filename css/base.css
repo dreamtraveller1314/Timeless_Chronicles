@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
 
 :root {
-    --primary-color: #5a7d7c; 
-    --accent-color: #e07a5f; 
-    --text-color: #333;
-    --background-color: #f8f8f8;
-    --card-bg: #fff;
-    --border-color: #e0e0e0;
+    /* --- Light Theme Variables (Inspired by 'Time Chronicles' banner) --- */
+    --primary-color: #7a4d3a; /* Deep Reddish-Brown (from "TIME CHRONICLES" text) */
+    --accent-color: #8a9e88; /* Muted Green (from subtle leaf/elements in banner) */
+    --text-color: #4d372f; /* Darker Brown (for general text, from smaller text in banner) */
+    --background-color: #e6d7c7; /* Light Beige (main paper background of banner) */
+    --card-bg: #fffaf5; /* Slightly warmer off-white for cards/containers */
+    --border-color: #c7b8a7; /* Muted light brown for borders */
     
-   
-    --shadow-base: rgba(0, 0, 0, 0.08);
-    --shadow-hover: rgba(0, 0, 0, 0.15);
-    --shadow-strong: rgba(0, 0, 0, 0.25);
+    --shadow-base: rgba(0, 0, 0, 0.08); /* Base shadow for cards */
+    --shadow-hover: rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+    --shadow-strong: rgba(0, 0, 0, 0.25); /* Strongest shadow */
 
     --link-color: var(--primary-color);
     --link-hover-color: var(--accent-color);
     --button-bg: var(--primary-color);
     --button-text: #fff;
-    --button-hover-bg: #4a6a6a;
+    --button-hover-bg: #6a4235; /* Darker primary for hover */
     --button-active-bg: var(--primary-color);
     --button-active-text: #fff;
     --button-active-border: var(--primary-color);
@@ -25,28 +25,29 @@
 
 
 .dark-theme {
-    --text-color: #e0e0e0;
-    --background-color: #222;
-    --card-bg: #2c2c2c;
-    --border-color: #444;
+    /* --- Dark Theme Variables (Corresponding to the new earthy light theme) --- */
+    --primary-color: #9e7d6f; /* Deep Reddish-Brown (from "TIME CHRONICLES" text) */
+    --accent-color: #ffffff;
+    --text-color: #f5ede4; /* Very light beige text */
+    --background-color: #3a2d26; /* Very dark brown, almost black, background */
+    --card-bg: #4f3e37; /* Darker brown for cards/containers */
+    --border-color: #66554b; /* Muted dark brown for borders */
     
-   
-    --shadow-base: rgba(255, 255, 255, 0.08);
+    --shadow-base: rgba(255, 255, 255, 0.08); /* Light shadow for dark mode */
     --shadow-hover: rgba(255, 255, 255, 0.15);
     --shadow-strong: rgba(255, 255, 255, 0.25);
 
-    --link-color: var(--accent-color);
-    --link-hover-color: var(--primary-color);
-    --button-bg: var(--accent-color);
+    --link-color: var(--accent-color); /* Muted green for links in dark mode */
+    --link-hover-color: #b2c2b0; /* Brighter accent for link hover in dark mode */
+    --button-bg: #a67c6b; /* Brighter primary brown for buttons in dark mode */
     --button-text: #fff;
-    --button-hover-bg: #cf6d52;
-    --button-active-bg: var(--accent-color);
+    --button-hover-bg: #916a5d; /* Darker button hover in dark mode */
+    --button-active-bg: #a67c6b;
     --button-active-text: #fff;
-    --button-active-border: var(--accent-color);
+    --button-active-border: #a67c6b;
 }
 
-
-
+/* --- Universal Box Sizing --- */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
