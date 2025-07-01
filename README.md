@@ -1,4 +1,5 @@
 # Timeless Chronicles
+## This project is originally made for https://athena.hackclub.com/
 ## Try this: https://dreamtraveller1314.github.io/Timeless_Chronicles/
 ![3](https://github.com/user-attachments/assets/33033dbc-eb38-4f98-a320-4b18dfee3653)
 ![4](https://github.com/user-attachments/assets/51254186-b293-4958-ab3e-c6490b86e149)
